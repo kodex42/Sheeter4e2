@@ -70,4 +70,8 @@ public class Details {
     public void setStoredMoney(String storedMoney) {
         this.storedMoney = storedMoney;
     }
+
+    public String getName() {
+        return name;
+    }
 }

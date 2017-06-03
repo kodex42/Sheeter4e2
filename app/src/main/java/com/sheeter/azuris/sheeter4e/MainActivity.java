@@ -5,7 +5,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -17,7 +22,6 @@ import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
 import com.sheeter.azuris.sheeter4e.Modules.D20Character;
 import com.sheeter.azuris.sheeter4e.Modules.Details;
 import com.sheeter.azuris.sheeter4e.Modules.Sheet;
-import com.sheeter.azuris.sheeter4e.Modules.Stat;
 
 import org.apache.commons.io.input.BOMInputStream;
 import org.xmlpull.v1.XmlPullParser;
@@ -32,7 +36,11 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private ProgressBar progressBar;
+    private ProgressBar mProgressBar;
+    private BottomNavigationView mNavigationView;
+    private FragmentAdapter mFragmentAdapter;
+    private ViewPager mViewPager;
+    private D20Character mCharacter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,23 +49,41 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        progressBar = (ProgressBar) findViewById(R.id.Main_ProgressBar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.Main_Fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mProgressBar = (ProgressBar) findViewById(R.id.Main_Progressbar);
+        mViewPager = (ViewPager) findViewById(R.id.Main_Pager);
+        mNavigationView = (BottomNavigationView) findViewById(R.id.Main_Navigation);
+        mNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED
-                            || checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED) {
-                        requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE"}, 0);
-                    } else {
-                        parseXMLFile();
-                    }
-                }
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.action_home)
+                    mViewPager.setCurrentItem(0);
+                else if (item.getItemId() == R.id.action_powers)
+                    mViewPager.setCurrentItem(1);
+                return true;
             }
         });
+
+        // ViewPager and its adapters use support library
+        // fragments, so use getSupportFragmentManager.
+        mFragmentAdapter =
+                new FragmentAdapter(
+                        getSupportFragmentManager());
+        mViewPager = (ViewPager) findViewById(R.id.Main_Pager);
+        mViewPager.setAdapter(mFragmentAdapter);
+        mViewPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        // When swiping between pages, select the
+                        // corresponding tab.
+                        if (position == 0) {
+                            mNavigationView.setSelectedItemId(R.id.action_home);
+                        }
+                        else if (position == 1) {
+                            mNavigationView.setSelectedItemId(R.id.action_powers);
+                        }
+                    }
+                });
     }
 
     @Override
@@ -77,17 +103,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_add:
+                checkFilePerms();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    private void checkFilePerms() {
+        mProgressBar.setVisibility(View.VISIBLE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED
+                    || checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE"}, 0);
+            } else {
+                parseXMLFile();
+            }
+        }
     }
 
     private void parseXMLFile() {
@@ -100,8 +136,7 @@ public class MainActivity extends AppCompatActivity {
             BOMInputStream fin = new BOMInputStream(new FileInputStream(file));
             String contents = convertStreamToString(fin);
             fin.close();
-            
-            D20Character character = null;
+
             String textState = "";
             String tagState = "";
 
@@ -117,48 +152,46 @@ public class MainActivity extends AppCompatActivity {
                     // Switch on tag name
                     switch (tagName) {
                         case "D20Character":
-                            character = new D20Character(xpp.getAttributeValue(2));
+                            mCharacter = new D20Character(xpp.getAttributeValue(2));
                             break;
                         case "CharacterSheet":
-                            character.setSheet(new Sheet());
+                            mCharacter.setSheet(new Sheet());
                             break;
                         case "Details":
                             tagState = tagName;
-                            character.sheet.setDetails(new Details());
+                            mCharacter.sheet.setDetails(new Details());
                             break;
                         case "AbilityScores":
-                            character.sheet.setAbilityScores(new AbilityScores());
+                            mCharacter.sheet.setAbilityScores(new AbilityScores());
                             break;
                         case "Strength":
-                            character.sheet.abilityScores.setStrength(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            mCharacter.sheet.abilityScores.setStrength(Integer.parseInt(xpp.getAttributeValue(0).trim()));
                             break;
                         case "Constitution":
-                            character.sheet.abilityScores.setConstitution(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            mCharacter.sheet.abilityScores.setConstitution(Integer.parseInt(xpp.getAttributeValue(0).trim()));
                             break;
                         case "Dexterity":
-                            character.sheet.abilityScores.setDexterity(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            mCharacter.sheet.abilityScores.setDexterity(Integer.parseInt(xpp.getAttributeValue(0).trim()));
                             break;
                         case "Intelligence":
-                            character.sheet.abilityScores.setIntelligence(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            mCharacter.sheet.abilityScores.setIntelligence(Integer.parseInt(xpp.getAttributeValue(0).trim()));
                             break;
                         case "Wisdom":
-                            character.sheet.abilityScores.setWisdom(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            mCharacter.sheet.abilityScores.setWisdom(Integer.parseInt(xpp.getAttributeValue(0).trim()));
                             break;
                         case "Charisma":
-                            character.sheet.abilityScores.setCharisma(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            mCharacter.sheet.abilityScores.setCharisma(Integer.parseInt(xpp.getAttributeValue(0).trim()));
                             break;
                         case "StatBlock":
-                            character.sheet.stats = new ArrayList<>();
+                            mCharacter.sheet.stats = new ArrayList<>();
                             break;
                         case "Stat":
-                            StatParse(xpp, character);
+                            StatParse(xpp, mCharacter);
                             break;
                         default:
                             textState = tagName;
                             break;
                     }
-
-
                 } else if(eventType == XmlPullParser.END_TAG) {
                     System.out.println("End tag "+xpp.getName());
 
@@ -181,43 +214,43 @@ public class MainActivity extends AppCompatActivity {
                         // Switch on tag text for details
                         switch (textState) {
                             case "name":
-                                character.sheet.details.setName(text);
+                                mCharacter.sheet.details.setName(text);
                                 break;
                             case "Level":
-                                character.sheet.details.setLevel(Integer.parseInt(text));
+                                mCharacter.sheet.details.setLevel(Integer.parseInt(text));
                                 break;
                             case "Player":
-                                character.sheet.details.setPlayer(text);
+                                mCharacter.sheet.details.setPlayer(text);
                                 break;
                             case "Height":
-                                character.sheet.details.setHeight(text);
+                                mCharacter.sheet.details.setHeight(text);
                                 break;
                             case "Weight":
-                                character.sheet.details.setWeight(text);
+                                mCharacter.sheet.details.setWeight(text);
                                 break;
                             case "Gender":
-                                character.sheet.details.setGender(text);
+                                mCharacter.sheet.details.setGender(text);
                                 break;
                             case "Age":
-                                character.sheet.details.setAge(Integer.parseInt(text));
+                                mCharacter.sheet.details.setAge(Integer.parseInt(text));
                                 break;
                             case "Alignment":
-                                character.sheet.details.setAlignment(text);
+                                mCharacter.sheet.details.setAlignment(text);
                                 break;
                             case "Company":
-                                character.sheet.details.setCompany(text);
+                                mCharacter.sheet.details.setCompany(text);
                                 break;
                             case "Portrait":
-                                character.sheet.details.setPortrait(text);
+                                mCharacter.sheet.details.setPortrait(text);
                                 break;
                             case "Experience":
-                                character.sheet.details.setExperience(Long.parseLong(text));
+                                mCharacter.sheet.details.setExperience(Long.parseLong(text));
                                 break;
                             case "CarriedMoney":
-                                character.sheet.details.setCarriedMoney(text);
+                                mCharacter.sheet.details.setCarriedMoney(text);
                                 break;
                             case "StoredMoney":
-                                character.sheet.details.setStoredMoney(text);
+                                mCharacter.sheet.details.setStoredMoney(text);
                                 break;
                         }
                     }
@@ -229,7 +262,13 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        progressBar.setVisibility(View.GONE);
+        updateView();
+    }
+
+    private void updateView() {
+        ((TextInputEditText) mViewPager.getChildAt(0).findViewById(R.id.Main_InputText_CharacterName)).setText(mCharacter.sheet.details.getName());
+
+        mProgressBar.setVisibility(View.GONE);
     }
 
     private void StatParse(XmlPullParser xpp, D20Character character) {
@@ -245,5 +284,28 @@ public class MainActivity extends AppCompatActivity {
         }
         reader.close();
         return sb.toString();
+    }
+
+    // Since this is an object collection, use a FragmentStatePagerAdapter,
+    // and NOT a FragmentPagerAdapter.
+    private class FragmentAdapter extends FragmentStatePagerAdapter {
+        Fragment[] fragments;
+
+        FragmentAdapter(FragmentManager fm) {
+            super(fm);
+            fragments = new Fragment[2];
+            fragments[0] = new MainFragment();
+            fragments[1] = new AddSheetsFragment();
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            return fragments[i];
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
     }
 }

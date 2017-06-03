@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Sheeter4e</string>
     <string name="action_settings">Settings</string>
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Sheet</string>
     <string name="menu_powers">Powers</string>
+    <string name="menu_add">Select Sheet</string>
+    <string name="main_character_name">Character Name</string>
+    <string name="main_character_level">Level</string>
 </resources>
