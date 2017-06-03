@@ -35,4 +35,28 @@ public class AbilityScores {
     public void setCharisma(int charisma) {
         this.charisma = charisma;
     }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getConstitution() {
+        return constitution;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public int getWisdom() {
+        return wisdom;
+    }
+
+    public int getCharisma() {
+        return charisma;
+    }
 }

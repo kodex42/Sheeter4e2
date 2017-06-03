@@ -74,4 +74,8 @@ public class Details {
     public String getName() {
         return name;
     }
+
+    public int getLevel() {
+        return level;
+    }
 }

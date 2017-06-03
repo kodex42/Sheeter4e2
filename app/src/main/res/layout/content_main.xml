@@ -4,6 +4,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:text="Main Stats"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:focusable="false"
-                android:hint="@string/main_character_name" />
+                android:hint="@string/main_character_name"
+                android:textColor="@android:color/black" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -37,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:focusable="false"
-                android:hint="@string/main_character_level" />
+                android:hint="@string/main_character_level"
+                android:textColor="@android:color/black" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 

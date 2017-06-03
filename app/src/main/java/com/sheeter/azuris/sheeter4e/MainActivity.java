@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
 import com.sheeter.azuris.sheeter4e.Modules.D20Character;
@@ -266,7 +267,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateView() {
-        ((TextInputEditText) mViewPager.getChildAt(0).findViewById(R.id.Main_InputText_CharacterName)).setText(mCharacter.sheet.details.getName());
+        View mainPage = mViewPager.getChildAt(0);
+        ((TextInputEditText) mainPage.findViewById(R.id.Main_InputText_CharacterName)).setText(mCharacter.sheet.details.getName());
+        ((TextInputEditText) mainPage.findViewById(R.id.Main_InputText_Level)).setText(String.valueOf(mCharacter.sheet.details.getLevel()));
+
+        ((TextView) mainPage.findViewById(R.id.Score_Strength)).setText(String.valueOf(mCharacter.sheet.abilityScores.getStrength()));
+        ((TextView) mainPage.findViewById(R.id.Score_Constitution)).setText(String.valueOf(mCharacter.sheet.abilityScores.getConstitution()));
+        ((TextView) mainPage.findViewById(R.id.Score_Dexterity)).setText(String.valueOf(mCharacter.sheet.abilityScores.getDexterity()));
+        ((TextView) mainPage.findViewById(R.id.Score_Intelligence)).setText(String.valueOf(mCharacter.sheet.abilityScores.getIntelligence()));
+        ((TextView) mainPage.findViewById(R.id.Score_Wisdom)).setText(String.valueOf(mCharacter.sheet.abilityScores.getWisdom()));
+        ((TextView) mainPage.findViewById(R.id.Score_Charisma)).setText(String.valueOf(mCharacter.sheet.abilityScores.getCharisma()));
 
         mProgressBar.setVisibility(View.GONE);
     }
