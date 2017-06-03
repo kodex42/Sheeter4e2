@@ -13,18 +13,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
+import com.sheeter.azuris.sheeter4e.Modules.D20Character;
+import com.sheeter.azuris.sheeter4e.Modules.Details;
+import com.sheeter.azuris.sheeter4e.Modules.Sheet;
+import com.sheeter.azuris.sheeter4e.Modules.Stat;
+
+import org.apache.commons.io.input.BOMInputStream;
 import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
@@ -89,19 +94,146 @@ public class MainActivity extends AppCompatActivity {
         XmlPullParserFactory factory = null;
         try {
             factory = XmlPullParserFactory.newInstance();
-            factory.setNamespaceAware(true);
-            XmlPullParser parser = factory.newPullParser();
+            XmlPullParser xpp = factory.newPullParser();
 
-            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Documents/Izera.dnd4e");
-            FileInputStream fin = new FileInputStream(file);
+            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Documents/Grigle Groogle.dnd4e");
+            BOMInputStream fin = new BOMInputStream(new FileInputStream(file));
             String contents = convertStreamToString(fin);
             fin.close();
+            
+            D20Character character = null;
+            String textState = "";
+            String tagState = "";
 
-            parser.setInput(new StringReader(contents));
-            parser.getName();
+            xpp.setInput(new StringReader(contents));
+            int eventType = xpp.getEventType();
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if(eventType == XmlPullParser.START_DOCUMENT) {
+                    System.out.println("Start document");
+                } else if(eventType == XmlPullParser.START_TAG) {
+                    System.out.println("Start tag "+xpp.getName());
+
+                    String tagName = xpp.getName();
+                    // Switch on tag name
+                    switch (tagName) {
+                        case "D20Character":
+                            character = new D20Character(xpp.getAttributeValue(2));
+                            break;
+                        case "CharacterSheet":
+                            character.setSheet(new Sheet());
+                            break;
+                        case "Details":
+                            tagState = tagName;
+                            character.sheet.setDetails(new Details());
+                            break;
+                        case "AbilityScores":
+                            character.sheet.setAbilityScores(new AbilityScores());
+                            break;
+                        case "Strength":
+                            character.sheet.abilityScores.setStrength(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            break;
+                        case "Constitution":
+                            character.sheet.abilityScores.setConstitution(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            break;
+                        case "Dexterity":
+                            character.sheet.abilityScores.setDexterity(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            break;
+                        case "Intelligence":
+                            character.sheet.abilityScores.setIntelligence(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            break;
+                        case "Wisdom":
+                            character.sheet.abilityScores.setWisdom(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            break;
+                        case "Charisma":
+                            character.sheet.abilityScores.setCharisma(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            break;
+                        case "StatBlock":
+                            character.sheet.stats = new ArrayList<>();
+                            break;
+                        case "Stat":
+                            StatParse(xpp, character);
+                            break;
+                        default:
+                            textState = tagName;
+                            break;
+                    }
+
+
+                } else if(eventType == XmlPullParser.END_TAG) {
+                    System.out.println("End tag "+xpp.getName());
+
+                    String tagName = xpp.getName();
+                    // Switch on tag name
+                    switch (tagName) {
+                        case "Details":
+                        case "AbilityScores":
+                            tagState = "";
+                            break;
+                    }
+
+                    textState = "";
+                } else if(eventType == XmlPullParser.TEXT) {
+                    System.out.println("Text "+xpp.getText());
+
+                    String text = xpp.getText().trim();
+
+                    if (tagState.equals("Details")) {
+                        // Switch on tag text for details
+                        switch (textState) {
+                            case "name":
+                                character.sheet.details.setName(text);
+                                break;
+                            case "Level":
+                                character.sheet.details.setLevel(Integer.parseInt(text));
+                                break;
+                            case "Player":
+                                character.sheet.details.setPlayer(text);
+                                break;
+                            case "Height":
+                                character.sheet.details.setHeight(text);
+                                break;
+                            case "Weight":
+                                character.sheet.details.setWeight(text);
+                                break;
+                            case "Gender":
+                                character.sheet.details.setGender(text);
+                                break;
+                            case "Age":
+                                character.sheet.details.setAge(Integer.parseInt(text));
+                                break;
+                            case "Alignment":
+                                character.sheet.details.setAlignment(text);
+                                break;
+                            case "Company":
+                                character.sheet.details.setCompany(text);
+                                break;
+                            case "Portrait":
+                                character.sheet.details.setPortrait(text);
+                                break;
+                            case "Experience":
+                                character.sheet.details.setExperience(Long.parseLong(text));
+                                break;
+                            case "CarriedMoney":
+                                character.sheet.details.setCarriedMoney(text);
+                                break;
+                            case "StoredMoney":
+                                character.sheet.details.setStoredMoney(text);
+                                break;
+                        }
+                    }
+                }
+                eventType = xpp.next();
+            }
+            System.out.println("End document");
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        progressBar.setVisibility(View.GONE);
+    }
+
+    private void StatParse(XmlPullParser xpp, D20Character character) {
+        // TODO: parse each stat
     }
 
     public static String convertStreamToString(InputStream is) throws Exception {
