@@ -48,6 +48,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.logging.XMLFormatter;
 
 public class MainActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
@@ -260,6 +261,8 @@ public class MainActivity extends AppCompatActivity {
                         case "Stat":
                             StatParse(xpp, mCharacter);
                             break;
+                        case "RulesElement":
+                            RuleParse(xpp,mCharacter);
                         default:
                             textState = tagName;
                             break;
@@ -420,6 +423,38 @@ public class MainActivity extends AppCompatActivity {
                 mCharacter.sheet.stats.put(statName,xpp.getAttributeValue(1).trim());
         }
     }
+
+    private void RuleParse(XmlPullParser xpp, D20Character character) {
+        String tagType = xpp.getAttributeValue(1);
+
+        switch (tagType) {
+            case "Alignment":
+                mCharacter.sheet.details.setAlignment(xpp.getAttributeValue(0).trim());
+                break;
+            case "Gender":
+                mCharacter.sheet.details.setGender(xpp.getAttributeValue(0));
+                break;
+            case "Class":
+                mCharacter.sheet.details.setCharClass(xpp.getAttributeValue(0).trim());
+                break;
+            case "Race":
+                mCharacter.sheet.details.setRace(xpp.getAttributeValue(0).trim());
+                break;
+            case "Language":
+                mCharacter.sheet.details.addLanguage(xpp.getAttributeValue(0).trim());
+                break;
+            case "Size":
+                mCharacter.sheet.details.setSize(xpp.getAttributeValue(0).trim());
+                break;
+            case "Vision":
+                mCharacter.sheet.details.setVision(xpp.getAttributeValue(0).trim());
+                break;
+            case "Role":
+                mCharacter.sheet.details.setRole(xpp.getAttributeValue(0).trim());
+                break;
+        }
+    }
+
 
     public static String convertStreamToString(InputStream is) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
