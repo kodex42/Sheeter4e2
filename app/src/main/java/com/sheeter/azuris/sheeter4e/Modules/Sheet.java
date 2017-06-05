@@ -25,4 +25,8 @@ public class Sheet {
     public void setAbilityScores(AbilityScores abilityScores) {
         this.abilityScores = abilityScores;
     }
+
+    public ArrayList<Power> getPowers() {
+        return powers;
+    }
 }

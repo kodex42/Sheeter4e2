@@ -23,7 +23,7 @@
                 android:paddingTop="5dp"
                 android:text="Character"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
