@@ -34,32 +34,43 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
         Power power = this.powerList.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.power_row, parent, false);
+        convertView = inflater.inflate(R.layout.power_row, null);
 
-        ((TextView) view.findViewById(R.id.Power_Name)).setText(power.getName());
+        ((TextView) convertView.findViewById(R.id.Power_Name)).setText(power.getName());
 
         String freq = null;
         Frequency frequency = power.getFrequency();
-        switch (frequency) {
-            case AT_WILL:
-                freq = "At-Will";
-                view.setBackgroundColor(context.getResources().getColor(R.color.atWillPower));
-                break;
-            case ENCOUNTER:
-                freq = "Encounter";
-                view.setBackgroundColor(context.getResources().getColor(R.color.encounterPower));
-                break;
-            case DAILY:
-                freq = "Daily";
-                view.setBackgroundColor(context.getResources().getColor(R.color.dailyPower));
+        if (frequency != null) {
+            switch (frequency) {
+                case AT_WILL:
+                    freq = "At-Will";
+                    convertView.setBackgroundResource(R.drawable.border_at_will);
+                    break;
+                case ENCOUNTER:
+                    freq = "Encounter";
+                    convertView.setBackgroundResource(R.drawable.border_encounter);
+                    break;
+                case DAILY:
+                    freq = "Daily";
+                    convertView.setBackgroundResource(R.drawable.border_daily);
+            }
         }
 
-        ((TextView) view.findViewById(R.id.Power_Freq)).setText(freq);
+        ((TextView) convertView.findViewById(R.id.Power_Freq)).setText(freq);
 
-        return view;
+        return convertView;
+    }
+
+    @Override
+    public int getCount() {
+        return powerList.size();
     }
 
     void add(Power item) {
         this.powerList.add(item);
+    }
+
+    void addAll(ArrayList<Power> items) {
+        this.powerList.addAll(items);
     }
 }
