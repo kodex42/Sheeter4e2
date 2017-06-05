@@ -11,6 +11,7 @@ public class Sheet {
     public Details details;
     public AbilityScores abilityScores;
     public Map<String,String> stats;
+    public Map<String,Defense> defenses;
     public ArrayList<Item> items;
     public ArrayList<Power> powers;
 
