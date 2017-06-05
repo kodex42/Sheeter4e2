@@ -374,6 +374,42 @@ public class MainActivity extends AppCompatActivity {
 
     private void StatParse(XmlPullParser xpp, D20Character character) {
         // TODO: parse each stat
+        String statName = xpp.getAttributeValue(0);
+
+        switch (statName){
+            case "Strength":
+                mCharacter.sheet.abilityScores.setStrength(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                mCharacter.sheet.abilityScores.setStrengthMod(getMods(Integer.parseInt(mCharacter.sheet.abilityScores.getStrength()))[0]);
+                mCharacter.sheet.abilityScores.setStrengthModHalfLevel(Integer.parseInt(mCharacter.sheet.abilityScores.getStrengthMod()) + mCharacter.sheet.details.getHalfLevel());
+                break;
+            case "Constitution":
+                mCharacter.sheet.abilityScores.setConstitution(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                mCharacter.sheet.abilityScores.setConstitutionMod(getMods(Integer.parseInt(mCharacter.sheet.abilityScores.getConstitution()))[0]);
+                mCharacter.sheet.abilityScores.setConstitutionModHalfLevel(Integer.parseInt(mCharacter.sheet.abilityScores.getConstitutionMod()) + mCharacter.sheet.details.getHalfLevel());
+                break;
+            case "Dexterity":
+                mCharacter.sheet.abilityScores.setDexterity(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                mCharacter.sheet.abilityScores.setDexterityMod(getMods(Integer.parseInt(mCharacter.sheet.abilityScores.getDexterity()))[0]);
+                mCharacter.sheet.abilityScores.setDexterityModHalfLevel(Integer.parseInt(mCharacter.sheet.abilityScores.getDexterityMod()) + mCharacter.sheet.details.getHalfLevel());
+                break;
+            case "Intelligence":
+                mCharacter.sheet.abilityScores.setIntelligence(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                mCharacter.sheet.abilityScores.setIntelligenceMod(getMods(Integer.parseInt(mCharacter.sheet.abilityScores.getIntelligence()))[0]);
+                mCharacter.sheet.abilityScores.setIntelligenceModHalfLevel(Integer.parseInt(mCharacter.sheet.abilityScores.getIntelligenceMod()) + mCharacter.sheet.details.getHalfLevel());
+                break;
+            case "Wisdom":
+                mCharacter.sheet.abilityScores.setWisdom(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                mCharacter.sheet.abilityScores.setWisdomMod(getMods(Integer.parseInt(mCharacter.sheet.abilityScores.getWisdom()))[0]);
+                mCharacter.sheet.abilityScores.setWisdomModHalfLevel(Integer.parseInt(mCharacter.sheet.abilityScores.getWisdomMod()) + mCharacter.sheet.details.getHalfLevel());
+                break;
+            case "Charisma":
+                mCharacter.sheet.abilityScores.setCharisma(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                mCharacter.sheet.abilityScores.setCharismaMod(getMods(Integer.parseInt(mCharacter.sheet.abilityScores.getCharisma()))[0]);
+                mCharacter.sheet.abilityScores.setCharismaModHalfLevel(Integer.parseInt(mCharacter.sheet.abilityScores.getCharismaMod()) + mCharacter.sheet.details.getHalfLevel());
+                break;
+            default:
+                ;
+        }
     }
 
     public static String convertStreamToString(InputStream is) throws Exception {
