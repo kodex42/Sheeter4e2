@@ -4,294 +4,680 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/Main_TextView_Character"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:gravity="center_horizontal"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:text="Main Stats"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10">
-
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3.5"
-            android:paddingLeft="10dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/Main_TextView_Character"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dp"
+                android:text="Character"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="6.5"
-            android:paddingRight="10dp">
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="Ability Scores"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        </android.support.design.widget.TextInputLayout>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
 
-    <GridLayout
-        android:layout_width="350dp"
-        android:layout_height="262dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/charactersheetmini3"
-        android:columnCount="4"
-        android:rowCount="7">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.5"
+                    android:paddingLeft="10dp">
 
-        <TextView
-            android:id="@+id/Modifier_Constitution"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="9dp"
-            android:layout_row="2"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:id="@+id/Modifier_Dexterity"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_marginRight="12dp"
-            android:layout_row="3"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6.5"
+                    android:paddingRight="10dp">
 
-        <TextView
-            android:id="@+id/Modifier_Intelligence"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="9dp"
-            android:layout_row="4"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/Modifier_Wisdom"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="1dp"
-            android:layout_row="5"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:columnCount="4"
+                android:rowCount="7">
 
-        <TextView
-            android:id="@+id/Modifier_Charisma"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_row="6"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="0"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal"
+                    android:text="Ability Name"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Modifier_PlusHalfLevel_Strength"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:layout_column="3"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="12dp"
-            android:layout_row="1"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="3dp"
+                    android:layout_row="0"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal"
+                    android:text="Ability Score"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:layout_column="3"
-            android:layout_row="0"
-            android:elevation="0dp"
-            android:gravity="center_horizontal"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:text="Mod + 1/2lvl"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_margin="3dp"
+                    android:layout_row="0"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal"
+                    android:text="Ability Modifier"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Modifier_Strength"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_row="1"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="95dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_margin="3dp"
+                    android:layout_row="0"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal"
+                    android:text="Modifier + 1/2 Level"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Modifier_PlusHalfLevel_Constitution"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:layout_column="3"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="9dp"
-            android:layout_row="2"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Score_Strength"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_column="1"
+                    android:layout_margin="3dp"
+                    android:layout_row="1"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Modifier_PlusHalfLevel_Dexterity"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:layout_column="3"
-            android:layout_marginRight="10dp"
-            android:layout_row="3"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Score_Constitution"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_column="1"
+                    android:layout_margin="3dp"
+                    android:layout_row="2"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Modifier_PlusHalfLevel_Intelligence"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:layout_column="3"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="9dp"
-            android:layout_row="4"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Score_Dexterity"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_column="1"
+                    android:layout_margin="3dp"
+                    android:layout_row="3"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Modifier_PlusHalfLevel_Wisdom"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:layout_column="3"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="1dp"
-            android:layout_row="5"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Score_Intelligence"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_column="1"
+                    android:layout_margin="3dp"
+                    android:layout_row="4"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Modifier_PlusHalfLevel_Charisma"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:layout_column="3"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_row="6"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Score_Wisdom"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_column="1"
+                    android:layout_margin="3dp"
+                    android:layout_row="5"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Score_Strength"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="12dp"
-            android:layout_row="1"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Score_Charisma"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_column="1"
+                    android:layout_margin="3dp"
+                    android:layout_row="6"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Score_Constitution"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginBottom="21dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_row="2"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Modifier_Strength"
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="2"
+                    android:layout_margin="3dp"
+                    android:layout_row="1"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Score_Dexterity"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginLeft="10dp"
-            android:layout_row="3"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Modifier_Constitution"
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="2"
+                    android:layout_margin="3dp"
+                    android:layout_row="2"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Score_Intelligence"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginBottom="21dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="9dp"
-            android:layout_row="4"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Modifier_Dexterity"
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="2"
+                    android:layout_margin="3dp"
+                    android:layout_row="3"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Score_Wisdom"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginLeft="10dp"
-            android:layout_row="5"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/Modifier_Intelligence"
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="2"
+                    android:layout_margin="3dp"
+                    android:layout_row="4"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Score_Charisma"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_row="6"
-            android:fontFamily="serif"
-            android:gravity="center_horizontal"
-            android:text="0"
-            android:textSize="18sp" />
-    </GridLayout>
+                <TextView
+                    android:id="@+id/Modifier_Wisdom"
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="2"
+                    android:layout_margin="3dp"
+                    android:layout_row="5"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
+                <TextView
+                    android:id="@+id/Modifier_Charisma"
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="2"
+                    android:layout_margin="3dp"
+                    android:layout_row="6"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Modifier_PlusHalfLevel_Strength"
+                    android:layout_width="95dp"
+                    android:layout_height="45dp"
+                    android:layout_column="3"
+                    android:layout_margin="3dp"
+                    android:layout_row="1"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Modifier_PlusHalfLevel_Constitution"
+                    android:layout_width="95dp"
+                    android:layout_height="45dp"
+                    android:layout_column="3"
+                    android:layout_margin="3dp"
+                    android:layout_row="2"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Modifier_PlusHalfLevel_Dexterity"
+                    android:layout_width="95dp"
+                    android:layout_height="45dp"
+                    android:layout_column="3"
+                    android:layout_margin="3dp"
+                    android:layout_row="3"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Modifier_PlusHalfLevel_Intelligence"
+                    android:layout_width="95dp"
+                    android:layout_height="45dp"
+                    android:layout_column="3"
+                    android:layout_margin="3dp"
+                    android:layout_row="4"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Modifier_PlusHalfLevel_Wisdom"
+                    android:layout_width="95dp"
+                    android:layout_height="45dp"
+                    android:layout_column="3"
+                    android:layout_margin="3dp"
+                    android:layout_row="5"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Modifier_PlusHalfLevel_Charisma"
+                    android:layout_width="95dp"
+                    android:layout_height="45dp"
+                    android:layout_column="3"
+                    android:layout_margin="3dp"
+                    android:layout_row="6"
+                    android:background="@drawable/border"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="2"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="DEX"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Dexterity"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="3"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="CON"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Constitution"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="4"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="INT"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Intelligence"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="5"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="WIS"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Wisdom"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="6"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="CHA"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Charisma"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="45dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="1"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="STR"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Strength"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="Defences"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:columnCount="4"
+                android:rowCount="7">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="0"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal"
+                    android:text="Defence"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="35dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="1"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="AC"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="35dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="2"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="FORT"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="35dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="3"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="REF"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="35dp"
+                    android:layout_column="0"
+                    android:layout_margin="3dp"
+                    android:layout_row="4"
+                    android:background="@android:color/black"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="WILL"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+            </GridLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
