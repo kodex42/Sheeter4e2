@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
 import com.sheeter.azuris.sheeter4e.Modules.D20Character;
 import com.sheeter.azuris.sheeter4e.Modules.Details;
+import com.sheeter.azuris.sheeter4e.Modules.Item;
 import com.sheeter.azuris.sheeter4e.Modules.Sheet;
 
 import org.apache.commons.io.input.BOMInputStream;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentAdapter mFragmentAdapter;
     private ViewPager mViewPager;
     private D20Character mCharacter = null;
+    private Item currItem = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -255,6 +257,21 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case "RulesElement":
                             RuleParse(xpp,mCharacter);
+                            break;
+                        case "loot":
+                            if(mCharacter.sheet.items == null){
+                                mCharacter.sheet.items = new ArrayList<Item>();
+                            }
+
+                            this.currItem = new Item();
+                            this.currItem.setQuantity(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+
+                            if (currItem.getQuantity() != 0 ) {
+                                int equip = Integer.parseInt(xpp.getAttributeValue(1).trim());
+                                Boolean equipBool = equip == 0 ? Boolean.FALSE : Boolean.TRUE;
+                                this.currItem.setEquipped(equipBool);
+                            }
+                            break;
                         default:
                             textState = tagName;
                             break;
@@ -443,6 +460,19 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "Role":
                 mCharacter.sheet.details.setRole(xpp.getAttributeValue(0).trim());
+                break;
+            // Is item?
+            case "Armor":
+            case "Weapon":
+            case "Gear":
+
+                this.currItem.setName(xpp.getAttributeValue(0).trim());
+                this.currItem.setType(xpp.getAttributeValue(1).trim());
+
+                if (this.currItem.getQuantity() != 0 )
+                    mCharacter.sheet.items.add(this.currItem);
+
+                this.currItem = null;
                 break;
         }
     }
