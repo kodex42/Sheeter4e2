@@ -25,6 +25,7 @@ import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
 import com.sheeter.azuris.sheeter4e.Modules.Background;
 import com.sheeter.azuris.sheeter4e.Modules.D20Character;
 import com.sheeter.azuris.sheeter4e.Modules.Details;
+import com.sheeter.azuris.sheeter4e.Modules.Feat;
 import com.sheeter.azuris.sheeter4e.Modules.Item;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 import com.sheeter.azuris.sheeter4e.Modules.Sheet;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private Power currPower = null;
     private WeaponBonus currBonus = null;
     private Background currBackground = null;
+    private Feat currFeat = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -606,6 +608,12 @@ public class MainActivity extends AppCompatActivity {
 
                     this.currItem = null;
                 }
+                break;
+            case "Feat":
+                if (mCharacter.sheet.feats == null)
+                    mCharacter.sheet.feats = new ArrayList<>();
+
+
                 break;
         }
     }
