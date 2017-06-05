@@ -43,8 +43,11 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
@@ -252,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
                             mCharacter.sheet.abilityScores.setCharismaModHalfLevel(mods[1]);
                             break;
                         case "StatBlock":
-                            mCharacter.sheet.stats = new ArrayList<>();
+                            mCharacter.sheet.stats = new HashMap<String, String>();
                             break;
                         case "Stat":
                             StatParse(xpp, mCharacter);
@@ -330,7 +333,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         updateView();
     }
 
@@ -408,7 +410,14 @@ public class MainActivity extends AppCompatActivity {
                 mCharacter.sheet.abilityScores.setCharismaModHalfLevel(Integer.parseInt(mCharacter.sheet.abilityScores.getCharismaMod()) + mCharacter.sheet.details.getHalfLevel());
                 break;
             default:
-                ;
+                // Remove defense suffix
+                if (statName == "Fortitude Defense")
+                    statName = "Fortitude";
+                if (statName == "Reflex Defense")
+                    statName = "Reflex";
+                if (statName == "Will Defense")
+                    statName = "Will";
+                mCharacter.sheet.stats.put(statName,xpp.getAttributeValue(1).trim());
         }
     }
 
