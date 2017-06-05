@@ -1,6 +1,7 @@
 package com.sheeter.azuris.sheeter4e.Modules;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by Azuris on 2017-06-03.
@@ -9,7 +10,8 @@ import java.util.ArrayList;
 public class Sheet {
     public Details details;
     public AbilityScores abilityScores;
-    public ArrayList<Stat> stats;
+    public Map<String,String> stats;
+    public ArrayList<Item> items;
 
     public void setDetails(Details details) {
         this.details = details;

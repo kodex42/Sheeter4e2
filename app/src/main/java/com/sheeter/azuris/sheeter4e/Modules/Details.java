@@ -1,5 +1,7 @@
 package com.sheeter.azuris.sheeter4e.Modules;
 
+import java.util.ArrayList;
+
 /**
  * Created by Azuris on 2017-06-03.
  */
@@ -18,6 +20,17 @@ public class Details {
     private long experience;
     private String carriedMoney;
     private String storedMoney;
+    private String race;
+    private String size;
+    private String vision;
+    private String charClass;
+    private ArrayList<String> languages = new ArrayList<>();
+    private String role;
+
+    public void addLanguage(String lang){
+        if (!this.languages.contains(lang))
+            this.languages.add(lang);
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -71,6 +84,46 @@ public class Details {
         this.storedMoney = storedMoney;
     }
 
+    public void setVision(String vision) {
+        this.vision = vision;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public void setCharClass(String charClass) {
+        this.charClass = charClass;
+    }
+
+    public void setLanguages(ArrayList<String> languages) {
+        this.languages = languages;
+    }
+
+    public ArrayList<String> getLanguages() {
+        return languages;
+    }
+
+    public String getCharClass() {
+        return charClass;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public String getVision() {
+        return vision;
+    }
+
     public String getName() {
         return name;
     }
@@ -85,5 +138,13 @@ public class Details {
 
     public int getHalfLevel() {
         return level/2;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
