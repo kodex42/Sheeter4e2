@@ -11,7 +11,7 @@ public class Sheet {
     public Details details;
     public AbilityScores abilityScores;
     public Map<String,String> stats;
-    //public ArrayList<Stat> stats;
+    public ArrayList<Item> items;
 
     public void setDetails(Details details) {
         this.details = details;

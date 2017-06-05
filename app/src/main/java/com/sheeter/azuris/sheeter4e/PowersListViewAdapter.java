@@ -34,7 +34,6 @@ public class PowersListViewAdapter extends ArrayAdapter<String> {
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.power_row, parent, false);
-
-        
+        return view;
     }
 }
