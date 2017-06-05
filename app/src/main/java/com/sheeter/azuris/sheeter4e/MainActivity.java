@@ -1,21 +1,28 @@
 package com.sheeter.azuris.sheeter4e;
 
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.database.DataSetObserver;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -35,6 +42,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -92,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 0) {
-            parseXMLFile();
+            checkFiles();
         }
     }
 
@@ -123,18 +132,50 @@ public class MainActivity extends AppCompatActivity {
                     || checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE"}, 0);
             } else {
-                parseXMLFile();
+                checkFiles();
             }
         }
     }
 
-    private void parseXMLFile() {
+    private void checkFiles() {
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Documents";
+        File directory = new File(path);
+        final List<File> files = Arrays.asList(directory.listFiles());
+
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(MainActivity.this);
+        builderSingle.setIcon(R.drawable.ddlogo);
+        builderSingle.setTitle("Select A Character");
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.select_dialog_item);
+        for (File file : files) {
+            arrayAdapter.add(file.getName().replace(".dnd4e",""));
+        }
+
+        builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                parseXMLFile(files.get(which));
+            }
+        });
+        builderSingle.show();
+
+        //File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Documents/Grigle Groogle.dnd4e");
+        //parseXMLFile(file);
+    }
+
+    private void parseXMLFile(File file) {
         XmlPullParserFactory factory = null;
         try {
             factory = XmlPullParserFactory.newInstance();
             XmlPullParser xpp = factory.newPullParser();
 
-            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Documents/Grigle Groogle.dnd4e");
             BOMInputStream fin = new BOMInputStream(new FileInputStream(file));
             String contents = convertStreamToString(fin);
             fin.close();
@@ -151,6 +192,8 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println("Start tag "+xpp.getName());
 
                     String tagName = xpp.getName();
+                    int score;
+                    int[] mods;
                     // Switch on tag name
                     switch (tagName) {
                         case "D20Character":
@@ -167,22 +210,46 @@ public class MainActivity extends AppCompatActivity {
                             mCharacter.sheet.setAbilityScores(new AbilityScores());
                             break;
                         case "Strength":
-                            mCharacter.sheet.abilityScores.setStrength(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            mods = getMods(score);
+                            mCharacter.sheet.abilityScores.setStrength(score);
+                            mCharacter.sheet.abilityScores.setStrengthMod(mods[0]);
+                            mCharacter.sheet.abilityScores.setStrengthModHalfLevel(mods[1]);
                             break;
                         case "Constitution":
-                            mCharacter.sheet.abilityScores.setConstitution(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            mods = getMods(score);
+                            mCharacter.sheet.abilityScores.setConstitution(score);
+                            mCharacter.sheet.abilityScores.setConstitutionMod(mods[0]);
+                            mCharacter.sheet.abilityScores.setConstitutionModHalfLevel(mods[1]);
                             break;
                         case "Dexterity":
-                            mCharacter.sheet.abilityScores.setDexterity(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            mods = getMods(score);
+                            mCharacter.sheet.abilityScores.setDexterity(score);
+                            mCharacter.sheet.abilityScores.setDexterityMod(mods[0]);
+                            mCharacter.sheet.abilityScores.setDexterityModHalfLevel(mods[1]);
                             break;
                         case "Intelligence":
-                            mCharacter.sheet.abilityScores.setIntelligence(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            mods = getMods(score);
+                            mCharacter.sheet.abilityScores.setIntelligence(score);
+                            mCharacter.sheet.abilityScores.setIntelligence(mods[0]);
+                            mCharacter.sheet.abilityScores.setIntelligenceModHalfLevel(mods[1]);
                             break;
                         case "Wisdom":
-                            mCharacter.sheet.abilityScores.setWisdom(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            mods = getMods(score);
+                            mCharacter.sheet.abilityScores.setWisdom(score);
+                            mCharacter.sheet.abilityScores.setWisdomMod(mods[0]);
+                            mCharacter.sheet.abilityScores.setWisdomModHalfLevel(mods[1]);
                             break;
                         case "Charisma":
-                            mCharacter.sheet.abilityScores.setCharisma(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            mods = getMods(score);
+                            mCharacter.sheet.abilityScores.setCharisma(score);
+                            mCharacter.sheet.abilityScores.setCharismaMod(mods[0]);
+                            mCharacter.sheet.abilityScores.setCharismaModHalfLevel(mods[1]);
                             break;
                         case "StatBlock":
                             mCharacter.sheet.stats = new ArrayList<>();
@@ -234,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
                                 mCharacter.sheet.details.setGender(text);
                                 break;
                             case "Age":
-                                mCharacter.sheet.details.setAge(Integer.parseInt(text));
+                                mCharacter.sheet.details.setAge(!text.equals("") ? Integer.parseInt(text) : -1);
                                 break;
                             case "Alignment":
                                 mCharacter.sheet.details.setAlignment(text);
@@ -267,16 +334,40 @@ public class MainActivity extends AppCompatActivity {
         updateView();
     }
 
+    private int[] getMods(int i) {
+        int k = (i - 10)/2;
+        return new int[]{k, k + mCharacter.sheet.details.getHalfLevel()};
+    }
+
     private void updateView() {
         View mainPage = mViewPager.getChildAt(0);
 
+        // Character Name and Level
         ((TextView) mainPage.findViewById(R.id.Main_TextView_Character)).setText(String.format(Locale.CANADA,"Level %d %s", mCharacter.sheet.details.getLevel(), mCharacter.sheet.details.getName()));
-        ((TextView) mainPage.findViewById(R.id.Score_Strength)).setText(String.valueOf(mCharacter.sheet.abilityScores.getStrength()));
-        ((TextView) mainPage.findViewById(R.id.Score_Constitution)).setText(String.valueOf(mCharacter.sheet.abilityScores.getConstitution()));
-        ((TextView) mainPage.findViewById(R.id.Score_Dexterity)).setText(String.valueOf(mCharacter.sheet.abilityScores.getDexterity()));
-        ((TextView) mainPage.findViewById(R.id.Score_Intelligence)).setText(String.valueOf(mCharacter.sheet.abilityScores.getIntelligence()));
-        ((TextView) mainPage.findViewById(R.id.Score_Wisdom)).setText(String.valueOf(mCharacter.sheet.abilityScores.getWisdom()));
-        ((TextView) mainPage.findViewById(R.id.Score_Charisma)).setText(String.valueOf(mCharacter.sheet.abilityScores.getCharisma()));
+
+        // Base Ability Scores
+        ((TextView) mainPage.findViewById(R.id.Score_Strength)).setText(mCharacter.sheet.abilityScores.getStrength());
+        ((TextView) mainPage.findViewById(R.id.Score_Constitution)).setText(mCharacter.sheet.abilityScores.getConstitution());
+        ((TextView) mainPage.findViewById(R.id.Score_Dexterity)).setText(mCharacter.sheet.abilityScores.getDexterity());
+        ((TextView) mainPage.findViewById(R.id.Score_Intelligence)).setText(mCharacter.sheet.abilityScores.getIntelligence());
+        ((TextView) mainPage.findViewById(R.id.Score_Wisdom)).setText(mCharacter.sheet.abilityScores.getWisdom());
+        ((TextView) mainPage.findViewById(R.id.Score_Charisma)).setText(mCharacter.sheet.abilityScores.getCharisma());
+
+        // Ability Score Modifiers
+        ((TextView) mainPage.findViewById(R.id.Modifier_Strength)).setText(mCharacter.sheet.abilityScores.getStrengthMod());
+        ((TextView) mainPage.findViewById(R.id.Modifier_Constitution)).setText(mCharacter.sheet.abilityScores.getConstitutionMod());
+        ((TextView) mainPage.findViewById(R.id.Modifier_Dexterity)).setText(mCharacter.sheet.abilityScores.getDexterityMod());
+        ((TextView) mainPage.findViewById(R.id.Modifier_Intelligence)).setText(mCharacter.sheet.abilityScores.getIntelligenceMod());
+        ((TextView) mainPage.findViewById(R.id.Modifier_Wisdom)).setText(mCharacter.sheet.abilityScores.getWisdomMod());
+        ((TextView) mainPage.findViewById(R.id.Modifier_Charisma)).setText(mCharacter.sheet.abilityScores.getCharismaMod());
+
+        // Ability Score Mods Plus Half Level
+        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Strength)).setText(mCharacter.sheet.abilityScores.getStrengthModHalfLevel());
+        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Constitution)).setText(mCharacter.sheet.abilityScores.getConstitutionModHalfLevel());
+        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Dexterity)).setText(mCharacter.sheet.abilityScores.getDexterityModHalfLevel());
+        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Intelligence)).setText(mCharacter.sheet.abilityScores.getIntelligenceModHalfLevel());
+        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Wisdom)).setText(mCharacter.sheet.abilityScores.getWisdomModHalfLevel());
+        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Charisma)).setText(mCharacter.sheet.abilityScores.getCharismaModHalfLevel());
 
         mProgressBar.setVisibility(View.GONE);
     }

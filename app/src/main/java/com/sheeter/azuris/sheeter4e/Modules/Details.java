@@ -78,4 +78,12 @@ public class Details {
     public int getLevel() {
         return level;
     }
+
+    public String getAlignment() {
+        return alignment;
+    }
+
+    public int getHalfLevel() {
+        return level/2;
+    }
 }
