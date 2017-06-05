@@ -272,6 +272,9 @@ public class MainActivity extends AppCompatActivity {
                                 this.currItem.setEquipped(equipBool);
                             }
                             break;
+                        case "Power":
+                            PowerParse(xpp,mCharacter);
+                            break;
                         default:
                             textState = tagName;
                             break;
@@ -477,6 +480,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void PowerParse(XmlPullParser xpp, D20Character character) {
+
+    }
 
     public static String convertStreamToString(InputStream is) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
