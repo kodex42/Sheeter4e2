@@ -68,6 +68,8 @@ public class Power {
                 return Frequency.ENCOUNTER;
             case "Daily":
                 return Frequency.DAILY;
+            case "Encounter (Special)":
+                return Frequency.ENCOUNTER_SPECIAL;
             default:
                 return null;
         }
