@@ -10,11 +10,11 @@ import android.view.ViewGroup;
  * Created by Azuris on 2017-06-03.
  */
 
-public class AddSheetsFragment extends Fragment {
+public class PowersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.content_addsheets, container, false);
+        return inflater.inflate(R.layout.content_powers, container, false);
     }
 }
