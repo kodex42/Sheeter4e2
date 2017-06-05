@@ -8,6 +8,11 @@ public class Power {
     private String name;
     private Frequency frequency;
 
+    public Power(String name, Frequency frequency) {
+        this.name = name;
+        this.frequency = frequency;
+    }
+
     public String getName() {
         return name;
     }
