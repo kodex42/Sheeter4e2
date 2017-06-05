@@ -484,6 +484,20 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Wisdom)).setText(mCharacter.sheet.abilityScores.getWisdomModHalfLevel());
         ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Charisma)).setText(mCharacter.sheet.abilityScores.getCharismaModHalfLevel());
 
+        //      Defenses        //
+
+        // AC
+        ((TextView) mainPage.findViewById(R.id.Score_AC)).setText(mCharacter.sheet.stats.get("AC"));
+
+        // Fortitude
+        ((TextView) mainPage.findViewById(R.id.Score_FORT)).setText(mCharacter.sheet.stats.get("Fortitude"));
+
+        // Reflex
+        ((TextView) mainPage.findViewById(R.id.Score_REF)).setText(mCharacter.sheet.stats.get("Reflex"));
+
+        // Will
+        ((TextView) mainPage.findViewById(R.id.Score_WILL)).setText(mCharacter.sheet.stats.get("Will"));
+
         mProgressBar.setVisibility(View.GONE);
     }
 
@@ -524,11 +538,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             default:
                 // Remove defense suffix
-                if (statName == "Fortitude Defense")
+                if (statName.equals("Fortitude Defense"))
                     statName = "Fortitude";
-                if (statName == "Reflex Defense")
+                if (statName.equals("Reflex Defense"))
                     statName = "Reflex";
-                if (statName == "Will Defense")
+                if (statName.equals("Will Defense"))
                     statName = "Will";
                 mCharacter.sheet.stats.put(statName,xpp.getAttributeValue(1).trim());
         }
