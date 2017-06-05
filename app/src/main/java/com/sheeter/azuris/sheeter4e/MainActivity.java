@@ -25,7 +25,9 @@ import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
 import com.sheeter.azuris.sheeter4e.Modules.D20Character;
 import com.sheeter.azuris.sheeter4e.Modules.Details;
 import com.sheeter.azuris.sheeter4e.Modules.Item;
+import com.sheeter.azuris.sheeter4e.Modules.Power;
 import com.sheeter.azuris.sheeter4e.Modules.Sheet;
+import com.sheeter.azuris.sheeter4e.Modules.WeaponBonus;
 
 import org.apache.commons.io.input.BOMInputStream;
 import org.xmlpull.v1.XmlPullParser;
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private D20Character mCharacter = null;
     private Item currItem = null;
+    private Power currPower = null;
+    private WeaponBonus currBonus = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -273,7 +277,54 @@ public class MainActivity extends AppCompatActivity {
                             }
                             break;
                         case "Power":
-                            PowerParse(xpp,mCharacter);
+                            if(mCharacter.sheet.powers == null){
+                                mCharacter.sheet.powers = new ArrayList<Power>();
+                            }
+
+                            this.currPower = new Power();
+                            this.currPower.setName(xpp.getAttributeValue(0).trim());
+                            break;
+                        case "specific":
+                            String name = xpp.getAttributeValue(0).trim();
+
+                            if (this.currPower != null) {
+                                if (name.equals("Power Usage")) {
+                                    textState = "Power Usage";
+                                    tagState = "pDetail";
+                                }
+                                else if (name.equals("Action Type")){
+                                    textState = "Action Type";
+                                    tagState = "pDetail";
+                                }
+                            }
+                            break;
+                        case "Weapon":
+                            this.currBonus = new WeaponBonus();
+                            this.currBonus.setWeaponName(xpp.getAttributeValue(0).trim());
+                            break;
+                        case "AttackBonus":
+                            textState = "AttackBonus";
+                            tagState = "wDetail";
+                            break;
+                        case "Damage":
+                            textState = "Damage";
+                            tagState = "wDetail";
+                            break;
+                        case "AttackStat":
+                            textState = "AttackStat";
+                            tagState = "wDetail";
+                            break;
+                        case "Defense":
+                            textState = "Defense";
+                            tagState = "wDetail";
+                            break;
+                        case "HitComponents":
+                            textState = "HitComponents";
+                            tagState = "wDetail";
+                            break;
+                        case "DamageComponents":
+                            textState = "DamageComponents";
+                            tagState = "wDetail";
                             break;
                         default:
                             textState = tagName;
@@ -287,7 +338,22 @@ public class MainActivity extends AppCompatActivity {
                     switch (tagName) {
                         case "Details":
                         case "AbilityScores":
+                        case "AttackBonus":
+                        case "specific":
+                        case "Damage":
+                        case "AttackStat":
+                        case "Defense":
+                        case "HitComponents":
+                        case "DamageComponents":
                             tagState = "";
+                            break;
+                        case "Weapon":
+                            this.currPower.addBonus(this.currBonus);
+                            this.currBonus = null;
+                            break;
+                        case "Power":
+                            mCharacter.sheet.powers.add(this.currPower);
+                            this.currPower = null;
                             break;
                     }
 
@@ -338,6 +404,38 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case "StoredMoney":
                                 mCharacter.sheet.details.setStoredMoney(text);
+                                break;
+                        }
+                    }
+                    else if (tagState.equals("pDetail")){
+                        switch (textState){
+                            case "Power Usage":
+                                this.currPower.setFrequency(currPower.stringToFrequency(text));
+                                break;
+                            case "Action Type":
+                                this.currPower.setActionType(currPower.stringToActionType(text));
+                                break;
+                        }
+                    }
+                    else if (tagState.equals("wDetail")){
+                        switch (textState) {
+                            case "AttackBonus":
+                                this.currBonus.setAttackBonus(Integer.parseInt(text));
+                                break;
+                            case "Damage":
+                                this.currBonus.setDamage(text);
+                                break;
+                            case "AttackStat":
+                                this.currBonus.setAttackStat(text);
+                                break;
+                            case "Defense":
+                                this.currBonus.setDefense(text);
+                                break;
+                            case "HitComponents":
+                                this.currBonus.setHitComponents(text);
+                                break;
+                            case "DamageComponents":
+                                this.currBonus.setDamageComponents(text);
                                 break;
                         }
                     }
@@ -468,14 +566,15 @@ public class MainActivity extends AppCompatActivity {
             case "Armor":
             case "Weapon":
             case "Gear":
+                if (this.currItem != null ) {
+                    this.currItem.setName(xpp.getAttributeValue(0).trim());
+                    this.currItem.setType(xpp.getAttributeValue(1).trim());
 
-                this.currItem.setName(xpp.getAttributeValue(0).trim());
-                this.currItem.setType(xpp.getAttributeValue(1).trim());
+                    if (this.currItem.getQuantity() != 0)
+                        mCharacter.sheet.items.add(this.currItem);
 
-                if (this.currItem.getQuantity() != 0 )
-                    mCharacter.sheet.items.add(this.currItem);
-
-                this.currItem = null;
+                    this.currItem = null;
+                }
                 break;
         }
     }
