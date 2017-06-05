@@ -2,7 +2,6 @@ package com.sheeter.azuris.sheeter4e;
 
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.database.DataSetObserver;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,14 +14,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -146,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         builderSingle.setIcon(R.drawable.ddlogo);
         builderSingle.setTitle("Select A Character");
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.select_dialog_item);
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.select_dialog_item);
         for (File file : files) {
             arrayAdapter.add(file.getName().replace(".dnd4e",""));
         }
@@ -165,9 +160,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builderSingle.show();
-
-        //File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Documents/Grigle Groogle.dnd4e");
-        //parseXMLFile(file);
     }
 
     private void parseXMLFile(File file) {
@@ -396,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
             super(fm);
             fragments = new Fragment[2];
             fragments[0] = new MainFragment();
-            fragments[1] = new AddSheetsFragment();
+            fragments[1] = new PowersFragment();
         }
 
         @Override
