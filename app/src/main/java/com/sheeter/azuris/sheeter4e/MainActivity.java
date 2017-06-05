@@ -35,6 +35,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
@@ -268,9 +269,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateView() {
         View mainPage = mViewPager.getChildAt(0);
-        ((TextInputEditText) mainPage.findViewById(R.id.Main_InputText_CharacterName)).setText(mCharacter.sheet.details.getName());
-        ((TextInputEditText) mainPage.findViewById(R.id.Main_InputText_Level)).setText(String.valueOf(mCharacter.sheet.details.getLevel()));
 
+        ((TextView) mainPage.findViewById(R.id.Main_TextView_Character)).setText(String.format(Locale.CANADA,"Level %d %s", mCharacter.sheet.details.getLevel(), mCharacter.sheet.details.getName()));
         ((TextView) mainPage.findViewById(R.id.Score_Strength)).setText(String.valueOf(mCharacter.sheet.abilityScores.getStrength()));
         ((TextView) mainPage.findViewById(R.id.Score_Constitution)).setText(String.valueOf(mCharacter.sheet.abilityScores.getConstitution()));
         ((TextView) mainPage.findViewById(R.id.Score_Dexterity)).setText(String.valueOf(mCharacter.sheet.abilityScores.getDexterity()));
