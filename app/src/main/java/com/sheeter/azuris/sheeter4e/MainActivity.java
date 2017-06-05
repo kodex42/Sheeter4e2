@@ -1,6 +1,8 @@
 package com.sheeter.azuris.sheeter4e;
 
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.database.DataSetObserver;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,11 +12,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -34,6 +42,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 0) {
-            parseXMLFile();
+            checkFiles();
         }
     }
 
@@ -122,18 +132,50 @@ public class MainActivity extends AppCompatActivity {
                     || checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE"}, 0);
             } else {
-                parseXMLFile();
+                checkFiles();
             }
         }
     }
 
-    private void parseXMLFile() {
+    private void checkFiles() {
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Documents";
+        File directory = new File(path);
+        final List<File> files = Arrays.asList(directory.listFiles());
+
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(MainActivity.this);
+        builderSingle.setIcon(R.drawable.ddlogo);
+        builderSingle.setTitle("Select A Character");
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.select_dialog_item);
+        for (File file : files) {
+            arrayAdapter.add(file.getName().replace(".dnd4e",""));
+        }
+
+        builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                parseXMLFile(files.get(which));
+            }
+        });
+        builderSingle.show();
+
+        //File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Documents/Grigle Groogle.dnd4e");
+        //parseXMLFile(file);
+    }
+
+    private void parseXMLFile(File file) {
         XmlPullParserFactory factory = null;
         try {
             factory = XmlPullParserFactory.newInstance();
             XmlPullParser xpp = factory.newPullParser();
 
-            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Documents/Grigle Groogle.dnd4e");
             BOMInputStream fin = new BOMInputStream(new FileInputStream(file));
             String contents = convertStreamToString(fin);
             fin.close();
@@ -259,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
                                 mCharacter.sheet.details.setGender(text);
                                 break;
                             case "Age":
-                                mCharacter.sheet.details.setAge(Integer.parseInt(text));
+                                mCharacter.sheet.details.setAge(!text.equals("") ? Integer.parseInt(text) : -1);
                                 break;
                             case "Alignment":
                                 mCharacter.sheet.details.setAlignment(text);
@@ -301,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
         View mainPage = mViewPager.getChildAt(0);
 
         // Character Name and Level
-        ((TextView) mainPage.findViewById(R.id.Main_TextView_Character)).setText(String.format(Locale.CANADA,"Level %d %s %s", mCharacter.sheet.details.getLevel(), mCharacter.sheet.details.getAlignment(), mCharacter.sheet.details.getName()));
+        ((TextView) mainPage.findViewById(R.id.Main_TextView_Character)).setText(String.format(Locale.CANADA,"Level %d %s", mCharacter.sheet.details.getLevel(), mCharacter.sheet.details.getName()));
 
         // Base Ability Scores
         ((TextView) mainPage.findViewById(R.id.Score_Strength)).setText(mCharacter.sheet.abilityScores.getStrength());
