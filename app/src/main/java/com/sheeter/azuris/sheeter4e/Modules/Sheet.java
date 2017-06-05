@@ -12,6 +12,7 @@ public class Sheet {
     public AbilityScores abilityScores;
     public Map<String,String> stats;
     public ArrayList<Item> items;
+    public ArrayList<Power> powers;
 
     public void setDetails(Details details) {
         this.details = details;
