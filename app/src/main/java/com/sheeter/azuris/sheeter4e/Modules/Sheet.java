@@ -26,4 +26,17 @@ public class Sheet {
     public ArrayList<Power> getPowers() {
         return powers;
     }
+
+    public Item[] getEquipedWeapons() {
+        ArrayList<Item> equipedWeapons = new ArrayList<>();
+
+        for (Item item : this.items) {
+            if (item.isEquipped() && item.getType() == ItemType.WEAPON) {
+                equipedWeapons.add(item);
+            }
+        }
+
+        Item[] items = new Item[2];
+        return equipedWeapons.toArray(items);
+    }
 }
