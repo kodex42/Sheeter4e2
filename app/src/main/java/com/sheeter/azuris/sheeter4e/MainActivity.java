@@ -561,9 +561,12 @@ public class MainActivity extends AppCompatActivity {
 
             // Will
             ((TextView) mainPage.findViewById(R.id.Score_WILL)).setText("0");
+
+            sCharacter = null;
         }
 
         sProgressBar.setVisibility(View.GONE);
+        mViewPager.setCurrentItem(0);
     }
 
     private void StatParse(XmlPullParser xpp, D20Character character) {

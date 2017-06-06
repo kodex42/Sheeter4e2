@@ -749,21 +749,21 @@
 
                     <TextView
                         android:id="@+id/textView12"
-                        android:layout_width="55dp"
+                        android:layout_width="65dp"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_gravity="center_vertical"
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Attack Bonus"
+                        android:text="Attack"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/Main_Weapon_Attack_Primary"
-                        android:layout_width="55dp"
+                        android:layout_width="65dp"
                         android:layout_height="45dp"
                         android:layout_column="1"
                         android:layout_row="1"
@@ -783,7 +783,7 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Damage Bonus"
+                        android:text="Damage"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textStyle="bold" />
@@ -844,21 +844,21 @@
 
                     <TextView
                         android:id="@+id/textView12"
-                        android:layout_width="55dp"
+                        android:layout_width="65dp"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_gravity="center_vertical"
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Attack Bonus"
+                        android:text="Attack"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/Main_Weapon_Attack_Secondary"
-                        android:layout_width="55dp"
+                        android:layout_width="65dp"
                         android:layout_height="45dp"
                         android:layout_column="1"
                         android:layout_row="1"
@@ -878,7 +878,7 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Damage Bonus"
+                        android:text="Damage"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textStyle="bold" />
