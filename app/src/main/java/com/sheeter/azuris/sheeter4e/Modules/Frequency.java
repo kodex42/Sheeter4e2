@@ -7,5 +7,6 @@ package com.sheeter.azuris.sheeter4e.Modules;
 public enum Frequency {
     AT_WILL,
     ENCOUNTER,
-    DAILY
+    DAILY,
+    ENCOUNTER_SPECIAL
 }

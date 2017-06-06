@@ -22,8 +22,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
+import com.sheeter.azuris.sheeter4e.Modules.Background;
 import com.sheeter.azuris.sheeter4e.Modules.D20Character;
 import com.sheeter.azuris.sheeter4e.Modules.Details;
+import com.sheeter.azuris.sheeter4e.Modules.Feat;
 import com.sheeter.azuris.sheeter4e.Modules.Item;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 import com.sheeter.azuris.sheeter4e.Modules.Sheet;
@@ -54,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     private Item currItem = null;
     private Power currPower = null;
     private WeaponBonus currBonus = null;
+    private Background currBackground = null;
+    private Feat currFeat = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -299,6 +303,11 @@ public class MainActivity extends AppCompatActivity {
                                     tagState = "pDetail";
                                 }
                             }
+                            else if (this.currBackground != null) {
+                                textState = "Background";
+                                tagState = "bDetail";
+                            }
+
                             break;
                         case "Weapon":
                             this.currBonus = new WeaponBonus();
@@ -347,6 +356,7 @@ public class MainActivity extends AppCompatActivity {
                         case "Defense":
                         case "HitComponents":
                         case "DamageComponents":
+                        case "RulesElement":
                             tagState = "";
                             break;
                         case "Weapon":
@@ -440,6 +450,10 @@ public class MainActivity extends AppCompatActivity {
                                 this.currBonus.setDamageComponents(text);
                                 break;
                         }
+                    }
+                    else if (tagState.equals("bDetail")) {
+                        mCharacter.sheet.background.setDescription(text);
+                        this.currBackground = null;
                     }
                 }
                 eventType = xpp.next();
@@ -580,6 +594,11 @@ public class MainActivity extends AppCompatActivity {
             case "Role":
                 sCharacter.sheet.details.setRole(xpp.getAttributeValue(0).trim());
                 break;
+            case "Background":
+                this.currBackground = new Background();
+                mCharacter.sheet.background = new Background();
+                mCharacter.sheet.background.setName(xpp.getAttributeValue(0));
+                break;
             // Is item?
             case "Armor":
             case "Weapon":
@@ -593,6 +612,12 @@ public class MainActivity extends AppCompatActivity {
 
                     this.currItem = null;
                 }
+                break;
+            case "Feat":
+                if (mCharacter.sheet.feats == null)
+                    mCharacter.sheet.feats = new ArrayList<>();
+
+
                 break;
         }
     }

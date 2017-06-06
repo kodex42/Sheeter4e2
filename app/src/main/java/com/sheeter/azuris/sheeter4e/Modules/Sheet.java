@@ -11,9 +11,12 @@ public class Sheet {
     public Details details;
     public AbilityScores abilityScores;
     public Map<String,String> stats;
-    public Map<String,Defense> defenses;
     public ArrayList<Item> items;
     public ArrayList<Power> powers;
+    public Background background;
+    public ArrayList<Feat> feats;
+    // Not implemented
+    //public Map<String,Defense> defenses;
 
     public void setDetails(Details details) {
         this.details = details;
