@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
 import com.sheeter.azuris.sheeter4e.Modules.Background;
@@ -452,7 +453,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     else if (tagState.equals("bDetail")) {
-                        mCharacter.sheet.background.setDescription(text);
+                        sCharacter.sheet.background.setDescription(text);
                         this.currBackground = null;
                     }
                 }
@@ -473,48 +474,94 @@ public class MainActivity extends AppCompatActivity {
     private void updateView() {
         View mainPage = mViewPager.getChildAt(0);
 
-        // Character Name and Level
-        ((TextView) mainPage.findViewById(R.id.Main_TextView_Character)).setText(String.format(Locale.CANADA,"Level %d %s", sCharacter.sheet.details.getLevel(), sCharacter.sheet.details.getName()));
+        if (sCharacter.sheet.abilityScores != null) {
+            // Character Name and Level
+            ((TextView) mainPage.findViewById(R.id.Main_TextView_Character)).setText(String.format(Locale.CANADA,"Level %d %s", sCharacter.sheet.details.getLevel(), sCharacter.sheet.details.getName()));
 
-        // Base Ability Scores
-        ((TextView) mainPage.findViewById(R.id.Score_Strength)).setText(sCharacter.sheet.abilityScores.getStrength());
-        ((TextView) mainPage.findViewById(R.id.Score_Constitution)).setText(sCharacter.sheet.abilityScores.getConstitution());
-        ((TextView) mainPage.findViewById(R.id.Score_Dexterity)).setText(sCharacter.sheet.abilityScores.getDexterity());
-        ((TextView) mainPage.findViewById(R.id.Score_Intelligence)).setText(sCharacter.sheet.abilityScores.getIntelligence());
-        ((TextView) mainPage.findViewById(R.id.Score_Wisdom)).setText(sCharacter.sheet.abilityScores.getWisdom());
-        ((TextView) mainPage.findViewById(R.id.Score_Charisma)).setText(sCharacter.sheet.abilityScores.getCharisma());
+            // Base Ability Scores
+            ((TextView) mainPage.findViewById(R.id.Score_Strength)).setText(sCharacter.sheet.abilityScores.getStrength());
+            ((TextView) mainPage.findViewById(R.id.Score_Constitution)).setText(sCharacter.sheet.abilityScores.getConstitution());
+            ((TextView) mainPage.findViewById(R.id.Score_Dexterity)).setText(sCharacter.sheet.abilityScores.getDexterity());
+            ((TextView) mainPage.findViewById(R.id.Score_Intelligence)).setText(sCharacter.sheet.abilityScores.getIntelligence());
+            ((TextView) mainPage.findViewById(R.id.Score_Wisdom)).setText(sCharacter.sheet.abilityScores.getWisdom());
+            ((TextView) mainPage.findViewById(R.id.Score_Charisma)).setText(sCharacter.sheet.abilityScores.getCharisma());
 
-        // Ability Score Modifiers
-        ((TextView) mainPage.findViewById(R.id.Modifier_Strength)).setText(sCharacter.sheet.abilityScores.getStrengthMod());
-        ((TextView) mainPage.findViewById(R.id.Modifier_Constitution)).setText(sCharacter.sheet.abilityScores.getConstitutionMod());
-        ((TextView) mainPage.findViewById(R.id.Modifier_Dexterity)).setText(sCharacter.sheet.abilityScores.getDexterityMod());
-        ((TextView) mainPage.findViewById(R.id.Modifier_Intelligence)).setText(sCharacter.sheet.abilityScores.getIntelligenceMod());
-        ((TextView) mainPage.findViewById(R.id.Modifier_Wisdom)).setText(sCharacter.sheet.abilityScores.getWisdomMod());
-        ((TextView) mainPage.findViewById(R.id.Modifier_Charisma)).setText(sCharacter.sheet.abilityScores.getCharismaMod());
+            // Ability Score Modifiers
+            ((TextView) mainPage.findViewById(R.id.Modifier_Strength)).setText(sCharacter.sheet.abilityScores.getStrengthMod());
+            ((TextView) mainPage.findViewById(R.id.Modifier_Constitution)).setText(sCharacter.sheet.abilityScores.getConstitutionMod());
+            ((TextView) mainPage.findViewById(R.id.Modifier_Dexterity)).setText(sCharacter.sheet.abilityScores.getDexterityMod());
+            ((TextView) mainPage.findViewById(R.id.Modifier_Intelligence)).setText(sCharacter.sheet.abilityScores.getIntelligenceMod());
+            ((TextView) mainPage.findViewById(R.id.Modifier_Wisdom)).setText(sCharacter.sheet.abilityScores.getWisdomMod());
+            ((TextView) mainPage.findViewById(R.id.Modifier_Charisma)).setText(sCharacter.sheet.abilityScores.getCharismaMod());
 
-        // Ability Score Mods Plus Half Level
-        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Strength)).setText(sCharacter.sheet.abilityScores.getStrengthModHalfLevel());
-        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Constitution)).setText(sCharacter.sheet.abilityScores.getConstitutionModHalfLevel());
-        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Dexterity)).setText(sCharacter.sheet.abilityScores.getDexterityModHalfLevel());
-        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Intelligence)).setText(sCharacter.sheet.abilityScores.getIntelligenceModHalfLevel());
-        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Wisdom)).setText(sCharacter.sheet.abilityScores.getWisdomModHalfLevel());
-        ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Charisma)).setText(sCharacter.sheet.abilityScores.getCharismaModHalfLevel());
+            // Ability Score Mods Plus Half Level
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Strength)).setText(sCharacter.sheet.abilityScores.getStrengthModHalfLevel());
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Constitution)).setText(sCharacter.sheet.abilityScores.getConstitutionModHalfLevel());
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Dexterity)).setText(sCharacter.sheet.abilityScores.getDexterityModHalfLevel());
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Intelligence)).setText(sCharacter.sheet.abilityScores.getIntelligenceModHalfLevel());
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Wisdom)).setText(sCharacter.sheet.abilityScores.getWisdomModHalfLevel());
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Charisma)).setText(sCharacter.sheet.abilityScores.getCharismaModHalfLevel());
 
-        //      Defenses        //
+            //      Defenses        //
 
-        // AC
-        ((TextView) mainPage.findViewById(R.id.Score_AC)).setText(sCharacter.sheet.stats.get("AC"));
+            // AC
+            ((TextView) mainPage.findViewById(R.id.Score_AC)).setText(sCharacter.sheet.stats.get("AC"));
 
-        // Fortitude
-        ((TextView) mainPage.findViewById(R.id.Score_FORT)).setText(sCharacter.sheet.stats.get("Fortitude"));
+            // Fortitude
+            ((TextView) mainPage.findViewById(R.id.Score_FORT)).setText(sCharacter.sheet.stats.get("Fortitude"));
 
-        // Reflex
-        ((TextView) mainPage.findViewById(R.id.Score_REF)).setText(sCharacter.sheet.stats.get("Reflex"));
+            // Reflex
+            ((TextView) mainPage.findViewById(R.id.Score_REF)).setText(sCharacter.sheet.stats.get("Reflex"));
 
-        // Will
-        ((TextView) mainPage.findViewById(R.id.Score_WILL)).setText(sCharacter.sheet.stats.get("Will"));
+            // Will
+            ((TextView) mainPage.findViewById(R.id.Score_WILL)).setText(sCharacter.sheet.stats.get("Will"));
 
-        Item[] equipedWeapons = sCharacter.sheet.getEquipedWeapons();
+            Item[] equipedWeapons = sCharacter.sheet.getEquipedWeapons();
+        }
+        else {
+            Toast.makeText(this, "Character Parsed as Null :/", Toast.LENGTH_SHORT).show();
+
+            // Character Name and Level
+            ((TextView) mainPage.findViewById(R.id.Main_TextView_Character)).setText("Character");
+
+            // Base Ability Scores
+            ((TextView) mainPage.findViewById(R.id.Score_Strength)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Score_Constitution)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Score_Dexterity)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Score_Intelligence)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Score_Wisdom)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Score_Charisma)).setText("0");
+
+            // Ability Score Modifiers
+            ((TextView) mainPage.findViewById(R.id.Modifier_Strength)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_Constitution)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_Dexterity)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_Intelligence)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_Wisdom)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_Charisma)).setText("0");
+
+            // Ability Score Mods Plus Half Level
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Strength)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Constitution)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Dexterity)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Intelligence)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Wisdom)).setText("0");
+            ((TextView) mainPage.findViewById(R.id.Modifier_PlusHalfLevel_Charisma)).setText("0");
+
+            //      Defenses        //
+
+            // AC
+            ((TextView) mainPage.findViewById(R.id.Score_AC)).setText("0");
+
+            // Fortitude
+            ((TextView) mainPage.findViewById(R.id.Score_FORT)).setText("0");
+
+            // Reflex
+            ((TextView) mainPage.findViewById(R.id.Score_REF)).setText("0");
+
+            // Will
+            ((TextView) mainPage.findViewById(R.id.Score_WILL)).setText("0");
+        }
 
         sProgressBar.setVisibility(View.GONE);
     }
@@ -596,8 +643,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "Background":
                 this.currBackground = new Background();
-                mCharacter.sheet.background = new Background();
-                mCharacter.sheet.background.setName(xpp.getAttributeValue(0));
+                sCharacter.sheet.background = new Background();
+                sCharacter.sheet.background.setName(xpp.getAttributeValue(0));
                 break;
             // Is item?
             case "Armor":
@@ -614,8 +661,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case "Feat":
-                if (mCharacter.sheet.feats == null)
-                    mCharacter.sheet.feats = new ArrayList<>();
+                if (sCharacter.sheet.feats == null)
+                    sCharacter.sheet.feats = new ArrayList<>();
 
 
                 break;
