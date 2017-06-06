@@ -30,7 +30,7 @@ public class Sheet {
         return powers;
     }
 
-    public Item[] getEquipedWeapons() {
+    public ArrayList<Item> getEquipedWeapons() {
         ArrayList<Item> equipedWeapons = new ArrayList<>();
 
         for (Item item : this.items) {
@@ -39,7 +39,6 @@ public class Sheet {
             }
         }
 
-        Item[] items = new Item[2];
-        return equipedWeapons.toArray(items);
+        return equipedWeapons;
     }
 }
