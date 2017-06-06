@@ -36,7 +36,7 @@ public class Item {
         this.name = name;
     }
 
-    public Boolean getEquipped() {
+    public Boolean isEquipped() {
         return equipped;
     }
 

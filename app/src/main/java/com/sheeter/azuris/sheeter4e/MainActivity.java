@@ -149,29 +149,33 @@ public class MainActivity extends AppCompatActivity {
         File directory = new File(path);
         final List<File> files = Arrays.asList(directory.listFiles());
 
-        AlertDialog.Builder builderSingle = new AlertDialog.Builder(MainActivity.this);
-        builderSingle.setIcon(R.drawable.ddlogo);
-        builderSingle.setTitle("Select A Character");
-
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.select_dialog_item);
         for (File file : files) {
             arrayAdapter.add(file.getName().replace(".dnd4e",""));
         }
 
-        builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                parseXMLFile(files.get(which));
-            }
-        });
-        builderSingle.show();
+        new AlertDialog.Builder(MainActivity.this)
+                .setIcon(R.drawable.ddlogo)
+                .setTitle("Select A Character")
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        parseXMLFile(files.get(which));
+                    }
+                })
+                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        MainActivity.sProgressBar.setVisibility(View.GONE);
+                    }
+                })
+                .show();
     }
 
     private void parseXMLFile(File file) {
@@ -509,6 +513,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Will
         ((TextView) mainPage.findViewById(R.id.Score_WILL)).setText(sCharacter.sheet.stats.get("Will"));
+
+        Item[] equipedWeapons = sCharacter.sheet.getEquipedWeapons();
 
         sProgressBar.setVisibility(View.GONE);
     }
