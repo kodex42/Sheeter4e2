@@ -1117,7 +1117,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_Name_Primary_Ranged"
+                        android:id="@+id/Main_Weapon_Name_Secondary_Ranged"
                         android:layout_width="175dp"
                         android:layout_height="45dp"
                         android:layout_column="0"
@@ -1201,7 +1201,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_VS_Secondary_Melee"
+                        android:id="@+id/Main_Weapon_VS_Secondary_Ranged"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_column="3"
