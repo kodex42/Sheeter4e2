@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
 import com.sheeter.azuris.sheeter4e.Modules.Background;
 import com.sheeter.azuris.sheeter4e.Modules.D20Character;
+import com.sheeter.azuris.sheeter4e.Modules.DamageType;
 import com.sheeter.azuris.sheeter4e.Modules.Details;
 import com.sheeter.azuris.sheeter4e.Modules.Feat;
 import com.sheeter.azuris.sheeter4e.Modules.Item;
@@ -338,6 +339,10 @@ public class MainActivity extends AppCompatActivity {
                             textState = "DamageComponents";
                             tagState = "wDetail";
                             break;
+                        case "DamageType":
+                            textState = "DamageType";
+                            tagState = "wDetail";
+                            break;
                         default:
                             textState = tagName;
                             break;
@@ -358,6 +363,7 @@ public class MainActivity extends AppCompatActivity {
                         case "HitComponents":
                         case "DamageComponents":
                         case "RulesElement":
+                        case "DamageType":
                             tagState = "";
                             break;
                         case "Weapon":
@@ -365,6 +371,9 @@ public class MainActivity extends AppCompatActivity {
                             this.currBonus = null;
                             break;
                         case "Power":
+                            if (this.currPower.getDamageType() == null)
+                                this.currPower.setDamageType(DamageType.PHYSICAL);
+
                             sCharacter.sheet.powers.add(this.currPower);
                             this.currPower = null;
                             break;
@@ -452,6 +461,9 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case "DamageComponents":
                                 this.currBonus.setDamageComponents(text);
+                                break;
+                            case "DamageType":
+                                this.currPower.setDamageType(this.currPower.stringToDamageType(text));
                                 break;
                         }
                     }

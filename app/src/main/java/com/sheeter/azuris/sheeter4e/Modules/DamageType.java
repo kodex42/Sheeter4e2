@@ -8,6 +8,7 @@ public enum DamageType {
     SLASHING,
     BLUDGEONING,
     PIERCING,
+    PHYSICAL,
     FORCE,
     FIRE,
     COLD,

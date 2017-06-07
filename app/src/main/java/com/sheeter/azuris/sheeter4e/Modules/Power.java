@@ -15,9 +15,6 @@ public class Power {
 
     public Power() {
         weaponBonuses = new ArrayList<>();
-
-        // TODO: Add This To Constructor
-        this.damageType = DamageType.FORCE;
     }
 
     public String getName() {
@@ -91,5 +88,38 @@ public class Power {
 
     public DamageType getDamageType() {
         return damageType;
+    }
+
+    public void setDamageType(DamageType damageType) {
+        this.damageType = damageType;
+    }
+
+    public DamageType stringToDamageType(String type){
+        switch (type) {
+            case "Psychic":
+                return DamageType.PSYCHIC;
+            case "Acid":
+                return DamageType.ACID;
+            case "Physical":
+                return DamageType.PHYSICAL;
+            case "Force":
+                return DamageType.FORCE;
+            case "Fire":
+                return DamageType.FIRE;
+            case "Cold":
+                return DamageType.COLD;
+            case "Lightning":
+                return DamageType.LIGHTNING;
+            case "Thunder":
+                return DamageType.THUNDER;
+            case "Poison":
+                return DamageType.POISON;
+            case "Necrotic":
+                return DamageType.NECROTIC;
+            case "Radiant":
+                return DamageType.RADIANT;
+            default:
+                return null;
+        }
     }
 }
