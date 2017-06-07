@@ -128,11 +128,22 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_add:
+                resetFields();
                 checkFilePerms();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void resetFields() {
+        currItem = null;
+        currPower = null;
+        currBonus = null;
+        currBackground = null;
+        currFeat = null;
+        inLootTally = false;
+        sCharacter = null;
     }
 
     private void checkFilePerms() {
