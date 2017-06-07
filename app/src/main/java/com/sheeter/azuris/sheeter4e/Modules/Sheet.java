@@ -41,4 +41,39 @@ public class Sheet {
 
         return equipedWeapons;
     }
+
+    public Power getMeleeBasicAttack(){
+        for (Power p : this.powers){
+            if (p.getName().equals("Melee Basic Attack")){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public WeaponBonus getUnarmedMeleeBasicAttack(){
+        for (Power p : this.powers)
+            if(p.getName().equals("Melee Basic Attack"))
+                for (WeaponBonus bonus : p.getWeaponBonuses())
+                    if (bonus.getWeaponName().equals("Unarmed"))
+                        return bonus;
+        return null;
+    }
+
+    public Power getRangedBasicAttack(){
+        for (Power p : this.powers){
+            if (p.getName().equals("Ranged Basic Attack"))
+                return p;
+        }
+        return null;
+    }
+
+    public WeaponBonus getUnarmedRangedBasicAttack(){
+        for (Power p : this.powers)
+            if(p.getName().equals("Ranged Basic Attack"))
+                for (WeaponBonus bonus : p.getWeaponBonuses())
+                    if (bonus.getWeaponName().equals("Unarmed"))
+                        return bonus;
+        return null;
+    }
 }

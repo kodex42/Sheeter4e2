@@ -34,6 +34,7 @@ import com.sheeter.azuris.sheeter4e.Modules.Sheet;
 import com.sheeter.azuris.sheeter4e.Modules.WeaponBonus;
 
 import org.apache.commons.io.input.BOMInputStream;
+import org.w3c.dom.Text;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -556,6 +557,57 @@ public class MainActivity extends AppCompatActivity {
             ((TextView) mainPage.findViewById(R.id.Score_WILL)).setText(sCharacter.sheet.stats.get("Will"));
 
             ArrayList<Item> equipedWeapons = sCharacter.sheet.getEquipedWeapons();
+
+            // Melee Basic Attack
+            ArrayList<WeaponBonus> meleeBonuses = getMeleeWeapons(equipedWeapons);
+
+            ((TextView) mainPage.findViewById(R.id.Main_Weapon_Name_Primary_Melee)).setText(meleeBonuses.get(0).getWeaponName());
+            ((TextView) mainPage.findViewById(R.id.Main_Weapon_Attack_Primary_Melee)).setText(String.valueOf(meleeBonuses.get(0).getAttackBonus()));
+            String[] damageStrings = (meleeBonuses.get(0).getDamage()).split("\\+");
+            String finalString = meleeBonuses.get(0).getDamage();
+            if (damageStrings.length == 2) {
+                finalString = damageStrings[0] + "\n+" + damageStrings[1];
+            }
+            ((TextView) mainPage.findViewById(R.id.Main_Weapon_Damage_Primary_Melee)).setText(finalString);
+            ((TextView) mainPage.findViewById(R.id.Main_Weapon_VS_Primary_Melee)).setText(meleeBonuses.get(0).getDefense());
+
+            if (meleeBonuses.size() > 1) {
+                ((TextView) mainPage.findViewById(R.id.Main_Weapon_Name_Secondary_Melee)).setText(meleeBonuses.get(1).getWeaponName());
+                ((TextView) mainPage.findViewById(R.id.Main_Weapon_Attack_Secondary_Melee)).setText(String.valueOf(meleeBonuses.get(1).getAttackBonus()));
+                damageStrings = (meleeBonuses.get(1).getDamage()).split("\\+");
+                finalString = meleeBonuses.get(1).getDamage();
+                if (damageStrings.length == 2) {
+                    finalString = damageStrings[0] + "\n+" + damageStrings[1];
+                }
+                ((TextView) mainPage.findViewById(R.id.Main_Weapon_Damage_Secondary_Melee)).setText(finalString);
+                ((TextView) mainPage.findViewById(R.id.Main_Weapon_VS_Secondary_Melee)).setText(meleeBonuses.get(1).getDefense());
+            }
+
+            // Ranged Basic Attack
+            ArrayList<WeaponBonus> rangedBonuses = getRangedWeapons(equipedWeapons);
+
+            ((TextView) mainPage.findViewById(R.id.Main_Weapon_Name_Primary_Ranged)).setText(rangedBonuses.get(0).getWeaponName());
+            ((TextView) mainPage.findViewById(R.id.Main_Weapon_Attack_Primary_Ranged)).setText(String.valueOf(rangedBonuses.get(0).getAttackBonus()));
+            damageStrings = (rangedBonuses.get(0).getDamage()).split("\\+");
+            finalString = meleeBonuses.get(0).getDamage();
+            if (damageStrings.length == 2) {
+                finalString = damageStrings[0] + "\n+" + damageStrings[1];
+            }
+            ((TextView) mainPage.findViewById(R.id.Main_Weapon_Damage_Primary_Ranged)).setText(finalString);
+            ((TextView) mainPage.findViewById(R.id.Main_Weapon_VS_Primary_Ranged)).setText(rangedBonuses.get(0).getDefense());
+
+            if (rangedBonuses.size() > 1) {
+                ((TextView) mainPage.findViewById(R.id.Main_Weapon_Name_Secondary_Ranged)).setText(rangedBonuses.get(1).getWeaponName());
+                ((TextView) mainPage.findViewById(R.id.Main_Weapon_Attack_Secondary_Ranged)).setText(String.valueOf(rangedBonuses.get(1).getAttackBonus()));
+                damageStrings = (rangedBonuses.get(1).getDamage()).split("\\+");
+                finalString = rangedBonuses.get(1).getDamage();
+                if (damageStrings.length == 2) {
+                    finalString = damageStrings[0] + "\n+" + damageStrings[1];
+                }
+                ((TextView) mainPage.findViewById(R.id.Main_Weapon_Damage_Secondary_Ranged)).setText(finalString);
+                ((TextView) mainPage.findViewById(R.id.Main_Weapon_VS_Secondary_Ranged)).setText(rangedBonuses.get(1).getDefense());
+            }
+
         }
         else {
             Toast.makeText(this, "Character Parsed as Null :/", Toast.LENGTH_SHORT).show();
@@ -713,6 +765,36 @@ public class MainActivity extends AppCompatActivity {
 
     private void PowerParse(XmlPullParser xpp, D20Character character) {
 
+    }
+
+    private ArrayList<WeaponBonus> getMeleeWeapons(ArrayList<Item> equipped){
+        ArrayList<WeaponBonus> newBonuses = new ArrayList<>();
+        ArrayList<WeaponBonus> bonuses = this.sCharacter.sheet.getMeleeBasicAttack().getWeaponBonuses();
+        int equipIndex = 0;
+
+        for (WeaponBonus b : bonuses) {
+            if (b.getWeaponName().equals(equipped.get(0).getName())) {
+                newBonuses.add(b);
+            }
+        }
+
+        newBonuses.add(sCharacter.sheet.getUnarmedMeleeBasicAttack());
+        return newBonuses;
+    }
+
+    private ArrayList<WeaponBonus> getRangedWeapons(ArrayList<Item> equipped){
+        ArrayList<WeaponBonus> newBonuses = new ArrayList<>();
+        ArrayList<WeaponBonus> bonuses = this.sCharacter.sheet.getRangedBasicAttack().getWeaponBonuses();
+        int equipIndex = 0;
+
+        for (WeaponBonus b : bonuses) {
+            if (b.getWeaponName().equals(equipped.get(0).getName())) {
+                newBonuses.add(b);
+            }
+        }
+
+        newBonuses.add(sCharacter.sheet.getUnarmedRangedBasicAttack());
+        return newBonuses;
     }
 
     public static String convertStreamToString(InputStream is) throws Exception {

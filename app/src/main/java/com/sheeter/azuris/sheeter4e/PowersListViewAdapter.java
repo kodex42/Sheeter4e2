@@ -168,9 +168,9 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
 
     void addAll(ArrayList<Power> items) {
         this.powerList.addAll(items);
-        for (Power:
+        /*(for (Power:
              ) {
             
-        }
+        }*/
     }
 }
