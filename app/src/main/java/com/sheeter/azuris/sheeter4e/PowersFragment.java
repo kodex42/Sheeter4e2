@@ -1,5 +1,6 @@
 package com.sheeter.azuris.sheeter4e;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,15 +21,20 @@ public class PowersFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.content_powers, container, false);
-
-        ListView listView = (ListView) root.findViewById(R.id.Powers_List);
-        PowersListViewAdapter adapter = new PowersListViewAdapter(getActivity());
-
-        listView.setAdapter(adapter);
-        adapter.add(new Power("Magic Missle", Frequency.AT_WILL));
-        adapter.notifyDataSetChanged();
-
-
+        refreshFragment(root, getActivity());
         return root;
+    }
+
+    public static void refreshFragment(View root, Context context) {
+        if (MainActivity.sCharacter != null) {
+            ListView listView = (ListView) root.findViewById(R.id.Powers_List);
+            PowersListViewAdapter adapter = new PowersListViewAdapter(context);
+
+            listView.setAdapter(adapter);
+
+            adapter.addAll(MainActivity.sCharacter.sheet.getPowers());
+            adapter.notifyDataSetChanged();
+        }
+        MainActivity.sProgressBar.setVisibility(View.GONE);
     }
 }

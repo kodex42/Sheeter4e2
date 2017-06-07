@@ -36,7 +36,7 @@ public class Item {
         this.name = name;
     }
 
-    public Boolean getEquipped() {
+    public Boolean isEquipped() {
         return equipped;
     }
 
@@ -56,10 +56,13 @@ public class Item {
         switch (type){
             case "Armor":
                 this.type = ItemType.ARMOR;
+                break;
             case "Weapon":
                 this.type = ItemType.WEAPON;
+                break;
             case "Gear":
                 this.type = ItemType.GEAR;
+                break;
         }
     }
 }

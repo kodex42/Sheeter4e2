@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sheeter.azuris.sheeter4e.Modules.DamageType;
 import com.sheeter.azuris.sheeter4e.Modules.Frequency;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 
@@ -34,32 +36,95 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
         Power power = this.powerList.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.power_row, parent, false);
+        convertView = inflater.inflate(R.layout.power_row, null);
 
-        ((TextView) view.findViewById(R.id.Power_Name)).setText(power.getName());
+        ((TextView) convertView.findViewById(R.id.Power_Name)).setText(power.getName());
 
         String freq = null;
         Frequency frequency = power.getFrequency();
-        switch (frequency) {
-            case AT_WILL:
-                freq = "At-Will";
-                view.setBackgroundColor(context.getResources().getColor(R.color.atWillPower));
-                break;
-            case ENCOUNTER:
-                freq = "Encounter";
-                view.setBackgroundColor(context.getResources().getColor(R.color.encounterPower));
-                break;
-            case DAILY:
-                freq = "Daily";
-                view.setBackgroundColor(context.getResources().getColor(R.color.dailyPower));
+        if (frequency != null) {
+            switch (frequency) {
+                case AT_WILL:
+                    freq = "At-Will";
+                    convertView.setBackgroundResource(R.drawable.border_at_will);
+                    break;
+                case ENCOUNTER:
+                    freq = "Encounter";
+                    convertView.setBackgroundResource(R.drawable.border_encounter);
+                    break;
+                case ENCOUNTER_SPECIAL:
+                    freq = "Encounter (Special)";
+                    convertView.setBackgroundResource(R.drawable.border_encounter);
+                    break;
+                case DAILY:
+                    freq = "Daily";
+                    convertView.setBackgroundResource(R.drawable.border_daily);
+                    break;
+            }
         }
 
-        ((TextView) view.findViewById(R.id.Power_Freq)).setText(freq);
+        // Credit For Damage Type Images: http://imgur.com/NRRduuJ
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.Power_DamageType);
+        DamageType damageType = power.getDamageType();
+        if (damageType != null) {
+            switch (damageType) {
+                case SLASHING:
+                    imageView.setImageResource(R.drawable.type_slashing);
+                    break;
+                case BLUDGEONING:
+                    imageView.setImageResource(R.drawable.type_bludgeoning);
+                    break;
+                case PIERCING:
+                    imageView.setImageResource(R.drawable.type_piercing);
+                    break;
+                case FORCE:
+                    imageView.setImageResource(R.drawable.type_force);
+                    break;
+                case FIRE:
+                    imageView.setImageResource(R.drawable.type_fire);
+                    break;
+                case COLD:
+                    imageView.setImageResource(R.drawable.type_cold);
+                    break;
+                case LIGHTNING:
+                    imageView.setImageResource(R.drawable.type_lightning);
+                    break;
+                case THUNDER:
+                    imageView.setImageResource(R.drawable.type_thunder);
+                    break;
+                case POISON:
+                    imageView.setImageResource(R.drawable.type_poison);
+                    break;
+                case ACID:
+                    imageView.setImageResource(R.drawable.type_acid);
+                    break;
+                case PSYCHIC:
+                    imageView.setImageResource(R.drawable.type_psychic);
+                    break;
+                case NECROTIC:
+                    imageView.setImageResource(R.drawable.type_necrotic);
+                    break;
+                case RADIANT:
+                    imageView.setImageResource(R.drawable.type_radiant);
+                    break;
+            }
+        }
 
-        return view;
+        ((TextView) convertView.findViewById(R.id.Power_Freq)).setText(freq);
+
+        return convertView;
+    }
+
+    @Override
+    public int getCount() {
+        return powerList.size();
     }
 
     void add(Power item) {
         this.powerList.add(item);
+    }
+
+    void addAll(ArrayList<Power> items) {
+        this.powerList.addAll(items);
     }
 }

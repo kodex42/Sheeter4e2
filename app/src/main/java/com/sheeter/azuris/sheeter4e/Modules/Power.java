@@ -11,14 +11,13 @@ public class Power {
     private Frequency frequency;
     private ActionType actionType;
     private ArrayList<WeaponBonus> weaponBonuses;
+    private DamageType damageType;
 
     public Power() {
         weaponBonuses = new ArrayList<>();
-    }
 
-    public Power(String name, Frequency frequency) {
-        this.name = name;
-        this.frequency = frequency;
+        // TODO: Add This To Constructor
+        this.damageType = DamageType.FORCE;
     }
 
     public String getName() {
@@ -88,5 +87,9 @@ public class Power {
             default:
                 return null;
         }
+    }
+
+    public DamageType getDamageType() {
+        return damageType;
     }
 }

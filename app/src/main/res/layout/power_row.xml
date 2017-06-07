@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="10dp">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="3dp">
 
 
-    <TextView
-        android:id="@+id/Power_Name"
+    <ImageView
+        android:id="@+id/Power_DamageType"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ddlogo" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:text="Name of Power"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:orientation="vertical"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/Power_Freq"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="At-Will, Encounter, Daily" />
+        <TextView
+            android:id="@+id/Power_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text="Name of Power"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/Power_Freq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="At-Will, Encounter, Daily"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
