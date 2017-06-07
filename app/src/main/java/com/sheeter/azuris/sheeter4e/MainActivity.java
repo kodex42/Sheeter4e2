@@ -410,7 +410,10 @@ public class MainActivity extends AppCompatActivity {
                                 sCharacter.sheet.details.setPortrait(text);
                                 break;
                             case "Experience":
-                                sCharacter.sheet.details.setExperience(Long.parseLong(text));
+                                if (text.equals(""))
+                                    sCharacter.sheet.details.setExperience(0);
+                                else
+                                    sCharacter.sheet.details.setExperience(Long.parseLong(text));
                                 break;
                             case "CarriedMoney":
                                 sCharacter.sheet.details.setCarriedMoney(text);
