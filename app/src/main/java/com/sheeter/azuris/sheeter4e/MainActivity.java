@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.sheeter.azuris.sheeter4e.Modules.AbilityScores;
 import com.sheeter.azuris.sheeter4e.Modules.Background;
 import com.sheeter.azuris.sheeter4e.Modules.D20Character;
+import com.sheeter.azuris.sheeter4e.Modules.DamageType;
 import com.sheeter.azuris.sheeter4e.Modules.Details;
 import com.sheeter.azuris.sheeter4e.Modules.Feat;
 import com.sheeter.azuris.sheeter4e.Modules.Item;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private WeaponBonus currBonus = null;
     private Background currBackground = null;
     private Feat currFeat = null;
+    private Boolean inLootTally = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -269,6 +271,9 @@ public class MainActivity extends AppCompatActivity {
                         case "RulesElement":
                             RuleParse(xpp, sCharacter);
                             break;
+                        case "LootTally":
+                            this.inLootTally = true;
+                            break;
                         case "loot":
                             if(sCharacter.sheet.items == null){
                                 sCharacter.sheet.items = new ArrayList<Item>();
@@ -338,6 +343,10 @@ public class MainActivity extends AppCompatActivity {
                             textState = "DamageComponents";
                             tagState = "wDetail";
                             break;
+                        case "DamageType":
+                            textState = "DamageType";
+                            tagState = "wDetail";
+                            break;
                         default:
                             textState = tagName;
                             break;
@@ -358,13 +367,28 @@ public class MainActivity extends AppCompatActivity {
                         case "HitComponents":
                         case "DamageComponents":
                         case "RulesElement":
+                        case "DamageType":
                             tagState = "";
                             break;
                         case "Weapon":
                             this.currPower.addBonus(this.currBonus);
                             this.currBonus = null;
                             break;
+                        case "LootTally":
+                            this.inLootTally = false;
+                            break;
+                        case "loot":
+                            if (this.inLootTally) {
+                                if (this.currItem.getQuantity() != 0)
+                                    sCharacter.sheet.items.add(this.currItem);
+                            }
+
+                            this.currItem = null;
+                            break;
                         case "Power":
+                            if (this.currPower.getDamageType() == null)
+                                this.currPower.setDamageType(DamageType.PHYSICAL);
+
                             sCharacter.sheet.powers.add(this.currPower);
                             this.currPower = null;
                             break;
@@ -410,7 +434,10 @@ public class MainActivity extends AppCompatActivity {
                                 sCharacter.sheet.details.setPortrait(text);
                                 break;
                             case "Experience":
-                                sCharacter.sheet.details.setExperience(Long.parseLong(text));
+                                if (text.equals(""))
+                                    sCharacter.sheet.details.setExperience(0);
+                                else
+                                    sCharacter.sheet.details.setExperience(Long.parseLong(text));
                                 break;
                             case "CarriedMoney":
                                 sCharacter.sheet.details.setCarriedMoney(text);
@@ -449,6 +476,9 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case "DamageComponents":
                                 this.currBonus.setDamageComponents(text);
+                                break;
+                            case "DamageType":
+                                this.currPower.setDamageType(this.currPower.stringToDamageType(text));
                                 break;
                         }
                     }
@@ -653,14 +683,13 @@ public class MainActivity extends AppCompatActivity {
             case "Armor":
             case "Weapon":
             case "Gear":
+            case "Magic Item":
                 if (this.currItem != null ) {
                     this.currItem.setName(xpp.getAttributeValue(0).trim());
                     this.currItem.setType(xpp.getAttributeValue(1).trim());
 
-                    if (this.currItem.getQuantity() != 0)
-                        sCharacter.sheet.items.add(this.currItem);
-
-                    this.currItem = null;
+                    if (tagType.equals("Magic Item"))
+                        this.currItem.setMagic(true);
                 }
                 break;
             case "Feat":
