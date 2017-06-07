@@ -12,9 +12,11 @@ public class Power {
     private ActionType actionType;
     private ArrayList<WeaponBonus> weaponBonuses;
     private DamageType damageType;
+    private boolean casted;
 
     public Power() {
-        weaponBonuses = new ArrayList<>();
+        this.weaponBonuses = new ArrayList<>();
+        this.casted = false;
     }
 
     public String getName() {
@@ -121,5 +123,17 @@ public class Power {
             default:
                 return null;
         }
+    }
+
+    public void cast() {
+        this.casted = true;
+    }
+
+    public void refresh() {
+        this.casted = false;
+    }
+
+    public boolean isCasted() {
+        return casted;
     }
 }
