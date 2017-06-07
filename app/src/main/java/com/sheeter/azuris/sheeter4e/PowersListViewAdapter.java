@@ -21,6 +21,7 @@ import com.sheeter.azuris.sheeter4e.Modules.Frequency;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Azuris on 2017-06-05.
@@ -29,11 +30,13 @@ import java.util.ArrayList;
 class PowersListViewAdapter extends ArrayAdapter<String> {
     private ArrayList<Power> powerList;
     private Context context;
+    private ArrayList<Boolean> casted;
 
     PowersListViewAdapter(Context context) {
         super(context, R.layout.power_row);
         this.context = context;
         powerList = new ArrayList<>();
+        casted = new ArrayList<>();
     }
 
     @NonNull
@@ -165,5 +168,9 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
 
     void addAll(ArrayList<Power> items) {
         this.powerList.addAll(items);
+        for (Power:
+             ) {
+            
+        }
     }
 }
