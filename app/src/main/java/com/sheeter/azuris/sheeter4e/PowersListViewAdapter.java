@@ -41,7 +41,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         final Power power = this.powerList.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -85,6 +85,9 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                     break;
                 case PIERCING:
                     imageView.setImageResource(R.drawable.type_piercing_framed);
+                    break;
+                case PHYSICAL:
+                    imageView.setImageResource(R.drawable.type_slashing_framed);
                     break;
                 case FORCE:
                     imageView.setImageResource(R.drawable.type_force_framed);
@@ -131,6 +134,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 casted.setChecked(true);
+                                PowersListViewAdapter.this.casted.set(position, true);
                                 dialogInterface.dismiss();
                             }
                         })
@@ -149,7 +153,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
 
         // TODO: FIX
         // This is to ensure the view keeps a similar state when refreshed.
-        if (casted.isChecked()) {
+        if (this.casted.get(position)) {
             convertView.setOnClickListener(null);
             convertView.setBackgroundColor(Color.parseColor("#88808080"));
         }
@@ -168,9 +172,9 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
 
     void addAll(ArrayList<Power> items) {
         this.powerList.addAll(items);
-        /*(for (Power:
-             ) {
-            
-        }*/
+
+        for (Power power : this.powerList) {
+            this.casted.add(false);
+        }
     }
 }
