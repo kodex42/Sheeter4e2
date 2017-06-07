@@ -69,43 +69,43 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
         if (damageType != null) {
             switch (damageType) {
                 case SLASHING:
-                    imageView.setImageResource(R.drawable.type_slashing);
+                    imageView.setImageResource(R.drawable.type_slashing_framed);
                     break;
                 case BLUDGEONING:
-                    imageView.setImageResource(R.drawable.type_bludgeoning);
+                    imageView.setImageResource(R.drawable.type_bludgeoning_framed);
                     break;
                 case PIERCING:
-                    imageView.setImageResource(R.drawable.type_piercing);
+                    imageView.setImageResource(R.drawable.type_piercing_framed);
                     break;
                 case FORCE:
-                    imageView.setImageResource(R.drawable.type_force);
+                    imageView.setImageResource(R.drawable.type_force_framed);
                     break;
                 case FIRE:
-                    imageView.setImageResource(R.drawable.type_fire);
+                    imageView.setImageResource(R.drawable.type_fire_framed);
                     break;
                 case COLD:
-                    imageView.setImageResource(R.drawable.type_cold);
+                    imageView.setImageResource(R.drawable.type_cold_framed);
                     break;
                 case LIGHTNING:
-                    imageView.setImageResource(R.drawable.type_lightning);
+                    imageView.setImageResource(R.drawable.type_lightning_framed);
                     break;
                 case THUNDER:
-                    imageView.setImageResource(R.drawable.type_thunder);
+                    imageView.setImageResource(R.drawable.type_thunder_framed);
                     break;
                 case POISON:
-                    imageView.setImageResource(R.drawable.type_poison);
+                    imageView.setImageResource(R.drawable.type_poison_framed);
                     break;
                 case ACID:
-                    imageView.setImageResource(R.drawable.type_acid);
+                    imageView.setImageResource(R.drawable.type_acid_framed);
                     break;
                 case PSYCHIC:
-                    imageView.setImageResource(R.drawable.type_psychic);
+                    imageView.setImageResource(R.drawable.type_psychic_framed);
                     break;
                 case NECROTIC:
-                    imageView.setImageResource(R.drawable.type_necrotic);
+                    imageView.setImageResource(R.drawable.type_necrotic_framed);
                     break;
                 case RADIANT:
-                    imageView.setImageResource(R.drawable.type_radiant);
+                    imageView.setImageResource(R.drawable.type_radiant_framed);
                     break;
             }
         }

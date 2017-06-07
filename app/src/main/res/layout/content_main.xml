@@ -729,7 +729,7 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Ability"
+                        android:text="Mele Ability"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textStyle="bold" />
@@ -824,7 +824,7 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Ability"
+                        android:text="Ranged Ability"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textStyle="bold" />
