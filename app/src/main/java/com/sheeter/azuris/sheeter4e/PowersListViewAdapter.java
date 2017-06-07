@@ -1,14 +1,20 @@
 package com.sheeter.azuris.sheeter4e;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sheeter.azuris.sheeter4e.Modules.DamageType;
 import com.sheeter.azuris.sheeter4e.Modules.Frequency;
@@ -33,7 +39,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Power power = this.powerList.get(position);
+        final Power power = this.powerList.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
         convertView = inflater.inflate(R.layout.power_row, null);
@@ -112,7 +118,40 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
 
         ((TextView) convertView.findViewById(R.id.Power_Freq)).setText(freq);
 
-        return convertView;
+        final CheckBox casted = (CheckBox) convertView.findViewById(R.id.Power_Is_Casted);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(context)
+                        .setTitle(power.getName())
+                        .setPositiveButton("Cast", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                casted.setChecked(true);
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .show();
+            }
+        });
+
+        final View finalConvertView = convertView;
+        casted.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Toast.makeText(context, "Casted", Toast.LENGTH_SHORT).show();
+                finalConvertView.setBackgroundColor(Color.parseColor("#88808080"));
+            }
+        });
+
+        // TODO: FIX
+        // This is to ensure the view keeps a similar state when refreshed.
+        if (casted.isChecked()) {
+            convertView.setOnClickListener(null);
+            convertView.setBackgroundColor(Color.parseColor("#88808080"));
+        }
+
+        return finalConvertView;
     }
 
     @Override
