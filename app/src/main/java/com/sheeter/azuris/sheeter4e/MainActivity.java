@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private WeaponBonus currBonus = null;
     private Background currBackground = null;
     private Feat currFeat = null;
+    private Boolean inLootTally = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -270,6 +271,9 @@ public class MainActivity extends AppCompatActivity {
                         case "RulesElement":
                             RuleParse(xpp, sCharacter);
                             break;
+                        case "LootTally":
+                            this.inLootTally = true;
+                            break;
                         case "loot":
                             if(sCharacter.sheet.items == null){
                                 sCharacter.sheet.items = new ArrayList<Item>();
@@ -369,6 +373,17 @@ public class MainActivity extends AppCompatActivity {
                         case "Weapon":
                             this.currPower.addBonus(this.currBonus);
                             this.currBonus = null;
+                            break;
+                        case "LootTally":
+                            this.inLootTally = false;
+                            break;
+                        case "loot":
+                            if (this.inLootTally) {
+                                if (this.currItem.getQuantity() != 0)
+                                    sCharacter.sheet.items.add(this.currItem);
+                            }
+
+                            this.currItem = null;
                             break;
                         case "Power":
                             if (this.currPower.getDamageType() == null)
@@ -668,14 +683,13 @@ public class MainActivity extends AppCompatActivity {
             case "Armor":
             case "Weapon":
             case "Gear":
+            case "Magic Item":
                 if (this.currItem != null ) {
                     this.currItem.setName(xpp.getAttributeValue(0).trim());
                     this.currItem.setType(xpp.getAttributeValue(1).trim());
 
-                    if (this.currItem.getQuantity() != 0)
-                        sCharacter.sheet.items.add(this.currItem);
-
-                    this.currItem = null;
+                    if (tagType.equals("Magic Item"))
+                        this.currItem.setMagic(true);
                 }
                 break;
             case "Feat":
