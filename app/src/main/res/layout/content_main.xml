@@ -729,14 +729,14 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Meele Ability"
+                        android:text="Melee Ability"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_Name_Primary"
+                        android:id="@+id/Main_Weapon_Name_Primary_Melee"
                         android:layout_width="175dp"
                         android:layout_height="45dp"
                         android:layout_column="0"
@@ -764,7 +764,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_Attack_Primary"
+                        android:id="@+id/Main_Weapon_Attack_Primary_Melee"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_column="1"
@@ -792,7 +792,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_Damage_Primary"
+                        android:id="@+id/Main_Weapon_Damage_Primary_Melee"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_column="2"
@@ -820,7 +820,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_VS_Primary"
+                        android:id="@+id/Main_Weapon_VS_Primary_Melee"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_column="3"
@@ -856,14 +856,14 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Meele Ability"
+                        android:text="Melee Ability"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_Name_Secondary"
+                        android:id="@+id/Main_Weapon_Name_Secondary_Melee"
                         android:layout_width="175dp"
                         android:layout_height="45dp"
                         android:layout_column="0"
@@ -891,7 +891,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_Attack_Secondary"
+                        android:id="@+id/Main_Weapon_Attack_Secondary_Melee"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_column="1"
@@ -919,7 +919,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_Damage_Secondary"
+                        android:id="@+id/Main_Weapon_Damage_Secondary_Melee"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_column="2"
@@ -947,7 +947,261 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Main_Weapon_VS_Secondary"
+                        android:id="@+id/Main_Weapon_VS_Secondary_Melee"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_column="3"
+                        android:layout_row="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="AC"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="bottom"
+                        android:layout_row="0"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center_horizontal"
+                        android:text="Ranged Ability"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Main_Weapon_Name_Primary_Ranged"
+                        android:layout_width="175dp"
+                        android:layout_height="45dp"
+                        android:layout_column="0"
+                        android:layout_row="1"
+                        android:background="@android:color/black"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="Weapon Name"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center_vertical"
+                        android:layout_row="0"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center_horizontal"
+                        android:text="Attack"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Main_Weapon_Attack_Primary_Ranged"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_column="1"
+                        android:layout_row="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_row="0"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center_horizontal"
+                        android:text="Damage"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Main_Weapon_Damage_Primary_Ranged"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_column="2"
+                        android:layout_row="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="0d0"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center_vertical"
+                        android:layout_row="0"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center_horizontal"
+                        android:text="VS"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Main_Weapon_VS_Primary_Ranged"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_column="3"
+                        android:layout_row="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="AC"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_gravity="bottom"
+                        android:layout_row="0"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center_horizontal"
+                        android:text="Ranged Ability"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Main_Weapon_Name_Primary_Ranged"
+                        android:layout_width="175dp"
+                        android:layout_height="45dp"
+                        android:layout_column="0"
+                        android:layout_row="1"
+                        android:background="@android:color/black"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="Weapon Name"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_gravity="center_vertical"
+                        android:layout_row="0"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center_horizontal"
+                        android:text="Attack"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Main_Weapon_Attack_Secondary_Ranged"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_column="1"
+                        android:layout_row="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_row="0"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center_horizontal"
+                        android:text="Damage"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Main_Weapon_Damage_Secondary_Ranged"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_column="2"
+                        android:layout_row="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="0d0"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center_vertical"
+                        android:layout_row="0"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center_horizontal"
+                        android:text="VS"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Main_Weapon_VS_Secondary_Melee"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_column="3"
