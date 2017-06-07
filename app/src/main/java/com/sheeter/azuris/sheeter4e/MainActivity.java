@@ -763,18 +763,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void PowerParse(XmlPullParser xpp, D20Character character) {
-
-    }
-
     private ArrayList<WeaponBonus> getMeleeWeapons(ArrayList<Item> equipped){
         ArrayList<WeaponBonus> newBonuses = new ArrayList<>();
         ArrayList<WeaponBonus> bonuses = this.sCharacter.sheet.getMeleeBasicAttack().getWeaponBonuses();
         int equipIndex = 0;
 
-        for (WeaponBonus b : bonuses) {
-            if (b.getWeaponName().equals(equipped.get(0).getName())) {
-                newBonuses.add(b);
+        if (equipped.size() > 0) {
+            for (WeaponBonus b : bonuses) {
+                if (b.getWeaponName().equals(equipped.get(0).getName())) {
+                    newBonuses.add(b);
+                }
             }
         }
 
@@ -787,9 +785,11 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<WeaponBonus> bonuses = this.sCharacter.sheet.getRangedBasicAttack().getWeaponBonuses();
         int equipIndex = 0;
 
-        for (WeaponBonus b : bonuses) {
-            if (b.getWeaponName().equals(equipped.get(0).getName())) {
-                newBonuses.add(b);
+        if (equipped.size() > 0) {
+            for (WeaponBonus b : bonuses) {
+                if (b.getWeaponName().equals(equipped.get(0).getName())) {
+                    newBonuses.add(b);
+                }
             }
         }
 
