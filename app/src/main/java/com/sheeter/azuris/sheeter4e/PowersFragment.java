@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,11 +32,14 @@ public class PowersFragment extends Fragment implements RapidFloatingActionConte
     private RapidFloatingActionLayout rfaLayout;
     private RapidFloatingActionButton rfaBtn;
     private RapidFloatingActionHelper rfabHelper;
+    Context context;
+    public static PowersListViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Context context = getActivity();
+        context = getActivity();
+        adapter = new PowersListViewAdapter(context);
 
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.content_powers, container, false);
@@ -48,30 +52,25 @@ public class PowersFragment extends Fragment implements RapidFloatingActionConte
         rfaContent.setOnRapidFloatingActionContentLabelListListener(this);
         List<RFACLabelItem> items = new ArrayList<>();
         items.add(new RFACLabelItem<Integer>()
-                .setLabel("tiantian.china.2@gmail.com")
+                .setLabel("Refresh At-Wills")
                 .setResId(R.mipmap.ic_refresh)
                 .setIconNormalColor(context.getResources().getColor(R.color.atWillPower))
                 .setIconPressedColor(context.getResources().getColor(R.color.atWillPowerPressed))
-                .setLabelColor(Color.WHITE)
-                .setLabelSizeSp(14)
-                .setLabelBackgroundDrawable(ABShape.generateCornerShapeDrawable(0xaa000000, ABTextUtil.dip2px(context, 4)))
-                .setWrapper(1)
+                .setWrapper(0)
         );
         items.add(new RFACLabelItem<Integer>()
-                .setLabel("WangJie")
+                .setLabel("Refresh Enounters")
                 .setResId(R.mipmap.ic_refresh)
                 .setIconNormalColor(context.getResources().getColor(R.color.encounterPower))
                 .setIconPressedColor(context.getResources().getColor(R.color.encounterPowerPressed))
-                .setLabelColor(0xff056f00)
-                .setWrapper(2)
+                .setWrapper(1)
         );
         items.add(new RFACLabelItem<Integer>()
-                .setLabel("Compose")
+                .setLabel("Refresh Dailies")
                 .setResId(R.mipmap.ic_refresh)
                 .setIconNormalColor(context.getResources().getColor(R.color.dailyPower))
                 .setIconPressedColor(context.getResources().getColor(R.color.dailyPowerPressed))
-                .setLabelColor(0xff283593)
-                .setWrapper(3)
+                .setWrapper(2)
         );
         rfaContent
                 .setItems(items)
@@ -91,20 +90,21 @@ public class PowersFragment extends Fragment implements RapidFloatingActionConte
 
     @Override
     public void onRFACItemLabelClick(int position, RFACLabelItem item) {
-        Toast.makeText(getContext(), "clicked label: " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "clicked label: " + position, Toast.LENGTH_SHORT).show();
+        adapter.refreshPowers(position);
         rfabHelper.toggleContent();
     }
 
     @Override
     public void onRFACItemIconClick(int position, RFACLabelItem item) {
-        Toast.makeText(getContext(), "clicked icon: " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "clicked icon: " + position, Toast.LENGTH_SHORT).show();
+        adapter.refreshPowers(position);
         rfabHelper.toggleContent();
     }
 
     public static void refreshFragment(View root, Context context) {
         if (MainActivity.sCharacter != null) {
             ListView listView = (ListView) root.findViewById(R.id.Powers_List);
-            PowersListViewAdapter adapter = new PowersListViewAdapter(context);
 
             listView.setAdapter(adapter);
 
