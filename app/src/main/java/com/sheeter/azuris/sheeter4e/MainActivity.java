@@ -313,6 +313,10 @@ public class MainActivity extends AppCompatActivity {
                                 textState = "Background";
                                 tagState = "bDetail";
                             }
+                            else if (this.currFeat != null){
+                                textState = "Feat";
+                                tagState = "fDetail";
+                            }
 
                             break;
                         case "Weapon":
@@ -485,6 +489,11 @@ public class MainActivity extends AppCompatActivity {
                     else if (tagState.equals("bDetail")) {
                         sCharacter.sheet.background.setDescription(text);
                         this.currBackground = null;
+                    }
+                    else if (tagState.equals("fDetail")) {
+                        this.currFeat.setDescription(text);
+                        sCharacter.sheet.feats.add(this.currFeat);
+                        this.currFeat = null;
                     }
                 }
                 eventType = xpp.next();
@@ -696,7 +705,8 @@ public class MainActivity extends AppCompatActivity {
                 if (sCharacter.sheet.feats == null)
                     sCharacter.sheet.feats = new ArrayList<>();
 
-
+                this.currFeat = new Feat();
+                this.currFeat.setName(xpp.getAttributeValue(0).trim());
                 break;
         }
     }
