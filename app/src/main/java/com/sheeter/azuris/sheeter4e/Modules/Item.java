@@ -9,9 +9,10 @@ public class Item {
     private int quantity;
     private Boolean equipped;
     private ItemType type;
+    private Boolean isMagic;
 
     public Item(){
-
+        this.isMagic = false;
     }
 
     public Item(String name, Boolean equipped, ItemType type) {
@@ -64,5 +65,13 @@ public class Item {
                 this.type = ItemType.GEAR;
                 break;
         }
+    }
+
+    public Boolean isMagic() {
+        return isMagic;
+    }
+
+    public void setMagic(Boolean magic) {
+        isMagic = magic;
     }
 }
