@@ -20,6 +20,7 @@ import com.sheeter.azuris.sheeter4e.Modules.DamageType;
 import com.sheeter.azuris.sheeter4e.Modules.Frequency;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 
+import java.io.PipedOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -30,47 +31,22 @@ import java.util.HashMap;
 class PowersListViewAdapter extends ArrayAdapter<String> {
     private ArrayList<Power> powerList;
     private Context context;
-    private ArrayList<Boolean> casted;
 
     PowersListViewAdapter(Context context) {
         super(context, R.layout.power_row);
         this.context = context;
         powerList = new ArrayList<>();
-        casted = new ArrayList<>();
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         final Power power = this.powerList.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
         convertView = inflater.inflate(R.layout.power_row, null);
 
         ((TextView) convertView.findViewById(R.id.Power_Name)).setText(power.getName());
-
-        String freq = null;
-        Frequency frequency = power.getFrequency();
-        if (frequency != null) {
-            switch (frequency) {
-                case AT_WILL:
-                    freq = "At-Will";
-                    convertView.setBackgroundResource(R.drawable.border_at_will);
-                    break;
-                case ENCOUNTER:
-                    freq = "Encounter";
-                    convertView.setBackgroundResource(R.drawable.border_encounter);
-                    break;
-                case ENCOUNTER_SPECIAL:
-                    freq = "Encounter (Special)";
-                    convertView.setBackgroundResource(R.drawable.border_encounter);
-                    break;
-                case DAILY:
-                    freq = "Daily";
-                    convertView.setBackgroundResource(R.drawable.border_daily);
-                    break;
-            }
-        }
 
         // Credit For Damage Type Images: http://imgur.com/NRRduuJ
         ImageView imageView = (ImageView) convertView.findViewById(R.id.Power_DamageType);
@@ -85,6 +61,9 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                     break;
                 case PIERCING:
                     imageView.setImageResource(R.drawable.type_piercing_framed);
+                    break;
+                case PHYSICAL:
+                    imageView.setImageResource(R.drawable.type_slashing_framed);
                     break;
                 case FORCE:
                     imageView.setImageResource(R.drawable.type_force_framed);
@@ -119,42 +98,56 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
             }
         }
 
+        Frequency frequency = power.getFrequency();
+        String freq = null;
+        if (frequency != null) {
+            switch (frequency) {
+                case AT_WILL:
+                    freq = "At-Will";
+                    convertView.setBackgroundResource(R.drawable.border_at_will);
+                    break;
+                case ENCOUNTER:
+                    freq = "Encounter";
+                    convertView.setBackgroundResource(R.drawable.border_encounter);
+                    break;
+                case ENCOUNTER_SPECIAL:
+                    freq = "Encounter (Special)";
+                    convertView.setBackgroundResource(R.drawable.border_encounter);
+                    break;
+                case DAILY:
+                    freq = "Daily";
+                    convertView.setBackgroundResource(R.drawable.border_daily);
+                    break;
+            }
+        }
         ((TextView) convertView.findViewById(R.id.Power_Freq)).setText(freq);
 
-        final CheckBox casted = (CheckBox) convertView.findViewById(R.id.Power_Is_Casted);
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new AlertDialog.Builder(context)
-                        .setTitle(power.getName())
-                        .setPositiveButton("Cast", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                casted.setChecked(true);
-                                dialogInterface.dismiss();
-                            }
-                        })
-                        .show();
-            }
-        });
-
-        final View finalConvertView = convertView;
-        casted.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Toast.makeText(context, "Casted", Toast.LENGTH_SHORT).show();
-                finalConvertView.setBackgroundColor(Color.parseColor("#88808080"));
-            }
-        });
-
-        // TODO: FIX
         // This is to ensure the view keeps a similar state when refreshed.
-        if (casted.isChecked()) {
-            convertView.setOnClickListener(null);
+        if (power.isCasted()) {
             convertView.setBackgroundColor(Color.parseColor("#88808080"));
         }
+        else {
+            final View finalConvertView = convertView;
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new AlertDialog.Builder(context)
+                            .setTitle(power.getName())
+                            .setPositiveButton("Cast", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    power.cast();
+                                    Toast.makeText(context, "Casted", Toast.LENGTH_SHORT).show();
+                                    finalConvertView.setBackgroundColor(Color.parseColor("#88808080"));
+                                    dialogInterface.dismiss();
+                                }
+                            })
+                            .show();
+                }
+            });
+        }
 
-        return finalConvertView;
+        return convertView;
     }
 
     @Override
@@ -168,9 +161,31 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
 
     void addAll(ArrayList<Power> items) {
         this.powerList.addAll(items);
-        /*(for (Power:
-             ) {
-            
-        }*/
+    }
+
+    void refreshPowers(int clearance) {
+        ArrayList<Frequency> frequencies = new ArrayList<>();
+
+        switch (clearance) {
+            case 2:
+                frequencies.add(Frequency.DAILY);
+            case 1:
+                frequencies.add(Frequency.ENCOUNTER);
+            case 0:
+                frequencies.add(Frequency.AT_WILL);
+        }
+
+        for (Power power:powerList) {
+            if (frequencies.contains(Frequency.AT_WILL) && power.getFrequency() == Frequency.AT_WILL)
+                power.refresh();
+
+            if (frequencies.contains(Frequency.ENCOUNTER) && power.getFrequency() == Frequency.ENCOUNTER || power.getFrequency() == Frequency.ENCOUNTER_SPECIAL)
+                power.refresh();
+
+            if (frequencies.contains(Frequency.DAILY) && power.getFrequency() == Frequency.DAILY)
+                power.refresh();
+        }
+
+        notifyDataSetChanged();
     }
 }

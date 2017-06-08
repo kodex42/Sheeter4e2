@@ -128,11 +128,22 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_add:
+                resetFields();
                 checkFilePerms();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void resetFields() {
+        currItem = null;
+        currPower = null;
+        currBonus = null;
+        currBackground = null;
+        currFeat = null;
+        inLootTally = false;
+        sCharacter = null;
     }
 
     private void checkFilePerms() {
@@ -556,8 +567,8 @@ public class MainActivity extends AppCompatActivity {
             // Will
             ((TextView) mainPage.findViewById(R.id.Score_WILL)).setText(sCharacter.sheet.stats.get("Will"));
 
-            ArrayList<Item> equipedWeapons = sCharacter.sheet.getEquipedWeapons();
 
+            ArrayList<Item> equipedWeapons = sCharacter.sheet.getEquipedWeapons();
             // Melee Basic Attack
             ArrayList<WeaponBonus> meleeBonuses = getMeleeWeapons(equipedWeapons);
 
@@ -607,7 +618,6 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) mainPage.findViewById(R.id.Main_Weapon_Damage_Secondary_Ranged)).setText(finalString);
                 ((TextView) mainPage.findViewById(R.id.Main_Weapon_VS_Secondary_Ranged)).setText(rangedBonuses.get(1).getDefense());
             }
-
         }
         else {
             Toast.makeText(this, "Character Parsed as Null :/", Toast.LENGTH_SHORT).show();

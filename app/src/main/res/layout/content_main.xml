@@ -737,8 +737,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Name_Primary_Melee"
-                        android:layout_width="175dp"
-                        android:layout_height="45dp"
+                        android:layout_width="165dp"
+                        android:layout_height="55dp"
                         android:layout_column="0"
                         android:layout_row="1"
                         android:background="@android:color/black"
@@ -750,7 +750,7 @@
 
                     <TextView
                         android:id="@+id/textView12"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_gravity="center_vertical"
@@ -765,8 +765,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Attack_Primary_Melee"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="1"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -778,7 +778,7 @@
 
                     <TextView
                         android:id="@+id/textView11"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
                         android:layout_gravity="center_vertical"
@@ -793,8 +793,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Damage_Primary_Melee"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="2"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -806,7 +806,7 @@
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="3"
                         android:layout_gravity="center_vertical"
@@ -821,8 +821,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_VS_Primary_Melee"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="3"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -864,8 +864,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Name_Secondary_Melee"
-                        android:layout_width="175dp"
-                        android:layout_height="45dp"
+                        android:layout_width="165dp"
+                        android:layout_height="55dp"
                         android:layout_column="0"
                         android:layout_row="1"
                         android:background="@android:color/black"
@@ -877,7 +877,7 @@
 
                     <TextView
                         android:id="@+id/textView12"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_gravity="center_vertical"
@@ -892,8 +892,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Attack_Secondary_Melee"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="1"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -905,7 +905,7 @@
 
                     <TextView
                         android:id="@+id/textView11"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
                         android:layout_gravity="center_vertical"
@@ -920,8 +920,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Damage_Secondary_Melee"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="2"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -933,7 +933,7 @@
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="3"
                         android:layout_gravity="center_vertical"
@@ -948,8 +948,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_VS_Secondary_Melee"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="3"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -991,8 +991,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Name_Primary_Ranged"
-                        android:layout_width="175dp"
-                        android:layout_height="45dp"
+                        android:layout_width="165dp"
+                        android:layout_height="55dp"
                         android:layout_column="0"
                         android:layout_row="1"
                         android:background="@android:color/black"
@@ -1004,7 +1004,7 @@
 
                     <TextView
                         android:id="@+id/textView12"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_gravity="center_vertical"
@@ -1019,8 +1019,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Attack_Primary_Ranged"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="1"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -1032,7 +1032,7 @@
 
                     <TextView
                         android:id="@+id/textView11"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
                         android:layout_gravity="center_vertical"
@@ -1047,8 +1047,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Damage_Primary_Ranged"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="2"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -1060,7 +1060,7 @@
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="3"
                         android:layout_gravity="center_vertical"
@@ -1075,8 +1075,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_VS_Primary_Ranged"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="3"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -1118,8 +1118,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Name_Secondary_Ranged"
-                        android:layout_width="175dp"
-                        android:layout_height="45dp"
+                        android:layout_width="165dp"
+                        android:layout_height="55dp"
                         android:layout_column="0"
                         android:layout_row="1"
                         android:background="@android:color/black"
@@ -1131,7 +1131,7 @@
 
                     <TextView
                         android:id="@+id/textView12"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_gravity="center_vertical"
@@ -1146,8 +1146,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Attack_Secondary_Ranged"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="1"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -1159,7 +1159,7 @@
 
                     <TextView
                         android:id="@+id/textView11"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
                         android:layout_gravity="center_vertical"
@@ -1174,8 +1174,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_Damage_Secondary_Ranged"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="2"
                         android:layout_row="1"
                         android:background="@drawable/border"
@@ -1187,7 +1187,7 @@
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="45dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="3"
                         android:layout_gravity="center_vertical"
@@ -1202,8 +1202,8 @@
 
                     <TextView
                         android:id="@+id/Main_Weapon_VS_Secondary_Ranged"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="50dp"
+                        android:layout_height="55dp"
                         android:layout_column="3"
                         android:layout_row="1"
                         android:background="@drawable/border"

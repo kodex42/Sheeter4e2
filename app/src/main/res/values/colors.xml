@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#C62828</color>
     <color name="colorAccent">#aed581</color>
     <color name="atWillPower">#006400</color>
+    <color name="atWillPowerPressed">#004c00</color>
     <color name="encounterPower">#8b0000</color>
+    <color name="encounterPowerPressed">#590000</color>
     <color name="dailyPower">#808080</color>
+    <color name="dailyPowerPressed">#4f4f4f</color>
 </resources>
