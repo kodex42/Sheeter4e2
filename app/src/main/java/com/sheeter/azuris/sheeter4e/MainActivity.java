@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                     // Switch on tag name
                     switch (tagName) {
                         case "D20Character":
-                            sCharacter = new D20Character(xpp.getAttributeValue(2));
+                            sCharacter = new D20Character(xpp.getAttributeValue(null,"legality"));
                             break;
                         case "CharacterSheet":
                             sCharacter.setSheet(new Sheet());
@@ -222,42 +222,42 @@ public class MainActivity extends AppCompatActivity {
                             sCharacter.sheet.setAbilityScores(new AbilityScores());
                             break;
                         case "Strength":
-                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            score = Integer.parseInt(xpp.getAttributeValue(null,"score").trim());
                             mods = getMods(score);
                             sCharacter.sheet.abilityScores.setStrength(score);
                             sCharacter.sheet.abilityScores.setStrengthMod(mods[0]);
                             sCharacter.sheet.abilityScores.setStrengthModHalfLevel(mods[1]);
                             break;
                         case "Constitution":
-                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            score = Integer.parseInt(xpp.getAttributeValue(null,"score").trim());
                             mods = getMods(score);
                             sCharacter.sheet.abilityScores.setConstitution(score);
                             sCharacter.sheet.abilityScores.setConstitutionMod(mods[0]);
                             sCharacter.sheet.abilityScores.setConstitutionModHalfLevel(mods[1]);
                             break;
                         case "Dexterity":
-                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            score = Integer.parseInt(xpp.getAttributeValue(null,"score").trim());
                             mods = getMods(score);
                             sCharacter.sheet.abilityScores.setDexterity(score);
                             sCharacter.sheet.abilityScores.setDexterityMod(mods[0]);
                             sCharacter.sheet.abilityScores.setDexterityModHalfLevel(mods[1]);
                             break;
                         case "Intelligence":
-                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            score = Integer.parseInt(xpp.getAttributeValue(null,"score").trim());
                             mods = getMods(score);
                             sCharacter.sheet.abilityScores.setIntelligence(score);
                             sCharacter.sheet.abilityScores.setIntelligence(mods[0]);
                             sCharacter.sheet.abilityScores.setIntelligenceModHalfLevel(mods[1]);
                             break;
                         case "Wisdom":
-                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            score = Integer.parseInt(xpp.getAttributeValue(null,"score").trim());
                             mods = getMods(score);
                             sCharacter.sheet.abilityScores.setWisdom(score);
                             sCharacter.sheet.abilityScores.setWisdomMod(mods[0]);
                             sCharacter.sheet.abilityScores.setWisdomModHalfLevel(mods[1]);
                             break;
                         case "Charisma":
-                            score = Integer.parseInt(xpp.getAttributeValue(0).trim());
+                            score = Integer.parseInt(xpp.getAttributeValue(null,"score").trim());
                             mods = getMods(score);
                             sCharacter.sheet.abilityScores.setCharisma(score);
                             sCharacter.sheet.abilityScores.setCharismaMod(mods[0]);
@@ -281,10 +281,10 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             this.currItem = new Item();
-                            this.currItem.setQuantity(Integer.parseInt(xpp.getAttributeValue(0).trim()));
+                            this.currItem.setQuantity(Integer.parseInt(xpp.getAttributeValue(null,"count").trim()));
 
                             if (currItem.getQuantity() != 0 ) {
-                                int equip = Integer.parseInt(xpp.getAttributeValue(1).trim());
+                                int equip = Integer.parseInt(xpp.getAttributeValue(null,"equip-count").trim());
                                 Boolean equipBool = equip == 0 ? Boolean.FALSE : Boolean.TRUE;
                                 this.currItem.setEquipped(equipBool);
                             }
@@ -295,10 +295,10 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             this.currPower = new Power();
-                            this.currPower.setName(xpp.getAttributeValue(0).trim());
+                            this.currPower.setName(xpp.getAttributeValue(null,"name").trim());
                             break;
                         case "specific":
-                            String name = xpp.getAttributeValue(0).trim();
+                            String name = xpp.getAttributeValue(null,"name").trim();
 
                             if (this.currPower != null) {
                                 if (name.equals("Power Usage")) {
@@ -322,7 +322,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case "Weapon":
                             this.currBonus = new WeaponBonus();
-                            this.currBonus.setWeaponName(xpp.getAttributeValue(0).trim());
+                            this.currBonus.setWeaponName(xpp.getAttributeValue(null,"name").trim());
                             break;
                         case "AttackBonus":
                             textState = "AttackBonus";
@@ -662,36 +662,36 @@ public class MainActivity extends AppCompatActivity {
 
     private void StatParse(XmlPullParser xpp, D20Character character) {
         // TODO: parse each stat
-        String statName = xpp.getAttributeValue(0);
+        String statName = xpp.getAttributeValue(null,"name");
 
         switch (statName){
             case "Strength":
-                sCharacter.sheet.abilityScores.setStrength(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                sCharacter.sheet.abilityScores.setStrength(Integer.parseInt(xpp.getAttributeValue(null,"value").trim()));
                 sCharacter.sheet.abilityScores.setStrengthMod(getMods(Integer.parseInt(sCharacter.sheet.abilityScores.getStrength()))[0]);
                 sCharacter.sheet.abilityScores.setStrengthModHalfLevel(Integer.parseInt(sCharacter.sheet.abilityScores.getStrengthMod()) + sCharacter.sheet.details.getHalfLevel());
                 break;
             case "Constitution":
-                sCharacter.sheet.abilityScores.setConstitution(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                sCharacter.sheet.abilityScores.setConstitution(Integer.parseInt(xpp.getAttributeValue(null,"value").trim()));
                 sCharacter.sheet.abilityScores.setConstitutionMod(getMods(Integer.parseInt(sCharacter.sheet.abilityScores.getConstitution()))[0]);
                 sCharacter.sheet.abilityScores.setConstitutionModHalfLevel(Integer.parseInt(sCharacter.sheet.abilityScores.getConstitutionMod()) + sCharacter.sheet.details.getHalfLevel());
                 break;
             case "Dexterity":
-                sCharacter.sheet.abilityScores.setDexterity(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                sCharacter.sheet.abilityScores.setDexterity(Integer.parseInt(xpp.getAttributeValue(null,"value").trim()));
                 sCharacter.sheet.abilityScores.setDexterityMod(getMods(Integer.parseInt(sCharacter.sheet.abilityScores.getDexterity()))[0]);
                 sCharacter.sheet.abilityScores.setDexterityModHalfLevel(Integer.parseInt(sCharacter.sheet.abilityScores.getDexterityMod()) + sCharacter.sheet.details.getHalfLevel());
                 break;
             case "Intelligence":
-                sCharacter.sheet.abilityScores.setIntelligence(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                sCharacter.sheet.abilityScores.setIntelligence(Integer.parseInt(xpp.getAttributeValue(null,"value").trim()));
                 sCharacter.sheet.abilityScores.setIntelligenceMod(getMods(Integer.parseInt(sCharacter.sheet.abilityScores.getIntelligence()))[0]);
                 sCharacter.sheet.abilityScores.setIntelligenceModHalfLevel(Integer.parseInt(sCharacter.sheet.abilityScores.getIntelligenceMod()) + sCharacter.sheet.details.getHalfLevel());
                 break;
             case "Wisdom":
-                sCharacter.sheet.abilityScores.setWisdom(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                sCharacter.sheet.abilityScores.setWisdom(Integer.parseInt(xpp.getAttributeValue(null,"value").trim()));
                 sCharacter.sheet.abilityScores.setWisdomMod(getMods(Integer.parseInt(sCharacter.sheet.abilityScores.getWisdom()))[0]);
                 sCharacter.sheet.abilityScores.setWisdomModHalfLevel(Integer.parseInt(sCharacter.sheet.abilityScores.getWisdomMod()) + sCharacter.sheet.details.getHalfLevel());
                 break;
             case "Charisma":
-                sCharacter.sheet.abilityScores.setCharisma(Integer.parseInt(xpp.getAttributeValue(1).trim()));
+                sCharacter.sheet.abilityScores.setCharisma(Integer.parseInt(xpp.getAttributeValue(null,"value").trim()));
                 sCharacter.sheet.abilityScores.setCharismaMod(getMods(Integer.parseInt(sCharacter.sheet.abilityScores.getCharisma()))[0]);
                 sCharacter.sheet.abilityScores.setCharismaModHalfLevel(Integer.parseInt(sCharacter.sheet.abilityScores.getCharismaMod()) + sCharacter.sheet.details.getHalfLevel());
                 break;
@@ -703,42 +703,42 @@ public class MainActivity extends AppCompatActivity {
                     statName = "Reflex";
                 if (statName.equals("Will Defense"))
                     statName = "Will";
-                sCharacter.sheet.stats.put(statName,xpp.getAttributeValue(1).trim());
+                sCharacter.sheet.stats.put(statName,xpp.getAttributeValue(null,"value").trim());
         }
     }
 
     private void RuleParse(XmlPullParser xpp, D20Character character) {
-        String tagType = xpp.getAttributeValue(1);
+        String tagType = xpp.getAttributeValue(null,"type");
 
         switch (tagType) {
             case "Alignment":
-                sCharacter.sheet.details.setAlignment(xpp.getAttributeValue(0).trim());
+                sCharacter.sheet.details.setAlignment(xpp.getAttributeValue(null,"name").trim());
                 break;
             case "Gender":
-                sCharacter.sheet.details.setGender(xpp.getAttributeValue(0));
+                sCharacter.sheet.details.setGender(xpp.getAttributeValue(null,"name"));
                 break;
             case "Class":
-                sCharacter.sheet.details.setCharClass(xpp.getAttributeValue(0).trim());
+                sCharacter.sheet.details.setCharClass(xpp.getAttributeValue(null,"name").trim());
                 break;
             case "Race":
-                sCharacter.sheet.details.setRace(xpp.getAttributeValue(0).trim());
+                sCharacter.sheet.details.setRace(xpp.getAttributeValue(null,"name").trim());
                 break;
             case "Language":
-                sCharacter.sheet.details.addLanguage(xpp.getAttributeValue(0).trim());
+                sCharacter.sheet.details.addLanguage(xpp.getAttributeValue(null,"name").trim());
                 break;
             case "Size":
-                sCharacter.sheet.details.setSize(xpp.getAttributeValue(0).trim());
+                sCharacter.sheet.details.setSize(xpp.getAttributeValue(null,"name").trim());
                 break;
             case "Vision":
-                sCharacter.sheet.details.setVision(xpp.getAttributeValue(0).trim());
+                sCharacter.sheet.details.setVision(xpp.getAttributeValue(null,"name").trim());
                 break;
             case "Role":
-                sCharacter.sheet.details.setRole(xpp.getAttributeValue(0).trim());
+                sCharacter.sheet.details.setRole(xpp.getAttributeValue(null,"name").trim());
                 break;
             case "Background":
                 this.currBackground = new Background();
                 sCharacter.sheet.background = new Background();
-                sCharacter.sheet.background.setName(xpp.getAttributeValue(0));
+                sCharacter.sheet.background.setName(xpp.getAttributeValue(null,"name"));
                 break;
             // Is item?
             case "Armor":
@@ -746,8 +746,8 @@ public class MainActivity extends AppCompatActivity {
             case "Gear":
             case "Magic Item":
                 if (this.currItem != null ) {
-                    this.currItem.setName(xpp.getAttributeValue(0).trim());
-                    this.currItem.setType(xpp.getAttributeValue(1).trim());
+                    this.currItem.setName(xpp.getAttributeValue(null,"name").trim());
+                    this.currItem.setType(xpp.getAttributeValue(null,"type").trim());
 
                     if (tagType.equals("Magic Item"))
                         this.currItem.setMagic(true);
@@ -758,7 +758,7 @@ public class MainActivity extends AppCompatActivity {
                     sCharacter.sheet.feats = new ArrayList<>();
 
                 this.currFeat = new Feat();
-                this.currFeat.setName(xpp.getAttributeValue(0).trim());
+                this.currFeat.setName(xpp.getAttributeValue(null,"name").trim());
                 break;
         }
     }
