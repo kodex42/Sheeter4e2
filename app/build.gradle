@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        Sheeter4e {
+            keyAlias 'sheeter-key'
+            keyPassword 'rwfaa0ko3748'
+            storeFile file('C:/Users/Azuris/Documents/key/Sheeter4e.jks')
+            storePassword 'rwfaa0ko3748'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -20,14 +28,14 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
-    compile group: 'commons-io', name: 'commons-io', version: '2.0.1'
+    compile 'commons-io:commons-io:2.0.1'
     compile 'com.github.wangjiegulu:RapidFloatingActionButton:1.0.3'
     compile 'com.github.wangjiegulu:AndroidInject:1.0.6'
     compile 'com.github.wangjiegulu:AndroidBucket:1.0.4'
