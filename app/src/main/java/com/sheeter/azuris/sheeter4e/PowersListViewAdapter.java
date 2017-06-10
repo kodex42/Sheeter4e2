@@ -162,6 +162,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
     }
 
     void addAll(ArrayList<Power> items) {
+        this.powerList.clear();
         this.powerList.addAll(items);
     }
 
