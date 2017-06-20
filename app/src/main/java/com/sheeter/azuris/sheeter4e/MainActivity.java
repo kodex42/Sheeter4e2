@@ -32,6 +32,7 @@ import com.sheeter.azuris.sheeter4e.Modules.Item;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 import com.sheeter.azuris.sheeter4e.Modules.Sheet;
 import com.sheeter.azuris.sheeter4e.Modules.WeaponBonus;
+import com.sheeter.azuris.sheeter4e.SQLITE.FeedReaderDbHelper;
 
 import org.apache.commons.io.input.BOMInputStream;
 import org.w3c.dom.Text;
@@ -106,6 +107,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+        /** SQLITE BLOCK **/
+        FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(this);
+        if (!mDbHelper.isDatabaseCreated())
+            mDbHelper.initDb();
+
+        HashMap items = mDbHelper.query("*");
+        items.size();
     }
 
     @Override
