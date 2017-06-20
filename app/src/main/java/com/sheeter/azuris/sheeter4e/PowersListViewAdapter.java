@@ -125,6 +125,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
         // This is to ensure the view keeps a similar state when refreshed.
         if (power.isCasted()) {
             convertView.setBackgroundColor(Color.parseColor("#88808080"));
+            convertView.setOnClickListener(null);
         }
         else {
             final View finalConvertView = convertView;
@@ -140,6 +141,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                                     Toast.makeText(context, "Casted", Toast.LENGTH_SHORT).show();
                                     finalConvertView.setBackgroundColor(Color.parseColor("#88808080"));
                                     dialogInterface.dismiss();
+                                    finalConvertView.setOnClickListener(null);
                                 }
                             })
                             .show();
@@ -160,6 +162,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
     }
 
     void addAll(ArrayList<Power> items) {
+        this.powerList.clear();
         this.powerList.addAll(items);
     }
 
