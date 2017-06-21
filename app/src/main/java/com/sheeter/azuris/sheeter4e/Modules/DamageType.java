@@ -1,5 +1,7 @@
 package com.sheeter.azuris.sheeter4e.Modules;
 
+import com.sheeter.azuris.sheeter4e.R;
+
 /**
  * Created by Azuris on 2017-06-06.
  */
@@ -18,7 +20,56 @@ public enum DamageType {
     ACID,
     PSYCHIC,
     NECROTIC,
-    RADIANT,
+    RADIANT,;
+
+    public static int getImageId(DamageType damageType) {
+        int resId = R.drawable.type_slashing_framed;
+        switch (damageType) {
+            case SLASHING:
+                resId = R.drawable.type_slashing_framed;
+                break;
+            case BLUDGEONING:
+                resId = R.drawable.type_bludgeoning_framed;
+                break;
+            case PIERCING:
+                resId = R.drawable.type_piercing_framed;
+                break;
+            case PHYSICAL:
+                resId = R.drawable.type_slashing_framed;
+                break;
+            case FORCE:
+                resId = R.drawable.type_force_framed;
+                break;
+            case FIRE:
+                resId = R.drawable.type_fire_framed;
+                break;
+            case COLD:
+                resId = R.drawable.type_cold_framed;
+                break;
+            case LIGHTNING:
+                resId = R.drawable.type_lightning_framed;
+                break;
+            case THUNDER:
+                resId = R.drawable.type_thunder_framed;
+                break;
+            case POISON:
+                resId = R.drawable.type_poison_framed;
+                break;
+            case ACID:
+                resId = R.drawable.type_acid_framed;
+                break;
+            case PSYCHIC:
+                resId = R.drawable.type_psychic_framed;
+                break;
+            case NECROTIC:
+                resId = R.drawable.type_necrotic_framed;
+                break;
+            case RADIANT:
+                resId = R.drawable.type_radiant_framed;
+                break;
+        }
+        return resId;
+    }
 }
 
 /*

@@ -2,6 +2,7 @@ package com.sheeter.azuris.sheeter4e;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -52,50 +53,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.Power_DamageType);
         DamageType damageType = power.getDamageType();
         if (damageType != null) {
-            switch (damageType) {
-                case SLASHING:
-                    imageView.setImageResource(R.drawable.type_slashing_framed);
-                    break;
-                case BLUDGEONING:
-                    imageView.setImageResource(R.drawable.type_bludgeoning_framed);
-                    break;
-                case PIERCING:
-                    imageView.setImageResource(R.drawable.type_piercing_framed);
-                    break;
-                case PHYSICAL:
-                    imageView.setImageResource(R.drawable.type_slashing_framed);
-                    break;
-                case FORCE:
-                    imageView.setImageResource(R.drawable.type_force_framed);
-                    break;
-                case FIRE:
-                    imageView.setImageResource(R.drawable.type_fire_framed);
-                    break;
-                case COLD:
-                    imageView.setImageResource(R.drawable.type_cold_framed);
-                    break;
-                case LIGHTNING:
-                    imageView.setImageResource(R.drawable.type_lightning_framed);
-                    break;
-                case THUNDER:
-                    imageView.setImageResource(R.drawable.type_thunder_framed);
-                    break;
-                case POISON:
-                    imageView.setImageResource(R.drawable.type_poison_framed);
-                    break;
-                case ACID:
-                    imageView.setImageResource(R.drawable.type_acid_framed);
-                    break;
-                case PSYCHIC:
-                    imageView.setImageResource(R.drawable.type_psychic_framed);
-                    break;
-                case NECROTIC:
-                    imageView.setImageResource(R.drawable.type_necrotic_framed);
-                    break;
-                case RADIANT:
-                    imageView.setImageResource(R.drawable.type_radiant_framed);
-                    break;
-            }
+            imageView.setImageResource(DamageType.getImageId(damageType));
         }
 
         Frequency frequency = power.getFrequency();
@@ -125,7 +83,23 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
         // This is to ensure the view keeps a similar state when refreshed.
         if (power.isCasted()) {
             convertView.setBackgroundColor(Color.parseColor("#88808080"));
-            convertView.setOnClickListener(null);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new AlertDialog.Builder(context)
+                            .setIcon(DamageType.getImageId(power.getDamageType()))
+                            .setTitle(power.getName())
+                            .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent = new Intent(context, PowerModalActivity.class);
+                                    intent.putExtra(PowerModalActivity.EXTRA_KEY_POWER_NAME, power.getName());
+                                    context.startActivity(intent);
+                                }
+                            })
+                            .show();
+                }
+            });
         }
         else {
             final View finalConvertView = convertView;
@@ -133,15 +107,40 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     new AlertDialog.Builder(context)
+                            .setIcon(DamageType.getImageId(power.getDamageType()))
                             .setTitle(power.getName())
-                            .setPositiveButton("Cast", new DialogInterface.OnClickListener() {
+                            .setNegativeButton("Cast", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     power.cast();
                                     Toast.makeText(context, "Casted", Toast.LENGTH_SHORT).show();
                                     finalConvertView.setBackgroundColor(Color.parseColor("#88808080"));
                                     dialogInterface.dismiss();
-                                    finalConvertView.setOnClickListener(null);
+                                    finalConvertView.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            new AlertDialog.Builder(context)
+                                                    .setIcon(DamageType.getImageId(power.getDamageType()))
+                                                    .setTitle(power.getName())
+                                                    .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                            Intent intent = new Intent(context, PowerModalActivity.class);
+                                                            intent.putExtra(PowerModalActivity.EXTRA_KEY_POWER_NAME, power.getName());
+                                                            context.startActivity(intent);
+                                                        }
+                                                    })
+                                                    .show();
+                                        }
+                                    });
+                                }
+                            })
+                            .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent = new Intent(context, PowerModalActivity.class);
+                                    intent.putExtra(PowerModalActivity.EXTRA_KEY_POWER_NAME, power.getName());
+                                    context.startActivity(intent);
                                 }
                             })
                             .show();
