@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         sProgressBar = (ProgressBar) findViewById(R.id.Main_Progressbar);
-        mViewPager = (ViewPager) findViewById(R.id.Main_Pager);
         mNavigationView = (BottomNavigationView) findViewById(R.id.Main_Navigation);
         mNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -11,8 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,9 +19,7 @@ import com.sheeter.azuris.sheeter4e.Modules.DamageType;
 import com.sheeter.azuris.sheeter4e.Modules.Frequency;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 
-import java.io.PipedOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Azuris on 2017-06-05.
@@ -92,8 +88,8 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                             .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(context, PowerModalActivity.class);
-                                    intent.putExtra(PowerModalActivity.EXTRA_KEY_POWER_NAME, power.getName());
+                                    Intent intent = new Intent(context, PowerSummaryActivity.class);
+                                    intent.putExtra(PowerSummaryActivity.EXTRA_KEY_POWER_INDEX, position);
                                     context.startActivity(intent);
                                 }
                             })
@@ -125,8 +121,8 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                                                     .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialogInterface, int i) {
-                                                            Intent intent = new Intent(context, PowerModalActivity.class);
-                                                            intent.putExtra(PowerModalActivity.EXTRA_KEY_POWER_NAME, power.getName());
+                                                            Intent intent = new Intent(context, PowerSummaryActivity.class);
+                                                            intent.putExtra(PowerSummaryActivity.EXTRA_KEY_POWER_INDEX, position);
                                                             context.startActivity(intent);
                                                         }
                                                     })
@@ -138,8 +134,8 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                             .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(context, PowerModalActivity.class);
-                                    intent.putExtra(PowerModalActivity.EXTRA_KEY_POWER_NAME, power.getName());
+                                    Intent intent = new Intent(context, PowerSummaryActivity.class);
+                                    intent.putExtra(PowerSummaryActivity.EXTRA_KEY_POWER_INDEX, position);
                                     context.startActivity(intent);
                                 }
                             })
