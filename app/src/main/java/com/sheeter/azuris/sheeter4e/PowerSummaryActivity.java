@@ -82,7 +82,7 @@ public class PowerSummaryActivity extends AppCompatActivity {
             fragments = new Fragment[mPowers.size()];
 
             for (int i = 0; i < mPowers.size(); i++) {
-                fragments[i] = new SummaryFragment(mPowers.get(i));
+                fragments[i] = new PowerSummaryFragment(mPowers.get(i));
             }
         }
 

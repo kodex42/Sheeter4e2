@@ -20,10 +20,10 @@ import java.util.ArrayList;
  * Created by Azuris on 2017-06-21.
  */
 
-public class SummaryFragment extends Fragment {
+public class PowerSummaryFragment extends Fragment {
     private Power mPower;
 
-    SummaryFragment(Power power) {
+    PowerSummaryFragment(Power power) {
         super();
         mPower = power;
     }
