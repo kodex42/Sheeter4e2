@@ -83,6 +83,8 @@ public class Power {
                 return ActionType.INTERRUPT;
             case "Immediate Reaction":
                 return ActionType.REACTION;
+            case "Free Action":
+                return ActionType.FREE;
             default:
                 return null;
         }

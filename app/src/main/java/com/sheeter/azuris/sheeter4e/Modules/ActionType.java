@@ -8,5 +8,6 @@ public enum ActionType {
     STANDARD,
     INTERRUPT,
     MINOR,
-    REACTION
+    REACTION,
+    FREE
 }
