@@ -85,6 +85,8 @@ public class Power {
                 return ActionType.REACTION;
             case "Free Action":
                 return ActionType.FREE;
+            case "No Action":
+                return ActionType.PASSIVE;
             default:
                 return null;
         }

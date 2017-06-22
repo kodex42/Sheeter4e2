@@ -9,5 +9,6 @@ public enum ActionType {
     INTERRUPT,
     MINOR,
     REACTION,
-    FREE
+    FREE,
+    PASSIVE
 }
