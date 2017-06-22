@@ -32,6 +32,7 @@ import com.sheeter.azuris.sheeter4e.Modules.Item;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 import com.sheeter.azuris.sheeter4e.Modules.Sheet;
 import com.sheeter.azuris.sheeter4e.Modules.WeaponBonus;
+import com.sheeter.azuris.sheeter4e.SQLITE.FeedReaderDbHelper;
 
 import org.apache.commons.io.input.BOMInputStream;
 import org.w3c.dom.Text;
@@ -71,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         sProgressBar = (ProgressBar) findViewById(R.id.Main_Progressbar);
-        mViewPager = (ViewPager) findViewById(R.id.Main_Pager);
         mNavigationView = (BottomNavigationView) findViewById(R.id.Main_Navigation);
         mNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -106,6 +106,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+        /** SQLITE BLOCK **/
+        FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(this);
+        if (!mDbHelper.isDatabaseCreated())
+            mDbHelper.initDb();
+
+        HashMap items = mDbHelper.query("*");
+        items.size();
     }
 
     @Override
@@ -175,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                        dialog.cancel();
                     }
                 })
                 .setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {

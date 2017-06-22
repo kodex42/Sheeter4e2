@@ -10,5 +10,32 @@ public enum ActionType {
     MINOR,
     REACTION,
     FREE,
-    PASSIVE
+    PASSIVE;
+
+    public static String getRaw(ActionType actionType) {
+        String action = "N/A";
+        if (actionType != null) {
+            switch (actionType) {
+                case STANDARD:
+                    action = "Standard";
+                    break;
+                case INTERRUPT:
+                    action = "Interrupt";
+                    break;
+                case MINOR:
+                    action = "Minor";
+                    break;
+                case REACTION:
+                    action = "Reaction";
+                    break;
+                case FREE:
+                    action = "Free";
+                    break;
+                case PASSIVE:
+                    action = "Passive";
+                    break;
+            }
+        }
+        return action;
+    }
 }

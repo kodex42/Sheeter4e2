@@ -9,4 +9,5 @@
     <color name="encounterPowerPressed">#590000</color>
     <color name="dailyPower">#808080</color>
     <color name="dailyPowerPressed">#4f4f4f</color>
+    <color name="black">#000000</color>
 </resources>
