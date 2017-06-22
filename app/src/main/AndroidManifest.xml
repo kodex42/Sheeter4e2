@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PowerModalActivity"
+            android:name=".PowerSummaryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
