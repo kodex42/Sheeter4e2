@@ -5,14 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/black"
     android:orientation="vertical"
-    android:id="@+id/PowerModalActivity_LinearLayout_Background" >
+    android:id="@+id/PowerModalActivity_LinearLayout_Background"
+    android:paddingBottom="40dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:background="@android:color/white"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <LinearLayout
             android:id="@+id/PowerModalActivity_LinearLayout_PowerNameBackground"
@@ -20,8 +21,8 @@
             android:layout_height="75dp"
             android:background="@android:color/black"
             android:orientation="horizontal"
-            android:weightSum="10"
-            android:paddingBottom="5dp">
+            android:paddingBottom="5dp"
+            android:weightSum="10">
 
             <ImageView
                 android:id="@+id/PowerModalActivity_ImageView_DamageType"
@@ -47,45 +48,316 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="90dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Frequency:"
-                android:paddingLeft="5dp"
-                android:textColor="@color/black" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/PowerModalActivity_TextView_Frequency"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textStyle="italic" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/PowerModalActivity_TextView_Desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/summary_gradient"
+                    android:fontFamily="serif"
+                    android:padding="5dp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris bibendum placerat iaculis. Suspendisse a sollicitudin purus. Nunc quis lobortis ligula. In ut sollicitudin ligula. Aenean lectus felis, euismod vitae dolor."
+                    android:textColor="@color/black"
+                    android:textStyle="italic" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:text="Action Type:"
-                android:paddingLeft="5dp"
-                android:textColor="@color/black" />
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Frequency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lorem"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/PowerModalActivity_TextView_ActionType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textStyle="italic" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="✦"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_UsedWith"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lorem, Ipsum, Dolor"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_ActionType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:text="Lorem Ipsum"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Range"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:text="Lorum Ipsum"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Target"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/target_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Requirements"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/requirements_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Trigger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trigger_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Attack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/attack_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Weapon_Bonus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weapon_bonuses_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/summary_gradient"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Hit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hit_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_MissEffect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/miss_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/summary_gradient"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Effect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/effect_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_SecondaryTarget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/secondary_target_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/summary_gradient"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_SecondaryAttack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/secondary_attack_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_SecondaryHit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/secondary_hit_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_TertiaryTarget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tertiary_target_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/summary_gradient"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_TertiaryAttack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tertiary_attack_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_TertiaryHit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tertiary_hit_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/summary_gradient"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_SustainAction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sustain_minor_lorem_ipsum"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 </LinearLayout>
