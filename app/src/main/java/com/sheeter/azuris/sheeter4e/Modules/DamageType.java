@@ -22,7 +22,7 @@ public enum DamageType {
     NECROTIC,
     RADIANT,;
 
-    public static int getImageId(DamageType damageType) {
+    public static int getImageId(DamageType damageType, boolean hasDamage) {
         int resId = R.drawable.type_slashing_framed;
         switch (damageType) {
             case SLASHING:
@@ -35,7 +35,10 @@ public enum DamageType {
                 resId = R.drawable.type_piercing_framed;
                 break;
             case PHYSICAL:
-                resId = R.drawable.type_slashing_framed;
+                if (hasDamage)
+                    resId = R.drawable.type_physical_framed;
+                else
+                    resId = R.drawable.type_utility_framed;
                 break;
             case FORCE:
                 resId = R.drawable.type_force_framed;
