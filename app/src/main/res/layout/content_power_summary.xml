@@ -66,7 +66,8 @@
                     android:padding="5dp"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris bibendum placerat iaculis. Suspendisse a sollicitudin purus. Nunc quis lobortis ligula. In ut sollicitudin ligula. Aenean lectus felis, euismod vitae dolor."
                     android:textColor="@color/black"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -93,12 +94,14 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/PowerModalActivity_TextView_UsedWith"
+                        android:id="@+id/PowerModalActivity_TextView_ActionType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lorem, Ipsum, Dolor"
+                        android:layout_weight="1"
+                        android:text="Lorem Ipsum"
                         android:textColor="@android:color/black"
                         android:textStyle="bold" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -108,15 +111,6 @@
                     android:layout_marginRight="10dp"
                     android:orientation="horizontal"
                     android:weightSum="10">
-
-                    <TextView
-                        android:id="@+id/PowerModalActivity_TextView_ActionType"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:text="Lorem Ipsum"
-                        android:textColor="@android:color/black"
-                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_Range"
@@ -133,14 +127,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_Target"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/target_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -148,14 +144,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_Requirements"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/requirements_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -163,14 +161,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_Trigger"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/trigger_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -178,14 +178,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_Attack"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/attack_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -193,14 +195,34 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="25dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_Weapon_Bonus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/weapon_bonuses_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/summary_gradient"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_Damage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/damage_lorem_ipsum"
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -209,14 +231,16 @@
                     android:background="@drawable/summary_gradient"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_Hit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hit_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -224,14 +248,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_MissEffect"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/miss_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -240,14 +266,34 @@
                     android:background="@drawable/summary_gradient"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_Effect"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/effect_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/summary_gradient"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_SpecialEffect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/special_effect_lorem_ipsum"
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -255,14 +301,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_SecondaryTarget"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/secondary_target_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -271,14 +319,16 @@
                     android:background="@drawable/summary_gradient"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_SecondaryAttack"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/secondary_attack_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -286,14 +336,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_SecondaryHit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/secondary_hit_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -301,14 +353,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_TertiaryTarget"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tertiary_target_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -317,14 +371,16 @@
                     android:background="@drawable/summary_gradient"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_TertiaryAttack"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tertiary_attack_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -332,14 +388,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_TertiaryHit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tertiary_hit_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -348,14 +406,50 @@
                     android:background="@drawable/summary_gradient"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/PowerModalActivity_TextView_SustainAction"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/sustain_minor_lorem_ipsum"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_DamageIncreaseAt11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/damage_increase_at_11_lorem_ipsum"
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/PowerModalActivity_TextView_DamageIncreaseAt21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/damage_increase_at_21_lorem_ipsum"
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.sheeter.azuris.sheeter4e.Modules.Power;
+import com.sheeter.azuris.sheeter4e.SQLITE.Column;
+import com.sheeter.azuris.sheeter4e.SQLITE.FeedReaderContract;
 
 import java.util.ArrayList;
 
@@ -38,6 +40,84 @@ public class PowerSummaryActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mPowers = MainActivity.sCharacter.sheet.getPowers();
+
+        // TODO: Fix issues with certain powers not in database
+        for (Power power : mPowers) {
+            ArrayList powerMaps = MainActivity.sDbHelper.query(power.getName());
+            if (powerMaps.size() > 0) {
+                for (Object obj : powerMaps) {
+                    Column column = (Column) obj;
+
+                    switch (column.getColumnName()) {
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_NAME:
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_REQUIREMENT:
+                            power.setRequirement(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_TRIGGER:
+                            power.setTrigger(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_SUSTAIN_ACTION:
+                            power.setSustainAction(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_WEAPON_BONUS:
+                            power.setWeaponBonus(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_PRIMARY_TARGET:
+                            power.setPrimaryTarget(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_SECONDARY_TARGET:
+                            power.setSecondaryTarget(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_SECONDARY_ATTACK:
+                            power.setSecondaryAttack(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_SECONDARY_HIT:
+                            power.setSecondaryHit(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_TERTIARY_TARGET:
+                            power.setTertiaryTarget(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_TERTIARY_ATTACK:
+                            power.setTertiaryAttack(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_TERTIARY_HIT:
+                            power.setTertiaryHit(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_RANGE:
+                            power.setRange(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_HIT_EFFECTS:
+                            power.setHitEffects(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_MISS_EFFECTS:
+                            power.setMissEffects(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_EFFECTS:
+                            power.setEffects(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_SPECIAL_EFFECTS:
+                            power.setSpecialEffects(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_DAMAGE_INCREASE_AT_11:
+                            power.setDamageIncreaseAt11(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_DAMAGE_INCREASE_AT_21:
+                            power.setDamageIncreaseAt21(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_PARAGON:
+                            power.setParagon(column.getValue());
+                            break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_DESCRIPTION:
+                            power.setDescription(column.getValue());
+                            break;
+                    }
+
+                    power.setWasQueried(true);
+                }
+            }
+        }
+
         mPowerIndex = getIntent().getExtras().getInt(EXTRA_KEY_POWER_INDEX);
 
         // ViewPager and its adapters use support library
