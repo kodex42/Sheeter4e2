@@ -19,6 +19,8 @@ import com.sheeter.azuris.sheeter4e.Modules.Frequency;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 import com.sheeter.azuris.sheeter4e.Modules.WeaponBonus;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -76,14 +78,18 @@ public class PowerSummaryFragment extends Fragment {
 
         // Data
         ((TextView)root.findViewById(R.id.PowerModalActivity_TextView_PowerName)).setText(mPower.getName());
-        ((ImageView)root.findViewById(R.id.PowerModalActivity_ImageView_DamageType)).setImageResource(DamageType.getImageId(mPower.getDamageType(), mPower.getWeaponBonuses().size() > 0));
+        ((ImageView)root.findViewById(R.id.PowerModalActivity_ImageView_DamageType)).setImageResource(DamageType.getImageId(mPower.getDamageType(), mPower.getWeaponBonuses()));
         ((TextView)root.findViewById(R.id.PowerModalActivity_TextView_ActionType)).setText(ActionType.getRaw(mPower.getActionType()));
         ((TextView)root.findViewById(R.id.PowerModalActivity_TextView_Frequency)).setText(Frequency.getRaw(mPower.getFrequency()));
 
         if (mPower.getWeaponBonuses().size() > 0) {
             TextView damage = (TextView) root.findViewById(R.id.PowerModalActivity_TextView_Damage);
-            if (!getBestDamage(mPower.getWeaponBonuses()).equals("")) {
-                damage.setText(bold("Damage: ", getBestDamage(mPower.getWeaponBonuses())));
+            TextView attack = (TextView) root.findViewById(R.id.PowerModalActivity_TextView_Attack);
+            WeaponBonus bestDamage = getBestDamage(mPower.getWeaponBonuses());
+            if (bestDamage != null && !bestDamage.getDamage().equals("")) {
+                attack.setText(bold("Attack: ",getHitChance(bestDamage) + "\n\t[equip: " + bestDamage.getWeaponName() + "]"));
+                attack.setVisibility(View.VISIBLE);
+                damage.setText(bold("Damage: ", bestDamage.getDamage()));
                 damage.setVisibility(View.VISIBLE);
             }
         }
@@ -188,17 +194,41 @@ public class PowerSummaryFragment extends Fragment {
         }
     }
 
-    private String getBestDamage(ArrayList<WeaponBonus> weaponBonuses) {
-        String bestDamage = "";
+    private String getHitChance(WeaponBonus weaponBonus) {
+        String attackStat = weaponBonus.getAttackStat();
+        String defenseStat = weaponBonus.getDefense();
+        String hitComponents = weaponBonus.getHitComponents();
+        int attackTotal = 0;
+
+        if (hitComponents.length() > 0) {
+            String[] components = hitComponents.split("\n");
+            for (String component : components) {
+                int additive = Integer.parseInt(component.split(" ")[0]);
+                attackTotal += additive;
+            }
+        }
+
+        if (attackTotal != 0)
+            if (attackTotal > 0)
+                attackStat = attackStat.concat(" + " + attackTotal);
+            else
+                attackStat = attackStat.concat(" - " + attackTotal);
+
+        return attackStat + " vs. " + defenseStat;
+    }
+
+    public static WeaponBonus getBestDamage(ArrayList<WeaponBonus> weaponBonuses) {
+        WeaponBonus bestDamage = new WeaponBonus();
+        bestDamage.setDamage("");
         for (WeaponBonus bonus : weaponBonuses) {
-            if (damageTotal(bestDamage) < damageTotal(bonus.getDamage())) {
-                bestDamage = bonus.getDamage();
+            if (damageTotal(bestDamage.getDamage()) < damageTotal(bonus.getDamage())) {
+                bestDamage = bonus;
             }
         }
         return bestDamage;
     }
 
-    private int damageTotal(String damage) {
+    private static int damageTotal(String damage) {
         int total = 0;
         if (!damage.equals("")) {
             if (damage.contains("+")) {

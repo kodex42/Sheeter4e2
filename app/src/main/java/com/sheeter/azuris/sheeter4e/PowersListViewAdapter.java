@@ -49,7 +49,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.Power_DamageType);
         DamageType damageType = power.getDamageType();
         if (damageType != null) {
-            imageView.setImageResource(DamageType.getImageId(damageType, power.getWeaponBonuses().size() > 0));
+            imageView.setImageResource(DamageType.getImageId(damageType, power.getWeaponBonuses()));
         }
 
         Frequency frequency = power.getFrequency();
@@ -83,7 +83,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     new AlertDialog.Builder(context)
-                            .setIcon(DamageType.getImageId(power.getDamageType(), power.getWeaponBonuses().size() > 0))
+                            .setIcon(DamageType.getImageId(power.getDamageType(), power.getWeaponBonuses()))
                             .setTitle(power.getName())
                             .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
                                 @Override
@@ -103,7 +103,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     new AlertDialog.Builder(context)
-                            .setIcon(DamageType.getImageId(power.getDamageType(), power.getWeaponBonuses().size() > 0))
+                            .setIcon(DamageType.getImageId(power.getDamageType(), power.getWeaponBonuses()))
                             .setTitle(power.getName())
                             .setNegativeButton("Cast", new DialogInterface.OnClickListener() {
                                 @Override
@@ -116,7 +116,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                                         @Override
                                         public void onClick(View view) {
                                             new AlertDialog.Builder(context)
-                                                    .setIcon(DamageType.getImageId(power.getDamageType(), power.getWeaponBonuses().size() > 0))
+                                                    .setIcon(DamageType.getImageId(power.getDamageType(), power.getWeaponBonuses()))
                                                     .setTitle(power.getName())
                                                     .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
                                                         @Override
