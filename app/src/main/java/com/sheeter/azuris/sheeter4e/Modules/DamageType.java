@@ -1,6 +1,9 @@
 package com.sheeter.azuris.sheeter4e.Modules;
 
+import com.sheeter.azuris.sheeter4e.PowerSummaryFragment;
 import com.sheeter.azuris.sheeter4e.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by Azuris on 2017-06-06.
@@ -22,7 +25,7 @@ public enum DamageType {
     NECROTIC,
     RADIANT,;
 
-    public static int getImageId(DamageType damageType, boolean hasDamage) {
+    public static int getImageId(DamageType damageType, ArrayList<WeaponBonus> weaponBonuses) {
         int resId = R.drawable.type_slashing_framed;
         switch (damageType) {
             case SLASHING:
@@ -35,10 +38,16 @@ public enum DamageType {
                 resId = R.drawable.type_piercing_framed;
                 break;
             case PHYSICAL:
-                if (hasDamage)
-                    resId = R.drawable.type_physical_framed;
-                else
+                if (weaponBonuses.size() == 0) {
                     resId = R.drawable.type_utility_framed;
+                    break;
+                } else {
+                    WeaponBonus bestDamage = PowerSummaryFragment.getBestDamage(weaponBonuses);
+                    if (bestDamage.getDamage().equals(""))
+                        resId = R.drawable.type_utility_framed;
+                    else
+                        resId = R.drawable.type_physical_framed;
+                }
                 break;
             case FORCE:
                 resId = R.drawable.type_force_framed;
