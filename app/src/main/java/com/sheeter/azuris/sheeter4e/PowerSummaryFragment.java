@@ -1,5 +1,6 @@
 package com.sheeter.azuris.sheeter4e;
 
+import android.annotation.SuppressLint;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
  * Created by Azuris on 2017-06-21.
  */
 
+@SuppressLint("ValidFragment")
 public class PowerSummaryFragment extends Fragment {
     private Power mPower;
 
