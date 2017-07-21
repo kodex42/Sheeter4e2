@@ -26,4 +26,5 @@
     <string name="tertiary_hit_lorem_ipsum"><b>Tertiary Hit:</b> 1[W] + Lorem ipsum</string>
     <string name="damage_increase_at_11_lorem_ipsum"><b>Lvl 11: Inc Damage To:</b> 2[W] + Lorem ipsum</string>
     <string name="damage_increase_at_21_lorem_ipsum"><b>Lvl 21, Inc Damage To:</b> 2[W] + Lorem ipsum</string>
+    <string name="menu_equipment">View Equipment</string>
 </resources>

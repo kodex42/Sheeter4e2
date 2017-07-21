@@ -76,4 +76,8 @@ public class Sheet {
                         return bonus;
         return null;
     }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
 }

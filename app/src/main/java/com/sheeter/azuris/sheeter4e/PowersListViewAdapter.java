@@ -40,8 +40,10 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         final Power power = this.powerList.get(position);
 
-        LayoutInflater inflater = LayoutInflater.from(context);
-        convertView = inflater.inflate(R.layout.power_row, null);
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.power_row, null);
+        }
 
         ((TextView) convertView.findViewById(R.id.Power_Name)).setText(power.getName());
 

@@ -31,5 +31,6 @@ public final class FeedReaderContract {
         public static final String COLUMN_NAME_DAMAGE_INCREASE_AT_21 = "DamageIncreaseAt21";
         public static final String COLUMN_NAME_PARAGON = "Paragon";
         public static final String COLUMN_NAME_DESCRIPTION = "Description";
+        public static final String COLUMN_NAME_PREREQUISITES = "Prerequisites";
     }
 }

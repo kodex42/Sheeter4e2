@@ -6,6 +6,7 @@ package com.sheeter.azuris.sheeter4e.Modules;
 
 public class Item {
     private String name;
+    private String nickName;
     private int quantity;
     private Boolean equipped;
     private ItemType type;
@@ -30,7 +31,7 @@ public class Item {
     }
 
     public String getName() {
-        return name;
+        return nickName == null ? name : nickName;
     }
 
     public void setName(String name) {
@@ -64,6 +65,8 @@ public class Item {
             case "Gear":
                 this.type = ItemType.GEAR;
                 break;
+            default:
+                this.type = ItemType.GEAR;
         }
     }
 
@@ -73,5 +76,13 @@ public class Item {
 
     public void setMagic(Boolean magic) {
         isMagic = magic;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 }

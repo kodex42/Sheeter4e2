@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
-    private static final String[] availableClasses = {"cleric", "fighter"};
+    private static final String[] availableClasses = {"cleric", "fighter", "ranger", "rogue"};
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + FeedReaderContract.FeedEntry.TABLE_NAME + " (" +
                     FeedReaderContract.FeedEntry._ID + " INTEGER PRIMARY KEY," +
@@ -37,7 +37,8 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
                     FeedReaderContract.FeedEntry.COLUMN_NAME_DAMAGE_INCREASE_AT_11 + " TEXT," +
                     FeedReaderContract.FeedEntry.COLUMN_NAME_DAMAGE_INCREASE_AT_21 + " TEXT," +
                     FeedReaderContract.FeedEntry.COLUMN_NAME_PARAGON + " TEXT," +
-                    FeedReaderContract.FeedEntry.COLUMN_NAME_DESCRIPTION + " TEXT)";
+                    FeedReaderContract.FeedEntry.COLUMN_NAME_DESCRIPTION + " TEXT," +
+                    FeedReaderContract.FeedEntry.COLUMN_NAME_PREREQUISITES + " TEXT)";
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + FeedReaderContract.FeedEntry.TABLE_NAME;
 
@@ -96,7 +97,8 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
                 FeedReaderContract.FeedEntry.COLUMN_NAME_DAMAGE_INCREASE_AT_11,
                 FeedReaderContract.FeedEntry.COLUMN_NAME_DAMAGE_INCREASE_AT_21,
                 FeedReaderContract.FeedEntry.COLUMN_NAME_PARAGON,
-                FeedReaderContract.FeedEntry.COLUMN_NAME_DESCRIPTION
+                FeedReaderContract.FeedEntry.COLUMN_NAME_DESCRIPTION,
+                FeedReaderContract.FeedEntry.COLUMN_NAME_PREREQUISITES
         };
 
         // Filter results WHERE "title" = 'My Title'
@@ -140,6 +142,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
             items.add(new Column(FeedReaderContract.FeedEntry.COLUMN_NAME_DAMAGE_INCREASE_AT_21, cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_DAMAGE_INCREASE_AT_21))));
             items.add(new Column(FeedReaderContract.FeedEntry.COLUMN_NAME_PARAGON, cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_PARAGON))));
             items.add(new Column(FeedReaderContract.FeedEntry.COLUMN_NAME_DESCRIPTION, cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_DESCRIPTION))));
+            items.add(new Column(FeedReaderContract.FeedEntry.COLUMN_NAME_PREREQUISITES, cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_PREREQUISITES))));
         }
         cursor.close();
 
@@ -193,6 +196,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
                         values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_DAMAGE_INCREASE_AT_21, attr[18].replaceAll("%", ","));
                         values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_DESCRIPTION, attr[19].replaceAll("%", ","));
                         values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_PARAGON, paragon.replaceAll("%", ","));
+                        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_PREREQUISITES, attr[20].replaceAll("%", ","));
 
                         // Insert the new row, returning the primary key value of the new row
                         long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);

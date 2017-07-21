@@ -3,6 +3,7 @@ package com.sheeter.azuris.sheeter4e.Modules;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Azuris on 2017-06-05.
@@ -34,11 +35,14 @@ public class Power {
     private Frequency frequency;
     private ActionType actionType;
     private ArrayList<WeaponBonus> weaponBonuses;
+    private ArrayList<String> prerequisites;
     private DamageType damageType;
     private boolean casted;
+    private int requiredLevel;
 
     public Power() {
         this.weaponBonuses = new ArrayList<>();
+        this.prerequisites = new ArrayList<>();
         this.casted = false;
     }
 
@@ -350,5 +354,12 @@ public class Power {
 
     public boolean isCasted() {
         return casted;
+    }
+
+    public void setPrerequisite(String prerequisite) {
+        String[] prereqs = prerequisite.split("&");
+        this.requiredLevel = Integer.parseInt(prereqs[0].replaceFirst("Lvl ", ""));
+        if (prereqs.length > 1)
+            this.prerequisites.addAll(Arrays.asList(prereqs).subList(1, prereqs.length));
     }
 }
