@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.sheeter.azuris.sheeter4e.Modules.ActionType;
 import com.sheeter.azuris.sheeter4e.Modules.DamageType;
 import com.sheeter.azuris.sheeter4e.Modules.Frequency;
+import com.sheeter.azuris.sheeter4e.Modules.Item;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 import com.sheeter.azuris.sheeter4e.Modules.WeaponBonus;
 
@@ -82,16 +83,24 @@ public class PowerSummaryFragment extends Fragment {
         ((TextView)root.findViewById(R.id.PowerModalActivity_TextView_ActionType)).setText(ActionType.getRaw(mPower.getActionType()));
         ((TextView)root.findViewById(R.id.PowerModalActivity_TextView_Frequency)).setText(Frequency.getRaw(mPower.getFrequency()));
 
-        if (mPower.getWeaponBonuses().size() > 0) {
-            TextView damage = (TextView) root.findViewById(R.id.PowerModalActivity_TextView_Damage);
+        ArrayList<WeaponBonus> weapons = mPower.getWeaponBonuses();
+        if (weapons.size() > 0) {
             TextView attack = (TextView) root.findViewById(R.id.PowerModalActivity_TextView_Attack);
-            WeaponBonus bestDamage = getBestDamage(mPower.getWeaponBonuses());
-            if (bestDamage != null && !bestDamage.getDamage().equals("")) {
-                attack.setText(bold("Attack: ",getHitChance(bestDamage) + "\n\t[equip: " + bestDamage.getWeaponName() + "]"));
-                attack.setVisibility(View.VISIBLE);
-                damage.setText(bold("Damage: ", bestDamage.getDamage()));
-                damage.setVisibility(View.VISIBLE);
+            String possibleWeapons = "";
+            String atk = "";
+            String def = "";
+            for (WeaponBonus weapon : weapons) {
+                if (isEquiped(weapon)) {
+                    possibleWeapons = possibleWeapons.concat("\n\nEquip: " + weapon.getWeaponName() + "\nAttack: " + getHitChance(weapon) + "\nDamage: " + weapon.getDamage());
+                    atk = atk.contains(weapon.getAttackStat()) ? atk : atk.concat(" or " + weapon.getAttackStat());
+                    def = weapon.getDefense();
+                }
             }
+            if (atk.startsWith(" or "))
+                atk = atk.substring(3);
+
+            attack.setText(bold("Attack: ", atk + " vs. " + def + possibleWeapons + "\n"));
+            attack.setVisibility(View.VISIBLE);
         }
 
         if (mPower.wasQueried()) {
@@ -164,7 +173,11 @@ public class PowerSummaryFragment extends Fragment {
                 range.setVisibility(View.VISIBLE);
             }
             if (!mPower.getHitEffects().equals("null")) {
-                hit.setText(bold("Hit Effect: ", mPower.getHitEffects()));
+                WeaponBonus bestDamage = getBestDamage(mPower.getWeaponBonuses());
+                if (bestDamage != null && !bestDamage.getDamage().equals(""))
+                    hit.setText(bold("Hit: ", bestDamage.getDamage() + ", and " + mPower.getHitEffects().substring(0, 1).toUpperCase() + mPower.getHitEffects().substring(1)));
+                else
+                    hit.setText(bold("Hit: ", mPower.getHitEffects()));
                 hit.setVisibility(View.VISIBLE);
             }
             if (!mPower.getMissEffects().equals("null")) {
@@ -194,9 +207,12 @@ public class PowerSummaryFragment extends Fragment {
         }
     }
 
+    private boolean isEquiped(WeaponBonus weapon) {
+        return true;
+    }
+
     private String getHitChance(WeaponBonus weaponBonus) {
         String attackStat = weaponBonus.getAttackStat();
-        String defenseStat = weaponBonus.getDefense();
         String hitComponents = weaponBonus.getHitComponents();
         int attackTotal = 0;
 
@@ -214,7 +230,7 @@ public class PowerSummaryFragment extends Fragment {
             else
                 attackStat = attackStat.concat(" - " + attackTotal);
 
-        return attackStat + " vs. " + defenseStat;
+        return attackStat;
     }
 
     public static WeaponBonus getBestDamage(ArrayList<WeaponBonus> weaponBonuses) {
@@ -236,10 +252,9 @@ public class PowerSummaryFragment extends Fragment {
                 String[] dice = temp[0].split("d");
                 total = Integer.parseInt(dice[0]) * Integer.parseInt(dice[1]);
 
-                if (temp.length > 1) {
-                    String additive = temp[1];
-                    total += Integer.parseInt(additive);
-                }
+                if (temp.length > 1)
+                    for (int i = 1; i < temp.length; i++)
+                        total += Integer.parseInt(temp[i]);
             }
             else if (damage.contains("-")) {
                 String[] temp = damage.split("\\-");

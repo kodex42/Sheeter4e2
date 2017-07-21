@@ -4,7 +4,12 @@
     tools:context="com.sheeter.azuris.sheeter4e.MainActivity">
     <item
         android:id="@+id/action_add"
-        android:orderInCategory="100"
+        android:orderInCategory="0"
         android:title="@string/menu_add"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_equipment"
+        android:orderInCategory="1"
+        android:title="@string/menu_equipment"
         app:showAsAction="always" />
 </menu>

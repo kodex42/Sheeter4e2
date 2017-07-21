@@ -1,6 +1,7 @@
 package com.sheeter.azuris.sheeter4e;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -19,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -152,8 +154,30 @@ public class MainActivity extends AppCompatActivity {
                 resetFields();
                 checkFilePerms();
                 return true;
+            case R.id.action_equipment:
+                changeEquipment();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void changeEquipment() {
+        if (sCharacter == null) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Character Sheet Needed")
+                    .setMessage("A selected character sheet is required to use this feature.")
+                    .setCancelable(true)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    }).show();
+        }
+        else {
+            Intent intent = new Intent(this, EquipmentActivity.class);
+            startActivity(intent);
         }
     }
 

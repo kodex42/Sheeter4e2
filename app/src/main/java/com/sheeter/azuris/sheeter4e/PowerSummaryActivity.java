@@ -111,6 +111,9 @@ public class PowerSummaryActivity extends AppCompatActivity {
                         case FeedReaderContract.FeedEntry.COLUMN_NAME_DESCRIPTION:
                             power.setDescription(column.getValue());
                             break;
+                        case FeedReaderContract.FeedEntry.COLUMN_NAME_PREREQUISITES:
+                            power.setPrerequisite(column.getValue());
+                            break;
                     }
 
                     power.setWasQueried(true);

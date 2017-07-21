@@ -24,6 +24,9 @@
         <activity
             android:name=".PowerSummaryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EquipmentActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
