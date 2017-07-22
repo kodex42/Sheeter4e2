@@ -7,4 +7,24 @@
     <string name="main_character_name">Character Name</string>
     <string name="main_character_level">Level</string>
     <string name="Menu_Item_Home">Home</string>
+    <string name="target_lorem_ipsum"><b>Target:</b> Lorem ipsum</string>
+    <string name="requirements_lorem_ipsum"><b>Requirements:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="trigger_lorem_ipsum"><b>Trigger:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="attack_lorem_ipsum"><b>Attack:</b> Lorem vs. Ipsum</string>
+    <string name="weapon_bonuses_lorem_ipsum"><b>Weapon Bonuses:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis eleifend enim vitae venenatis. Nulla.</string>
+    <string name="damage_lorem_ipsum"><b>Damage:</b> 1[W] + Lorem ipsum</string>
+    <string name="hit_lorem_ipsum"><b>Hit:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, diam vitae feugiat mollis, eros.</string>
+    <string name="miss_lorem_ipsum"><b>Miss:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, diam vitae feugiat mollis, eros.</string>
+    <string name="effect_lorem_ipsum"><b>Effect:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, diam vitae feugiat mollis, eros.</string>
+    <string name="special_effect_lorem_ipsum"><b>Special:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, diam vitae feugiat mollis, eros.</string>
+    <string name="secondary_target_lorem_ipsum"><b>Secondary Target:</b> Lorem ipsum</string>
+    <string name="secondary_attack_lorem_ipsum"><b>Secondary Attack:</b> Lorem vs. Ipsum</string>
+    <string name="secondary_hit_lorem_ipsum"><b>Secondary Hit:</b>1[W] + Lorem ipsum</string>
+    <string name="sustain_minor_lorem_ipsum"><b>Sustain: Minor:</b> Lorem ipsum dolor sit amet.</string>
+    <string name="tertiary_target_lorem_ipsum"><b>Tertiary Target:</b> Lorem ipsum</string>
+    <string name="tertiary_attack_lorem_ipsum"><b>Tertiary Attack:</b> Lorem vs. Ipsum</string>
+    <string name="tertiary_hit_lorem_ipsum"><b>Tertiary Hit:</b> 1[W] + Lorem ipsum</string>
+    <string name="damage_increase_at_11_lorem_ipsum"><b>Lvl 11: Inc Damage To:</b> 2[W] + Lorem ipsum</string>
+    <string name="damage_increase_at_21_lorem_ipsum"><b>Lvl 21, Inc Damage To:</b> 2[W] + Lorem ipsum</string>
+    <string name="menu_equipment">View Equipment</string>
 </resources>

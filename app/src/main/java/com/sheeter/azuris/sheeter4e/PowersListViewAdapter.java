@@ -40,8 +40,10 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         final Power power = this.powerList.get(position);
 
-        LayoutInflater inflater = LayoutInflater.from(context);
-        convertView = inflater.inflate(R.layout.power_row, null);
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.power_row, null);
+        }
 
         ((TextView) convertView.findViewById(R.id.Power_Name)).setText(power.getName());
 
@@ -49,7 +51,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.Power_DamageType);
         DamageType damageType = power.getDamageType();
         if (damageType != null) {
-            imageView.setImageResource(DamageType.getImageId(damageType));
+            imageView.setImageResource(DamageType.getImageId(damageType, power.getWeaponBonuses()));
         }
 
         Frequency frequency = power.getFrequency();
@@ -83,7 +85,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     new AlertDialog.Builder(context)
-                            .setIcon(DamageType.getImageId(power.getDamageType()))
+                            .setIcon(DamageType.getImageId(power.getDamageType(), power.getWeaponBonuses()))
                             .setTitle(power.getName())
                             .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
                                 @Override
@@ -103,7 +105,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     new AlertDialog.Builder(context)
-                            .setIcon(DamageType.getImageId(power.getDamageType()))
+                            .setIcon(DamageType.getImageId(power.getDamageType(), power.getWeaponBonuses()))
                             .setTitle(power.getName())
                             .setNegativeButton("Cast", new DialogInterface.OnClickListener() {
                                 @Override
@@ -116,7 +118,7 @@ class PowersListViewAdapter extends ArrayAdapter<String> {
                                         @Override
                                         public void onClick(View view) {
                                             new AlertDialog.Builder(context)
-                                                    .setIcon(DamageType.getImageId(power.getDamageType()))
+                                                    .setIcon(DamageType.getImageId(power.getDamageType(), power.getWeaponBonuses()))
                                                     .setTitle(power.getName())
                                                     .setPositiveButton("Summary", new DialogInterface.OnClickListener() {
                                                         @Override

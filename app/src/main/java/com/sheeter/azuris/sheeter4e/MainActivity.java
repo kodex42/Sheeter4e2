@@ -1,7 +1,9 @@
 package com.sheeter.azuris.sheeter4e;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +38,6 @@ import com.sheeter.azuris.sheeter4e.Modules.WeaponBonus;
 import com.sheeter.azuris.sheeter4e.SQLITE.FeedReaderDbHelper;
 
 import org.apache.commons.io.input.BOMInputStream;
-import org.w3c.dom.Text;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -54,6 +56,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     public static D20Character sCharacter = null;
     public static ProgressBar sProgressBar;
+    public static FeedReaderDbHelper sDbHelper;
     private BottomNavigationView mNavigationView;
     private FragmentAdapter mFragmentAdapter;
     private ViewPager mViewPager;
@@ -108,12 +111,24 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         /** SQLITE BLOCK **/
-        FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(this);
-        if (!mDbHelper.isDatabaseCreated())
-            mDbHelper.initDb();
+        sProgressBar.setVisibility(View.VISIBLE);
+        AsyncTask task = new AsyncTask() {
 
-        HashMap items = mDbHelper.query("*");
-        items.size();
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                sDbHelper = new FeedReaderDbHelper(MainActivity.this);
+                sDbHelper.initDb();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                //ArrayList items = sDbHelper.query("*");
+                //items.size();
+                sProgressBar.setVisibility(View.GONE);
+            }
+        };
+        task.execute();
     }
 
     @Override
@@ -139,8 +154,30 @@ public class MainActivity extends AppCompatActivity {
                 resetFields();
                 checkFilePerms();
                 return true;
+            case R.id.action_equipment:
+                changeEquipment();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void changeEquipment() {
+        if (sCharacter == null) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Character Sheet Needed")
+                    .setMessage("A selected character sheet is required to use this feature.")
+                    .setCancelable(true)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    }).show();
+        }
+        else {
+            Intent intent = new Intent(this, EquipmentActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -626,6 +663,8 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) mainPage.findViewById(R.id.Main_Weapon_Damage_Secondary_Ranged)).setText(finalString);
                 ((TextView) mainPage.findViewById(R.id.Main_Weapon_VS_Secondary_Ranged)).setText(rangedBonuses.get(1).getDefense());
             }
+
+            //TODO: pullPowersFromDatabase();
         }
         else {
             Toast.makeText(this, "Character Parsed as Null :/", Toast.LENGTH_SHORT).show();
