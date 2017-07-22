@@ -804,8 +804,9 @@ public class MainActivity extends AppCompatActivity {
             case "Magic Item":
                 if (this.currItem != null ) {
                     this.currItem.setName(xpp.getAttributeValue(null,"name").trim());
-                    this.currItem.setType(xpp.getAttributeValue(null,"type").trim());
-
+                    if (this.currItem.getType() == null) {
+                        this.currItem.setType(xpp.getAttributeValue(null, "type").trim());
+                    }
                     if (tagType.equals("Magic Item"))
                         this.currItem.setMagic(true);
                 }
