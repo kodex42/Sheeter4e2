@@ -20,7 +20,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mNavigationView;
     private FragmentAdapter mFragmentAdapter;
     private ViewPager mViewPager;
+    private String currPossibleMagicWeaponType = "";
     private Item currItem = null;
     private Power currPower = null;
     private WeaponBonus currBonus = null;
@@ -151,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_add:
-                resetFields();
                 checkFilePerms();
                 return true;
             case R.id.action_equipment:
@@ -226,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
                 .setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        resetFields();
                         parseXMLFile(files.get(which));
                     }
                 })
@@ -803,7 +803,13 @@ public class MainActivity extends AppCompatActivity {
             case "Gear":
             case "Magic Item":
                 if (this.currItem != null ) {
-                    this.currItem.setName(xpp.getAttributeValue(null,"name").trim());
+                    if (tagType.equals("Weapon"))
+                        currPossibleMagicWeaponType = xpp.getAttributeValue(null, "name").trim();
+                    if (tagType.equals("Magic Item") && !currPossibleMagicWeaponType.equals(""))
+                        this.currItem.setName(xpp.getAttributeValue(null, "name").trim().replace("Weapon", currPossibleMagicWeaponType));
+                    else
+                        this.currItem.setName(xpp.getAttributeValue(null, "name").trim());
+
                     if (this.currItem.getType() == null) {
                         this.currItem.setType(xpp.getAttributeValue(null, "type").trim());
                     }
