@@ -2,7 +2,6 @@ package com.sheeter.azuris.sheeter4e;
 
 import android.annotation.SuppressLint;
 import android.support.v4.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -19,8 +18,6 @@ import com.sheeter.azuris.sheeter4e.Modules.Frequency;
 import com.sheeter.azuris.sheeter4e.Modules.Item;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 import com.sheeter.azuris.sheeter4e.Modules.WeaponBonus;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -86,21 +83,25 @@ public class PowerSummaryFragment extends Fragment {
         ArrayList<WeaponBonus> weapons = mPower.getWeaponBonuses();
         if (weapons.size() > 0) {
             TextView attack = (TextView) root.findViewById(R.id.PowerModalActivity_TextView_Attack);
-            String possibleWeapons = "";
+            NonScrollListView equipedWeapons = (NonScrollListView) root.findViewById(R.id.PowerModalActivity_NonScrollListView_EquipedWeapons);
             String atk = "";
             String def = "";
+            EquipedWeaponsListViewAdapter adapter = new EquipedWeaponsListViewAdapter(getContext());
             for (WeaponBonus weapon : weapons) {
                 if (isEquiped(weapon)) {
-                    possibleWeapons = possibleWeapons.concat("\n\nEquip: " + weapon.getWeaponName() + "\nAttack: " + getHitChance(weapon) + "\nDamage: " + weapon.getDamage());
+                    adapter.addItem(weapon);
                     atk = atk.contains(weapon.getAttackStat()) ? atk : atk.concat(" or " + weapon.getAttackStat());
                     def = weapon.getDefense();
                 }
             }
             if (atk.startsWith(" or "))
-                atk = atk.substring(3);
+                atk = atk.substring(4);
 
-            attack.setText(bold("Attack: ", atk + " vs. " + def + possibleWeapons + "\n"));
+            attack.setText(bold("Attack: ", atk + " vs. " + def));
             attack.setVisibility(View.VISIBLE);
+
+            equipedWeapons.setAdapter(adapter);
+            equipedWeapons.setVisibility(View.VISIBLE);
         }
 
         if (mPower.wasQueried()) {
@@ -208,29 +209,11 @@ public class PowerSummaryFragment extends Fragment {
     }
 
     private boolean isEquiped(WeaponBonus weapon) {
-        return true;
-    }
-
-    private String getHitChance(WeaponBonus weaponBonus) {
-        String attackStat = weaponBonus.getAttackStat();
-        String hitComponents = weaponBonus.getHitComponents();
-        int attackTotal = 0;
-
-        if (hitComponents.length() > 0) {
-            String[] components = hitComponents.split("\n");
-            for (String component : components) {
-                int additive = Integer.parseInt(component.split(" ")[0]);
-                attackTotal += additive;
-            }
-        }
-
-        if (attackTotal != 0)
-            if (attackTotal > 0)
-                attackStat = attackStat.concat(" + " + attackTotal);
-            else
-                attackStat = attackStat.concat(" - " + attackTotal);
-
-        return attackStat;
+        ArrayList<Item> equipped = MainActivity.sCharacter.sheet.getEquipedWeapons();
+        for (Item item : equipped)
+            if (item.getName().equals(weapon.getWeaponName()))
+                return true;
+        return false;
     }
 
     public static WeaponBonus getBestDamage(ArrayList<WeaponBonus> weaponBonuses) {
