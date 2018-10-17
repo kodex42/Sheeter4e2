@@ -87,8 +87,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // ViewPager and its adapters use support library
-        // fragments, so use getSupportFragmentManager.
+        // ViewPager and its adapters use support library fragments, so use getSupportFragmentManager.
         mFragmentAdapter =
                 new FragmentAdapter(
                         getSupportFragmentManager());
@@ -110,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        /** SQLITE BLOCK **/
+        /// SQLITE BLOCK ///
         sProgressBar.setVisibility(View.VISIBLE);
         AsyncTask task = new AsyncTask() {
 
@@ -156,6 +155,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_equipment:
                 changeEquipment();
                 return true;
+            case R.id.action_create:
+                createNewCharacter();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -178,6 +180,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, EquipmentActivity.class);
             startActivity(intent);
         }
+    }
+
+    private void createNewCharacter() {
+        Intent intent = new Intent(this, BuilderActivity.class);
+        startActivity(intent);
     }
 
     private void resetFields() {

@@ -9,12 +9,12 @@ android {
             storePassword 'rwfaa0ko3748'
         }
     }
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 28
+    buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.sheeter.azuris.sheeter4e"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 3
         versionName "1.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -32,10 +32,10 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:25.3.1'
-    compile 'commons-io:commons-io:2.0.1'
+    compile 'com.android.support:appcompat-v7:28.0.0'
+    compile 'com.android.support.constraint:constraint-layout:1.1.3'
+    compile 'com.android.support:design:28.0.0'
+    compile 'commons-io:commons-io:2.4'
     compile 'com.github.wangjiegulu:RapidFloatingActionButton:1.0.3'
     compile 'com.github.wangjiegulu:AndroidInject:1.0.6'
     compile 'com.github.wangjiegulu:AndroidBucket:1.0.4'
