@@ -14,14 +14,18 @@ def get_info(path):
 		#print(page.extractText())
 		text = page.extractText()
 		
+		i = -1
 		iterator = iter(text.splitlines())
+		lines = text.splitlines()
 		
 		for line in iterator:
+			i+= 1
+			print(str(i) + ":" + line)
 			
 			if (badRegex.match(line) != None):
 				continue
 			
-			print(line)
+			
 			
 path = 'p1.pdf'
 get_info(path)
