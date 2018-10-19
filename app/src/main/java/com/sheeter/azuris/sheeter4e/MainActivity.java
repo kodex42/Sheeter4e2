@@ -784,7 +784,7 @@ public class MainActivity extends AppCompatActivity {
             case "Class":
                 sCharacter.sheet.details.setCharClass(xpp.getAttributeValue(null,"name").trim());
                 break;
-            case "Race":
+            case "D20Race":
                 sCharacter.sheet.details.setRace(xpp.getAttributeValue(null,"name").trim());
                 break;
             case "Language":

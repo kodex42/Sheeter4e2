@@ -28,7 +28,7 @@
     <string name="damage_increase_at_21_lorem_ipsum"><b>Lvl 21, Inc Damage To:</b> 2[W] + Lorem ipsum</string>
     <string name="menu_equipment">View Equipment</string>
     <string name="menu_create_character">Create New Sheet</string>
-    <string name="summary_race_dragonborn">&lt;b>Dragonborn&lt;/b> are proud, honor-bound draconic humanoids. They wander the world as mercenaries and adventurers. They are strong and possess dragon-like abilities.</string>
+    <string name="summary_race_dragonborn">Born to fight, &lt;b>dragonborn&lt;/b> are a race of wandering mercenaries, soldiers, and adventurers. Long ago, their empire contended for worldwide dominion, but now only a few rootless clans of these honorable warriors remain to pass on their legends of ancient glory.</string>
     <string name="summary_race_dwarf">Legendary for their toughness and strong will, &lt;b>dwarves&lt;/b> are indomitable warriors and master artisans. Dwarven kingdoms are mighty mountain citadels, but clans of dwarf crafters can be found in any town or city.</string>
     <string name="summary_race_eladrin">&lt;b>Eladrin&lt;/b> are a graceful, magical race born of the Feywild, the realm of Faerie. They love arcane magic, swordplay, and exquisite work in metal and stone. They live in shining cities on the borders of the Feywild.</string>
     <string name="summary_race_elf">Kin to the eladrin, &lt;b>elves&lt;/b> dwell in the deep forests of the world and love the beauty of nature. Many elves (and some eladrin, too) live in wandering companies that visit many lands, staying a season or two in each.</string>

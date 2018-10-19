@@ -8,4 +8,26 @@ public enum ItemType {
     WEAPON,
     ARMOR,
     GEAR,
+    LOOT,;
+
+    public static String getRaw(ItemType itemType) {
+        String type = "N/A";
+        if (itemType != null) {
+            switch (itemType) {
+                case WEAPON:
+                    type = "WeaponType";
+                    break;
+                case ARMOR:
+                    type = "Armor";
+                    break;
+                case GEAR:
+                    type = "Gear";
+                    break;
+                case LOOT:
+                    type = "Loot";
+                    break;
+            }
+        }
+        return type;
+    }
 }

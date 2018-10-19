@@ -59,7 +59,7 @@ public class Item {
             case "Armor":
                 this.type = ItemType.ARMOR;
                 break;
-            case "Weapon":
+            case "WeaponType":
                 this.type = ItemType.WEAPON;
                 break;
             case "Gear":

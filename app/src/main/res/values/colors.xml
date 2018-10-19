@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#F44336</color>
     <color name="colorPrimaryDark">#C62828</color>
-    <color name="colorAccent">#aed581</color>
+    <color name="colorAccent">#F44336</color>
     <color name="atWillPower">#006400</color>
     <color name="atWillPowerPressed">#004c00</color>
     <color name="encounterPower">#8b0000</color>
@@ -11,4 +11,5 @@
     <color name="dailyPowerPressed">#4f4f4f</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="transWhite">#aa000000</color>
 </resources>

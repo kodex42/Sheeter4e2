@@ -9,10 +9,17 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.ProgressBar;
+
+import com.sheeter.azuris.sheeter4e.Modules.D20Class;
+import com.sheeter.azuris.sheeter4e.Modules.D20Race;
+
+import java.util.ArrayList;
 
 public class BuilderActivity extends AppCompatActivity {
-    private ProgressBar sProgressBar;
+    public static BuilderActivity sBuilderActivity;
+    public static ArrayList<D20Race> sAvailableRaces;
+    public static ArrayList<D20Class> sAvailableClasses;
+
     private BottomNavigationView mNavigationView;
     private BuilderActivity.FragmentAdapter mFragmentAdapter;
     private ScrollLockViewPager mViewPager;
@@ -20,13 +27,13 @@ public class BuilderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sBuilderActivity = this;
         setContentView(R.layout.activity_builder);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        sProgressBar = findViewById(R.id.Builder_Progressbar);
         mNavigationView = findViewById(R.id.Builder_Navigation);
         mViewPager = findViewById(R.id.Builder_Pager);
 

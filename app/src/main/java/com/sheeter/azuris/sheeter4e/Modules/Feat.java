@@ -7,8 +7,19 @@ package com.sheeter.azuris.sheeter4e.Modules;
 public class Feat {
     private String name;
     private String description;
+    private Feat optional;
 
-    public Feat() {
+    public Feat() { }
+
+    public Feat(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Feat(String name, String description, Feat optional) {
+        this.name = name;
+        this.description = description;
+        this.optional = optional;
     }
 
     public String getName() {
