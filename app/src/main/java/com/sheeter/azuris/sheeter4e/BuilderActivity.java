@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.sheeter.azuris.sheeter4e.Modules.D20Class;
 import com.sheeter.azuris.sheeter4e.Modules.D20Race;
@@ -59,25 +60,49 @@ public class BuilderActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                goBack();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBack();
+    }
+
+    private void goBack() {
+        if (mViewPager.getCurrentItem() == 0)
+            finish();
+        else
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
+    }
+
     // Since this is an object collection, use a FragmentStatePagerAdapter,
     // and NOT a FragmentPagerAdapter.
     private class FragmentAdapter extends FragmentStatePagerAdapter {
-        Fragment[] fragments;
+        ArrayList<Fragment> fragments;
 
         FragmentAdapter(FragmentManager fm) {
             super(fm);
-            fragments = new Fragment[1];
-            fragments[0] = new RacePickerFragment();
+            fragments = new ArrayList<>();
+            fragments.add(new RacePickerFragment());
         }
 
         @Override
         public Fragment getItem(int i) {
-            return fragments[i];
+            return fragments.get(i);
         }
 
         @Override
         public int getCount() {
-            return fragments.length;
+            return fragments.size();
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.sheeter.azuris.sheeter4e;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,13 +40,26 @@ import com.sheeter.azuris.sheeter4e.Modules.WeaponType;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.sheeter.azuris.sheeter4e.Modules.SizeType.getRaw;
+import static com.sheeter.azuris.sheeter4e.Modules.VisionType.getRaw;
+
 public class RacePickerFragment extends Fragment {
     private Spinner mRaceSpinner;
-    private ArrayAdapter<String> mAdapter;
+    private ArrayAdapter<String> mSpinnerAdapter;
+    private ArrayAdapter<Trait> mTraitsAdapter;
     private ArrayList<String> mRaceList;
     private TextView mRaceSummary;
     private LinearLayout mRaceLinearLayout;
     private RelativeLayout mLoadingScreen;
+    private ListView mTraitListView;
+    private TextView mAvgHeightTv;
+    private TextView mAvgWeightTv;
+    private TextView mAbilityScoresTv;
+    private TextView mSizeTv;
+    private TextView mSpeedTv;
+    private TextView mVisionTv;
+    private TextView mLanguagesTv;
+    private TextView mSkillBonusesTv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,7 +68,17 @@ public class RacePickerFragment extends Fragment {
         final View root = inflater.inflate(R.layout.content_builder_race_picker, container, false);
 
         // Load all the arbitrary data in the background
+        mRaceLinearLayout = root.findViewById(R.id.Builder_Race_LinearLayout);
+        mLoadingScreen = root.findViewById(R.id.Builder_Loading_Page);
         new AsyncTask() {
+            @Override
+            protected void onPreExecute() {
+                // Loading...
+                setSummaryVisible(false);
+                setLoadingScreenVisible(true);
+                super.onPreExecute();
+            }
+
             @Override
             protected Object doInBackground(Object[] objects) {
                 init();
@@ -64,16 +89,11 @@ public class RacePickerFragment extends Fragment {
             protected void onPostExecute(Object o) {
                 // Initialize the Spinner
                 initViews(root);
+                setLoadingScreenVisible(false);
                 super.onPostExecute(o);
             }
         }.execute();
 
-        mLoadingScreen = root.findViewById(R.id.Builder_Loading_Page);
-        mRaceLinearLayout = root.findViewById(R.id.Builder_Race_LinearLayout);
-        mRaceSummary = root.findViewById(R.id.Builder_Race_Summary);
-        mRaceSpinner = root.findViewById(R.id.Builder_Race_Spinner);
-
-        setLoadingScreenVisible(false);
         return root;
     }
 
@@ -87,9 +107,6 @@ public class RacePickerFragment extends Fragment {
     }
 
     private void init() {
-        // Loading...
-        setLoadingScreenVisible(true);
-
         mRaceList = new ArrayList<>();
         mRaceList.addAll(Arrays.asList(RaceName.getArray()));
         mRaceList.add(0, "Choose A Race");
@@ -101,47 +118,46 @@ public class RacePickerFragment extends Fragment {
         initRaces();
     }
 
-    private void initViews(View root) {
-        mAdapter = new ArrayAdapter<>(root.getContext(), R.layout.simple_spinner_item, mRaceList);
-        mAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
-        mRaceSpinner.setAdapter(mAdapter);
+    private void initViews(final View root) {
+        mRaceSummary = root.findViewById(R.id.Builder_Race_Summary);
+        mRaceSpinner = root.findViewById(R.id.Builder_Race_Spinner);
+        mTraitListView = root.findViewById(R.id.Builder_Race_Triat_ListView);
+
+        mAvgHeightTv = root.findViewById(R.id.Builder_Race_Average_Height);
+        mAvgWeightTv = root.findViewById(R.id.Builder_Race_Average_Weight);
+        mAbilityScoresTv = root.findViewById(R.id.Builder_Race_Ability_Scores);
+        mSizeTv = root.findViewById(R.id.Builder_Race_Size);
+        mSpeedTv = root.findViewById(R.id.Builder_Race_Speed);
+        mVisionTv = root.findViewById(R.id.Builder_Race_Vision);
+        mLanguagesTv = root.findViewById(R.id.Builder_Race_Languages);
+        mSkillBonusesTv = root.findViewById(R.id.Builder_Race_Skill_Bonuses);
+
+        mSpinnerAdapter = new ArrayAdapter<>(root.getContext(), R.layout.simple_spinner_item, mRaceList);
+        mSpinnerAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
+        mRaceSpinner.setAdapter(mSpinnerAdapter);
         mRaceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 TextView textView = (TextView) view;
                 setSummaryVisible(true);
                 String s = (String) textView.getText();
-                String summary = "";
 
                 if (!s.equals("Choose A Race")) {
                     RaceName choice = RaceName.fromString(s);
-                    switch (choice) {
-                        case DRAGONBORN:
-                            summary = getString(R.string.summary_race_dragonborn);
-                            break;
-                        case DWARF:
-                            summary = getString(R.string.summary_race_dwarf);
-                            break;
-                        case ELADRIN:
-                            summary = getString(R.string.summary_race_eladrin);
-                            break;
-                        case ELF:
-                            summary = getString(R.string.summary_race_elf);
-                            break;
-                        case HALF_ELF:
-                            summary = getString(R.string.summary_race_halfelf);
-                            break;
-                        case HALFLING:
-                            summary = getString(R.string.summary_race_halfling);
-                            break;
-                        case HUMAN:
-                            summary = getString(R.string.summary_race_human);
-                            break;
-                        case TIEFLING:
-                            summary = getString(R.string.summary_race_tiefling);
-                            break;
-                    }
-                    mRaceSummary.setText(Html.fromHtml(summary));
+                    D20Race currentRace = BuilderActivity.sAvailableRaces.get(choice.ordinal());
+
+                    mAvgHeightTv.setText(currentRace.getAverageHeight());
+                    mAvgWeightTv.setText(currentRace.getAverageWeight());
+                    mAbilityScoresTv.setText(currentRace.getAbilityScoreBonusesString());
+                    mSizeTv.setText(getRaw(currentRace.getSizeType()));
+                    mSpeedTv.setText(String.valueOf(currentRace.getSpeed()));
+                    mVisionTv.setText(getRaw(currentRace.getVisionType()));
+                    mLanguagesTv.setText(currentRace.getLanguagesString());
+                    mSkillBonusesTv.setText(currentRace.getSkillBonusesString());
+                    mRaceSummary.setText(Html.fromHtml(currentRace.getDescription()));
+
+                    mTraitsAdapter = new TraitListViewAdapter(root.getContext(), R.layout.trait_row, BuilderActivity.sAvailableRaces.get(choice.ordinal()).getRacialTraits());
+                    mTraitListView.setAdapter(mTraitsAdapter);
                 }
                 else
                     setSummaryVisible(false);
@@ -1979,11 +1995,11 @@ public class RacePickerFragment extends Fragment {
                         new Trait[]{
                                 new Trait("Dragonborn Fury", "When you're bloodied, you gain a +1 racial bonus to attack rolls."),
                                 new Trait("Draconic Heritage", "Your healing surge value is equal to one-quarter of your maximum hit points + your Constitution modifier."),
-                                new Trait("Dragonborn Racial Power", "You can use either dragon breath or Dragonfear as an encounter power.")
+                                new Trait("Dragonborn Racial Power", "You can use either Dragon Breath or Dragon Fear as an encounter power.")
                         },
                         new String[]{
-                                "+2 Cha",
-                                "+2 Str"
+                                "+2 Charisma",
+                                "+2 Strength"
                         },
                         new String[]{
                                 "+2 History",
@@ -2007,5 +2023,278 @@ public class RacePickerFragment extends Fragment {
                         }
                 )
         );
+        BuilderActivity.sAvailableRaces.add(
+                new D20Race("Dwarf",
+                        getString(R.string.summary_race_dwarf),
+                        new Trait[]{
+                                new Trait("Cast-Iron Stomach", "+5 racial bonus to saving throws against poison."),
+                                new Trait("Dwarven Resilience", "You can use your second wind as a minor action instead of a standard action."),
+                                new Trait("Dwarven Weapon Proficiency", "You gain proficiency with the throwing hammer and the warhammer."),
+                                new Trait("Encumbered Speed", "You move at your normal speed even when it would normally be reduced by armor or a heavy load. " +
+                                        "Other effects that limit speed (such as difficult terrain or magical effects) affect you normally."),
+                                new Trait("Stand Your Ground", "When an effect forces you to move—through a pull, a push, or a slide—you can move 1 square less than the effect specifies. " +
+                                        "This means an effect that normally pulls, pushes, or slides a target 1 square does not force you to move unless you want to. " +
+                                        "In addition, when an attack would knock you prone, you can immediately make a saving throw to avoid falling prone.")
+                        },
+                        new String[]{
+                                "+2 Constitution",
+                                "+2 Wisdom"
+                        },
+                        new String[]{
+                                "+2 Dungeoneering",
+                                "+2 Endurance"
+                        },
+                        SizeType.MEDIUM,
+                        5,
+                        VisionType.LOW_LIGHT,
+                        new String[]{
+                                "Common",
+                                "Dwarven"
+                        },
+                        51,
+                        56,
+                        160,
+                        220,
+                        new D20Class[]{
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.CLERIC.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.FIGHTER.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.PALADIN.ordinal())
+                        }
+                )
+        );
+        BuilderActivity.sAvailableRaces.add(
+                new D20Race("Eladrin",
+                        getString(R.string.summary_race_eladrin),
+                        new Trait[]{
+                                new Trait("Eladrin Education", "You gain training in any one additional skill."),
+                                new Trait("Eladrin Weapon Proficiency", "You gain proficiency with the longsword."),
+                                new Trait("Eladrin Will", "You gain a +1 racial bonus to your Will defense. " +
+                                        "In addition, you gain a +5 racial bonus to saving throws against charm effects."),
+                                new Trait("Fey Origin", "Your ancestors were native to the Feywild, so you are considered a fey creature for the purpose of effects that relate to creature origin."),
+                                new Trait("Trance", "Rather than sleep, eladrin enter a meditative state known as trance. " +
+                                        "You need to spend 4 hours in this state to gain the same benefits other races gain from taking a 6-hour extended rest. " +
+                                        "While in a trance, you are fully aware of your surroundings and notice approaching enemies and other events as normal."),
+                                new Trait("Fey Step", "You can use Fey Step as an encounter power.")
+                        },
+                        new String[]{
+                                "+2 Dexterity",
+                                "+2 Intelligence"
+                        },
+                        new String[]{
+                                "+2 Arcana",
+                                "+2 History"
+                        },
+                        SizeType.MEDIUM,
+                        6,
+                        VisionType.LOW_LIGHT,
+                        new String[]{
+                                "Common",
+                                "Elven"
+                        },
+                        65,
+                        73,
+                        130,
+                        180,
+                        new D20Class[]{
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.ROGUE.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLORD.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WIZARD.ordinal())
+                        }
+                )
+        );
+        BuilderActivity.sAvailableRaces.add(
+                new D20Race("Elf",
+                        getString(R.string.summary_race_elf),
+                        new Trait[]{
+                                new Trait("Elven Weapon Proficiency", "You gain proficiency with the longbow and the shortbow."),
+                                new Trait("Fey Origin", "Your ancestors were native to the Feywild, so you are considered a fey creature for the purpose of effects that relate to creature origin."),
+                                new Trait("Group Awareness", "You grant non-elf allies within 5 squares of you a +1 racial bonus to Perception checks."),
+                                new Trait("Wild Step", "You ignore difficult terrain when you shift (even if you have a power that allows you to shift multiple squares)."),
+                                new Trait("Elven Accuracy", "You can use Elven Accuracy as an encounter power.")
+                        },
+                        new String[]{
+                                "+2 Dexterity",
+                                "+2 Wisdom"
+                        },
+                        new String[]{
+                                "+2 Nature",
+                                "+2 Perception"
+                        },
+                        SizeType.MEDIUM,
+                        7,
+                        VisionType.LOW_LIGHT,
+                        new String[]{
+                                "Common",
+                                "Elven"
+                        },
+                        64,
+                        72,
+                        130,
+                        170,
+                        new D20Class[]{
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.CLERIC.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.RANGER.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.ROGUE.ordinal())
+                        }
+                )
+        );
+        BuilderActivity.sAvailableRaces.add(
+                new D20Race("Half-Elf",
+                        getString(R.string.summary_race_halfelf),
+                        new Trait[]{
+                                new Trait("Dilettante", "At 1st level, you choose an at-will power from a class different from yours. You can use that power as an encounter power."),
+                                new Trait("Dual Heritage", "You can take feats that have either elf or human as a prerequisite (as well as those specifically for half-elves), as long as you meet any other requirements."),
+                                new Trait("Group Diplomacy", "You grant allies within 10 squares of you a +1 racial bonus to Diplomacy checks.")
+                        },
+                        new String[]{
+                                "+2 Constitution",
+                                "+2 Charisma"
+                        },
+                        new String[]{
+                                "+2 Diplomacy",
+                                "+2 Insight"
+                        },
+                        SizeType.MEDIUM,
+                        6,
+                        VisionType.LOW_LIGHT,
+                        new String[]{
+                                "Common",
+                                "Elven",
+                                "choice of 1 other"
+                        },
+                        65,
+                        74,
+                        130,
+                        190,
+                        new D20Class[]{
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.PALADIN.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLOCK.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLORD.ordinal())
+                        }
+                )
+        );
+        BuilderActivity.sAvailableRaces.add(
+                new D20Race("Halfling",
+                        getString(R.string.summary_race_halfling),
+                        new Trait[]{
+                                new Trait("Bold", "You gain a +5 racial bonus to saving throws against fear."),
+                                new Trait("Nimble Reaction", "You gain a +2 racial bonus to AC against opportunity attacks."),
+                                new Trait("Second Chance", "You can use second chance as an encounter power.")
+                        },
+                        new String[]{
+                                "+2 Dexterity",
+                                "+2 Charisma"
+                        },
+                        new String[]{
+                                "+2 Acrobatics",
+                                "+2 Thievery"
+                        },
+                        SizeType.SMALL,
+                        6,
+                        VisionType.NORMAL,
+                        new String[]{
+                                "Common",
+                                "choice of 1 other"
+                        },
+                        46,
+                        50,
+                        75,
+                        85,
+                        new D20Class[]{
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.RANGER.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.ROGUE.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLOCK.ordinal())
+                        }
+                )
+        );
+        BuilderActivity.sAvailableRaces.add(
+                new D20Race("Human",
+                        getString(R.string.summary_race_human),
+                        new Trait[]{
+                                new Trait("Bonus At-Will Power", "You know one extra at-will power from your class."),
+                                new Trait("Bonus Feat", "You gain a bonus feat at 1st level. You must meet the feat’s prerequisites."),
+                                new Trait("Bonus Skill", "You gain training in one additional skill from your class skill list."),
+                                new Trait("Human Defense Bonuses", "+1 to Fortitude, Reflex, and Will defenses.")
+                        },
+                        new String[]{
+                                "+2 to one ability score of your choice"
+                        },
+                        new String[]{
+                                "+2 Acrobatics",
+                                "+2 Thievery"
+                        },
+                        SizeType.MEDIUM,
+                        6,
+                        VisionType.NORMAL,
+                        new String[]{
+                                "Common",
+                                "choice of 1 other"
+                        },
+                        66,
+                        74,
+                        135,
+                        220,
+                        new D20Class[]{}
+                )
+        );
+        BuilderActivity.sAvailableRaces.add(
+                new D20Race("Tiefling",
+                        getString(R.string.summary_race_tiefling),
+                        new Trait[]{
+                                new Trait("Bloodhunt", "You gain a +1 racial bonus to attack rolls against bloodied foes."),
+                                new Trait("Fire Resistance", "You have resist fire 5 + one-half your level."),
+                                new Trait("Infernal Wrath", "You can use infernal wrath as an encounter power.")
+                        },
+                        new String[]{
+                                "+2 Intelligence",
+                                "+2 Charisma"
+                        },
+                        new String[]{
+                                "+2 Bluff",
+                                "+2 Stealth"
+                        },
+                        SizeType.MEDIUM,
+                        6,
+                        VisionType.LOW_LIGHT,
+                        new String[]{
+                                "Common",
+                                "choice of 1 other"
+                        },
+                        66,
+                        74,
+                        140,
+                        230,
+                        new D20Class[]{
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.ROGUE.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLOCK.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLORD.ordinal())
+                        }
+                )
+        );
+    }
+
+    private class TraitListViewAdapter extends ArrayAdapter {
+        Context context;
+        ArrayList<Trait> traits;
+
+        public TraitListViewAdapter(Context context, int resource, ArrayList<Trait> traits) {
+            super(context, resource, traits);
+            this.context = context;
+            this.traits = traits;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = getLayoutInflater();
+            View row = inflater.inflate(R.layout.trait_row, null);
+
+            String name = traits.get(position).getName();
+            String desc = traits.get(position).getDesc();
+            TextView nameView = row.findViewById(R.id.Trait_Row_Title);
+            TextView descView = row.findViewById(R.id.Trait_Row_Desc);
+            nameView.setText(name);
+            descView.setText(desc);
+            return row;
+        }
     }
 }

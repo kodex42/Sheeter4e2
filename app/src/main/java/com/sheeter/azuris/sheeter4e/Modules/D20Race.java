@@ -154,4 +154,53 @@ public class D20Race {
     public void setFavoredClasses(D20Class[] favoredClasses) {
         this.favoredClasses.addAll(Arrays.asList(favoredClasses));
     }
+
+    public ArrayList<Trait> getRacialTraits() {
+        return racialTraits;
+    }
+
+    public String getAverageHeight() {
+        return inchesToFeet(minHeight) + "-" + inchesToFeet(maxHeight);
+    }
+
+    private String inchesToFeet(int inches) {
+        int feet = inches / 12;
+        int remainder = inches % 12;
+
+        return feet + "'" + remainder + "\"";
+    }
+
+    public String getAverageWeight() {
+        return minWeight + "-" + maxWeight + " lb.";
+    }
+
+    public String getSkillBonusesString() {
+        StringBuilder bonuses = new StringBuilder();
+        for (int i = 0; i < skillBonuses.size(); i++) {
+            bonuses.append(skillBonuses.get(i));
+            if (i < skillBonuses.size() - 1)
+                bonuses.append(", ");
+        }
+        return bonuses.toString();
+    }
+
+    public String getAbilityScoreBonusesString() {
+        StringBuilder bonuses = new StringBuilder();
+        for (int i = 0; i < abilityScoreBonuses.size(); i++) {
+            bonuses.append(abilityScoreBonuses.get(i));
+            if (i < abilityScoreBonuses.size() - 1)
+                bonuses.append(", ");
+        }
+        return bonuses.toString();
+    }
+
+    public String getLanguagesString() {
+        StringBuilder bonuses = new StringBuilder();
+        for (int i = 0; i < languages.size(); i++) {
+            bonuses.append(languages.get(i));
+            if (i < languages.size() - 1)
+                bonuses.append(", ");
+        }
+        return bonuses.toString();
+    }
 }
