@@ -11,8 +11,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.sheeter.azuris.sheeter4e.MainActivity;
 import com.sheeter.azuris.sheeter4e.Modules.Frequency;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
+import com.sheeter.azuris.sheeter4e.PowersListViewAdapter;
+import com.sheeter.azuris.sheeter4e.R;
 import com.wangjie.androidbucket.utils.ABTextUtil;
 import com.wangjie.androidbucket.utils.imageprocess.ABShape;
 import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionButton;

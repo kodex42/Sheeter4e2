@@ -12,12 +12,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sheeter.azuris.sheeter4e.EquipedWeaponsListViewAdapter;
+import com.sheeter.azuris.sheeter4e.MainActivity;
 import com.sheeter.azuris.sheeter4e.Modules.ActionType;
 import com.sheeter.azuris.sheeter4e.Modules.DamageType;
 import com.sheeter.azuris.sheeter4e.Modules.Frequency;
 import com.sheeter.azuris.sheeter4e.Modules.Item;
 import com.sheeter.azuris.sheeter4e.Modules.Power;
 import com.sheeter.azuris.sheeter4e.Modules.WeaponBonus;
+import com.sheeter.azuris.sheeter4e.NonScrollListView;
+import com.sheeter.azuris.sheeter4e.R;
 
 import java.util.ArrayList;
 

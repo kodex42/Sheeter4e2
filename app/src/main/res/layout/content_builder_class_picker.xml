@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
+<FrameLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -10,7 +9,7 @@
         android:orientation="vertical">
 
         <Spinner
-            android:id="@+id/Builder_Race_Spinner"
+            android:id="@+id/Builder_Class_Spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -20,12 +19,14 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:overScrollMode="never"
-            android:fadeScrollbars="false">
+            android:fadeScrollbars="false"
+            android:fillViewport="true"
+            android:layout_weight="1.0">
 
             <LinearLayout
-                android:id="@+id/Builder_Race_LinearLayout"
+                android:id="@+id/Builder_Class_LinearLayout"
                 android:background="@drawable/summary_gradient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,7 +36,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/Racial_Traits_Header"
+                    android:text="@string/Class_Traits_Header"
                     android:textSize="25sp"
                     android:typeface="serif"
                     android:textAlignment="center"
@@ -51,16 +52,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Average Height:"
+                        android:text="Role:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Builder_Race_Average_Height"
+                        android:id="@+id/Builder_Class_Role"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="height"
+                        android:text="role"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
@@ -75,16 +76,40 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Average Weight:"
+                        android:text="Power Source:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Builder_Race_Average_Weight"
+                        android:id="@+id/Builder_Class_Power_Source"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="weight"
+                        android:text="source"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Key Abilities:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Builder_Class_Abilities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="abilities"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
@@ -99,16 +124,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ability Scores:"
+                        android:text="Armor Proficiencies:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Builder_Race_Ability_Scores"
+                        android:id="@+id/Builder_Class_Armor_Proficiencies"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="ability scores"
+                        android:text="proficiencies"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
@@ -123,16 +148,42 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Size:"
+                        android:text="Weapon Proficiencies:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Builder_Race_Size"
+                        android:id="@+id/Builder_Class_Weapon_Proficiencies"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="size"
+                        android:text="proficiencies"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Builder_Class_Implement_Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Implement:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Builder_Class_Implement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="implements"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
@@ -147,40 +198,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Speed:"
+                        android:text="Bonus to Defense:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Builder_Race_Speed"
+                        android:id="@+id/Builder_Class_Defense_Bonuses"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="speed"
-                        android:textColor="@color/black"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Vision:"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/Builder_Race_Vision"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="vision"
+                        android:text="bonuses"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
@@ -195,16 +222,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Languages:"
+                        android:text="Hit Points at 1st level:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Builder_Race_Languages"
+                        android:id="@+id/Builder_Class_Base_Hitpoints"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="languages"
+                        android:text="base"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
@@ -213,58 +240,77 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Skill Bonuses:"
+                        android:text="Hit Points per Level Gained:"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Builder_Race_Skill_Bonuses"
+                        android:id="@+id/Builder_Class_Hitpoints_Per_Level"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="vision"
+                        android:text="gain"
                         android:textColor="@color/black"/>
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:background="@color/black"/>
-
-                <com.sheeter.azuris.sheeter4e.NonScrollListView
-                    android:id="@+id/Builder_Race_Triat_ListView"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:divider="@null"
-                    android:dividerHeight="0dp"
-                    android:listSelector="@android:color/transparent"/>
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:background="@color/black"/>
-
-                <TextView
-                    android:id="@+id/Builder_Race_Summary"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
                     android:paddingTop="5dp"
-                    android:paddingRight="10dp"
-                    android:textColor="@color/black" />
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Healing Surges per Day:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Builder_Class_Surges_Per_Day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="surges"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trained Skills:"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Builder_Class_Trained_Skills"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="skills"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
 
                 <Button
                     android:layout_marginTop="10dp"
-                    android:id="@+id/Builder_Race_Continue_Button"
+                    android:id="@+id/Builder_Class_Continue_Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAllCaps="false"
@@ -279,43 +325,5 @@
         </ScrollView>
 
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/Builder_Loading_Page"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/transWhite"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:orientation="vertical"
-            tools:ignore="UselessParent">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Loading..."
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                tools:ignore="HardcodedText" />
-
-            <ProgressBar
-                android:id="@+id/progressBar2"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_gravity="center" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
 
 </FrameLayout>

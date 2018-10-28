@@ -79,14 +79,14 @@ public enum RaceName {
 
     public static String[] getArray() {
         return new String[]{
-                RaceName.getRaw(DRAGONBORN),
-                RaceName.getRaw(DWARF),
-                RaceName.getRaw(ELADRIN),
-                RaceName.getRaw(ELF),
-                RaceName.getRaw(HALF_ELF),
-                RaceName.getRaw(HALFLING),
-                RaceName.getRaw(HUMAN),
-                RaceName.getRaw(TIEFLING)
+                getRaw(DRAGONBORN),
+                getRaw(DWARF),
+                getRaw(ELADRIN),
+                getRaw(ELF),
+                getRaw(HALF_ELF),
+                getRaw(HALFLING),
+                getRaw(HUMAN),
+                getRaw(TIEFLING)
         };
     }
 }

@@ -160,7 +160,7 @@ public class D20Race {
     }
 
     public String getAverageHeight() {
-        return inchesToFeet(minHeight) + "-" + inchesToFeet(maxHeight);
+        return inchesToFeet(minHeight) + " - " + inchesToFeet(maxHeight);
     }
 
     private String inchesToFeet(int inches) {
@@ -171,7 +171,7 @@ public class D20Race {
     }
 
     public String getAverageWeight() {
-        return minWeight + "-" + maxWeight + " lb.";
+        return minWeight + " - " + maxWeight + " lbs.";
     }
 
     public String getSkillBonusesString() {

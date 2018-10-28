@@ -26,4 +26,24 @@ public class WeaponType {
         this.complexity = complexity;
         this.properties.addAll(Arrays.asList(properties));
     }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+
+        if (complexity != null) {
+            s.append(WeaponComplexity.getRaw(complexity));
+            s.append(", ");
+        }
+
+        if (group != null) {
+            for (int i = 0; i < group.size(); i++) {
+                s.append(WeaponGroupType.getRaw(group.get(i)));
+                if (i < group.size() - 1)
+                    s.append(", ");
+            }
+        }
+
+        return s.toString();
+    }
 }

@@ -17,7 +17,6 @@ import com.sheeter.azuris.sheeter4e.Modules.D20Race;
 import java.util.ArrayList;
 
 public class BuilderActivity extends AppCompatActivity {
-    public static BuilderActivity sBuilderActivity;
     public static ArrayList<D20Race> sAvailableRaces;
     public static ArrayList<D20Class> sAvailableClasses;
 
@@ -28,7 +27,6 @@ public class BuilderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sBuilderActivity = this;
         setContentView(R.layout.activity_builder);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -60,6 +58,17 @@ public class BuilderActivity extends AppCompatActivity {
                 });
     }
 
+    private void goBack() {
+        if (mViewPager.getCurrentItem() == 0)
+            finish();
+        else {
+            int i = mViewPager.getCurrentItem();
+            mViewPager.setCurrentItem(i - 1);
+            mFragmentAdapter.removeFragment(i);
+            mFragmentAdapter.notifyDataSetChanged();
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -77,11 +86,10 @@ public class BuilderActivity extends AppCompatActivity {
         goBack();
     }
 
-    private void goBack() {
-        if (mViewPager.getCurrentItem() == 0)
-            finish();
-        else
-            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
+    public void raceChosen() {
+        mFragmentAdapter.addFragment(new ClassPickerFragment());
+        mFragmentAdapter.notifyDataSetChanged();
+        mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
     }
 
     // Since this is an object collection, use a FragmentStatePagerAdapter,
@@ -92,7 +100,8 @@ public class BuilderActivity extends AppCompatActivity {
         FragmentAdapter(FragmentManager fm) {
             super(fm);
             fragments = new ArrayList<>();
-            fragments.add(new RacePickerFragment());
+
+            addFragment(new RacePickerFragment());
         }
 
         @Override
@@ -103,6 +112,14 @@ public class BuilderActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             return fragments.size();
+        }
+
+        void addFragment(Fragment fragment) {
+            fragments.add(fragment);
+        }
+
+        void removeFragment(int i) {
+            fragments.remove(i);
         }
     }
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 import com.sheeter.azuris.sheeter4e.Modules.AbilityType;
 import com.sheeter.azuris.sheeter4e.Modules.ArmorType;
 import com.sheeter.azuris.sheeter4e.Modules.D20Class;
-import com.sheeter.azuris.sheeter4e.Modules.D20ClassEnumerator;
+import com.sheeter.azuris.sheeter4e.Modules.D20ClassName;
 import com.sheeter.azuris.sheeter4e.Modules.D20Race;
 import com.sheeter.azuris.sheeter4e.Modules.DefenseType;
 import com.sheeter.azuris.sheeter4e.Modules.Feat;
@@ -44,6 +45,7 @@ import static com.sheeter.azuris.sheeter4e.Modules.SizeType.getRaw;
 import static com.sheeter.azuris.sheeter4e.Modules.VisionType.getRaw;
 
 public class RacePickerFragment extends Fragment {
+    private BuilderActivity activity;
     private Spinner mRaceSpinner;
     private ArrayAdapter<String> mSpinnerAdapter;
     private ArrayAdapter<Trait> mTraitsAdapter;
@@ -60,12 +62,14 @@ public class RacePickerFragment extends Fragment {
     private TextView mVisionTv;
     private TextView mLanguagesTv;
     private TextView mSkillBonusesTv;
+    private Button mContinueButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View root = inflater.inflate(R.layout.content_builder_race_picker, container, false);
+        activity = (BuilderActivity) root.getContext();
 
         // Load all the arbitrary data in the background
         mRaceLinearLayout = root.findViewById(R.id.Builder_Race_LinearLayout);
@@ -99,7 +103,7 @@ public class RacePickerFragment extends Fragment {
 
     // Hides summary elements when empty
     private void setSummaryVisible(boolean visible) {
-        mRaceLinearLayout.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
+        mRaceLinearLayout.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 
     private void setLoadingScreenVisible(boolean visible) {
@@ -131,6 +135,7 @@ public class RacePickerFragment extends Fragment {
         mVisionTv = root.findViewById(R.id.Builder_Race_Vision);
         mLanguagesTv = root.findViewById(R.id.Builder_Race_Languages);
         mSkillBonusesTv = root.findViewById(R.id.Builder_Race_Skill_Bonuses);
+        mContinueButton = root.findViewById(R.id.Builder_Race_Continue_Button);
 
         mSpinnerAdapter = new ArrayAdapter<>(root.getContext(), R.layout.simple_spinner_item, mRaceList);
         mSpinnerAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
@@ -166,6 +171,13 @@ public class RacePickerFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        mContinueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.raceChosen();
             }
         });
     }
@@ -2017,9 +2029,9 @@ public class RacePickerFragment extends Fragment {
                         220,
                         320,
                         new D20Class[]{
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.FIGHTER.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.PALADIN.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLORD.ordinal())
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.FIGHTER.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.PALADIN.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.WARLORD.ordinal())
                         }
                 )
         );
@@ -2056,9 +2068,9 @@ public class RacePickerFragment extends Fragment {
                         160,
                         220,
                         new D20Class[]{
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.CLERIC.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.FIGHTER.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.PALADIN.ordinal())
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.CLERIC.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.FIGHTER.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.PALADIN.ordinal())
                         }
                 )
         );
@@ -2096,9 +2108,9 @@ public class RacePickerFragment extends Fragment {
                         130,
                         180,
                         new D20Class[]{
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.ROGUE.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLORD.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WIZARD.ordinal())
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.ROGUE.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.WARLORD.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.WIZARD.ordinal())
                         }
                 )
         );
@@ -2132,9 +2144,9 @@ public class RacePickerFragment extends Fragment {
                         130,
                         170,
                         new D20Class[]{
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.CLERIC.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.RANGER.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.ROGUE.ordinal())
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.CLERIC.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.RANGER.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.ROGUE.ordinal())
                         }
                 )
         );
@@ -2167,9 +2179,9 @@ public class RacePickerFragment extends Fragment {
                         130,
                         190,
                         new D20Class[]{
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.PALADIN.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLOCK.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLORD.ordinal())
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.PALADIN.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.WARLOCK.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.WARLORD.ordinal())
                         }
                 )
         );
@@ -2201,9 +2213,9 @@ public class RacePickerFragment extends Fragment {
                         75,
                         85,
                         new D20Class[]{
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.RANGER.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.ROGUE.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLOCK.ordinal())
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.RANGER.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.ROGUE.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.WARLOCK.ordinal())
                         }
                 )
         );
@@ -2265,9 +2277,9 @@ public class RacePickerFragment extends Fragment {
                         140,
                         230,
                         new D20Class[]{
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.ROGUE.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLOCK.ordinal()),
-                                BuilderActivity.sAvailableClasses.get(D20ClassEnumerator.WARLORD.ordinal())
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.ROGUE.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.WARLOCK.ordinal()),
+                                BuilderActivity.sAvailableClasses.get(D20ClassName.WARLORD.ordinal())
                         }
                 )
         );

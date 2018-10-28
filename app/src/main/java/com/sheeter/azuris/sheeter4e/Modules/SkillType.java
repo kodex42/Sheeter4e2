@@ -26,55 +26,55 @@ public enum SkillType {
         if (skillType != null) {
             switch (skillType) {
                 case ACROBATICS:
-                    skill = "Acrobatics";
+                    skill = "Acrobatics (DEX)";
                     break;
                 case ARCANA:
-                    skill = "Arcana";
+                    skill = "Arcana (INT)";
                     break;
                 case ATHLETICS:
-                    skill = "Athletics";
+                    skill = "Athletics (STR)";
                     break;
                 case BLUFF:
-                    skill = "Bluff";
+                    skill = "Bluff (CHA)";
                     break;
                 case DIPLOMACY:
-                    skill = "Diplomacy";
+                    skill = "Diplomacy (CHA)";
                     break;
                 case DUNGEONEERING:
-                    skill = "Dungeoneering";
+                    skill = "Dungeoneering (WIS)";
                     break;
                 case ENDURANCE:
-                    skill = "Endurance";
+                    skill = "Endurance (CON)";
                     break;
                 case HEAL:
-                    skill = "Heal";
+                    skill = "Heal (WIS)";
                     break;
                 case HISTORY:
-                    skill = "History";
+                    skill = "History (INT)";
                     break;
                 case INSIGHT:
-                    skill = "Insight";
+                    skill = "Insight (WIS)";
                     break;
                 case INTIMIDATE:
-                    skill = "Intimidate";
+                    skill = "Intimidate (CHA)";
                     break;
                 case NATURE:
-                    skill = "Nature";
+                    skill = "Nature (WIS)";
                     break;
                 case PERCEPTION:
-                    skill = "Perception";
+                    skill = "Perception (WIS)";
                     break;
                 case RELIGION:
-                    skill = "Religion";
+                    skill = "Religion (INT)";
                     break;
                 case STEALTH:
-                    skill = "Stealth";
+                    skill = "Stealth (DEX)";
                     break;
                 case STREETWISE:
-                    skill = "Streetwise";
+                    skill = "Streetwise (CHA)";
                     break;
                 case THIEVERY:
-                    skill = "Thievery";
+                    skill = "Thievery (DEX)";
                     break;
             }
         }

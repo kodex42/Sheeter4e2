@@ -11,7 +11,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -21,9 +21,9 @@
                 android:fontFamily="serif"
                 android:gravity="center_horizontal"
                 android:paddingTop="5dp"
-                android:text="Character"
+                android:text="@string/Main_Character_Title"
                 android:textColor="@android:color/black"
-                android:textSize="24sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -712,7 +712,7 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Melee Ability"
+                        android:text="Melee Ability 1"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="12sp"
@@ -835,7 +835,7 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Melee Ability"
+                        android:text="Melee Ability 2"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="12sp"
@@ -958,7 +958,7 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Ranged Ability"
+                        android:text="Ranged Ability 1"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="12sp"
@@ -1081,7 +1081,7 @@
                         android:layout_row="0"
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="center_horizontal"
-                        android:text="Ranged Ability"
+                        android:text="Ranged Ability 2"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="12sp"

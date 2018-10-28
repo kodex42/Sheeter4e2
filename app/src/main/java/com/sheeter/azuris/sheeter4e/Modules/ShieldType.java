@@ -10,10 +10,10 @@ public enum ShieldType {
         if (shieldType != null) {
             switch (shieldType) {
                 case LIGHT:
-                    shield = "Light Shield";
+                    shield = "Light Shields";
                     break;
                 case HEAVY:
-                    shield = "Heavy Shield";
+                    shield = "Heavy Shields";
                     break;
             }
         }
