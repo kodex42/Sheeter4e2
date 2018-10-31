@@ -1,0 +1,1192 @@
+
+6 3
+C H A P T E R  4  |  C h a r a c t e r  C l a s s e s
+
+Level 1 At-Will Prayers
+
+Lance of Faith Lance of Faith Cleric Attack 1
+A brilliant ray of light sears your foe with golden radiance. Spar-
+kles of light linger around the target, guiding your ally’s attack.
+At-Will ? Divine, Implement, Radiant
+Standard Action Ranged 5
+Target: One creature
+Attack: Wisdom vs. Reflex
+Hit: 1d8 + Wisdom modifier radiant damage, and one ally 
+
+you can see gains a +2 power bonus to his or her next at-
+tack roll against the target.
+
+Increase damage to 2d8 + Wisdom modifier at 21st level.
+
+Priest’s Shield Priest’s Shield Cleric Attack 1
+You utter a minor defensive prayer as you attack with your 
+weapon.
+At-Will ? Divine, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 1[W] + Strength modifier damage, and you and one 
+
+adjacent ally gain a +1 power bonus to AC until the end of 
+your next turn.
+
+Increase damage to 2[W] + Strength modifier at 21st level.
+
+Righteous Brand Righteous Brand Cleric Attack 1
+You smite your foe with your weapon and brand it with a 
+ghostly, glowing symbol of your deity’s anger. By naming one of 
+your allies when the symbol appears, you add divine power to 
+that ally’s attacks against the branded foe.
+At-Will ? Divine, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 1[W] + Strength modifier damage, and one ally within 
+
+5 squares of you gains a power bonus to melee attack rolls 
+against the target equal to your Strength modifier until the 
+end of your next turn.
+
+Increase damage to 2[W] + Strength modifier at 21st level.
+
+Sacred Flame Sacred Flame Cleric Attack 1
+Sacred light shines from above, searing a single enemy with its 
+radiance while at the same time aiding an ally with its beneficent 
+power.
+At-Will ? Divine, Implement, Radiant
+Standard Action Ranged 5
+Target: One creature
+Attack: Wisdom vs. Reflex
+Hit: 1d6 + Wisdom modifier radiant damage, and one ally 
+
+you can see chooses either to gain temporary hit points 
+equal to your Charisma modifier + one-half your level or 
+to make a saving throw.
+
+Increase damage to 2d6 + Wisdom modifier at 21st level.
+
+Level 1 Encounter Prayers
+
+Cause Fear Cause Fear Cleric Attack 1
+Your holy symbol ignites with the fury of your god. Uncontrol-
+lable terror grips your enemy, causing him to instantly recoil.
+Encounter ? Divine, Fear, Implement
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. Will
+Hit: The target moves its speed + your Charisma modifier 
+
+away from you. The fleeing target avoids unsafe squares 
+and difficult terrain if it can. This movement provokes 
+opportunity attacks.
+
+Divine Glow Divine Glow Cleric Attack 1
+Murmuring a prayer to your deity, you invoke a blast of white 
+radiance from your holy symbol. Foes burn in its stern light, but 
+your allies are heartened and guided by it.
+Encounter ? Divine, Implement, Radiant
+Standard Action Close blast 3
+Target: Each enemy in blast
+Attack: Wisdom vs. Reflex
+Hit: 1d8 + Wisdom modifier radiant damage.
+Effect: Allies in the blast gain a +2 power bonus to attack rolls 
+
+until the end of your next turn.
+
+Healing Strike Healing Strike Cleric Attack 1
+Divine radiance gleams from your weapon. When you smite your 
+enemy, your deity bestows a minor blessing in the form of healing 
+for you or one of your allies.
+Encounter ? Divine, Healing, Radiant, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 2[W] + Strength modifier radiant damage, and the 
+
+target is marked until the end of your next turn. In 
+addition, you or one ally within 5 squares of you can 
+spend a healing surge.
+
+Wrathful Thunder Wrathful Thunder Cleric Attack 1
+Your arm is made strong by the power of your deity. When you 
+strike, a terrible thunderclap smites your adversary and dazes 
+him.
+Encounter ? Divine, Thunder, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 1[W] + Strength modifier thunder damage, and the 
+
+target is dazed until the end of your next turn.
+
+C
+L
+
+E
+R
+
+IC
+C
+
+L
+E
+
+R
+IC
+
+4E_PHB_Ch04_c.indd   634E_PHB_Ch04_c.indd   63 3/11/08   10:26:41 AM3/11/08   10:26:41 AM
+
+
+
+64
+C H A P T E R  4  |  C h a r a c t e r  C l a s s e s
+
+Level 1 Daily Prayers
+
+Avenging Flame Avenging Flame Cleric Attack 1
+You slam your weapon into your foe, who bursts into flame. Di-
+vine fire avenges each attack your enemy dares to make.
+Daily ? Divine, Fire, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 2[W] + Strength modifier damage, and ongoing 5 fire 
+
+damage (save ends).
+Miss: Half damage, and no ongoing fire damage.
+Special: If the target attacks on its turn, it can’t attempt a 
+
+saving throw against the ongoing damage.
+
+Beacon of Hope Beacon of Hope Cleric Attack 1
+A burst of divine energy harms your foes and heals your allies. 
+The radiant energy lingers around your holy symbol and im-
+proves your healing powers for the rest of the battle.
+Daily ? Divine, Healing, Implement
+Standard Action Close burst 3
+Target: Each enemy in burst
+Attack: Wisdom vs. Will
+Hit: The target is weakened until the end of its next turn.
+Effect: You and all your allies in the burst regain 5 hit points, 
+
+and your healing powers restore +5 hit points until the end 
+of the encounter.
+
+Cascade of Light Cascade of Light Cleric Attack 1
+A burst of divine radiance sears your foe.
+Daily ? Divine, Implement, Radiant
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. Will
+Hit: 3d8 + Wisdom modifier radiant damage, and the target 
+
+gains vulnerability 5 to all your attacks (save ends).
+Miss: Half damage, and the target gains no vulnerability.
+
+Guardian of Faith Guardian of Faith Cleric Attack 1
+You conjure a ghostly guardian, indistinct except for a glowing 
+shield emblazoned with your deity’s symbol. A burst of radiance 
+erupts from it to sear foes that move next to it.
+Daily ? Conjuration, Divine, Implement, Radiant
+Standard Action Ranged 5
+Effect: You conjure a guardian that occupies 1 square within 
+
+range. Every round, you can move the guardian 3 squares 
+as a move action. The guardian lasts until the end of the 
+encounter. Any creature that ends its turn next to the con-
+jured guardian is subject to a Wisdom vs. Fortitude attack. 
+On a hit, the attack deals 1d8 + Wisdom modifier radiant 
+damage.
+
+Level 2 Utility Prayers
+
+Bless Bless Cleric Utility 2
+You beseech your deity to bless you and your allies.
+Daily ? Divine
+Standard Action Close burst 20
+Targets: You and each ally in burst
+Effect: Until the end of the encounter, all targets gain a 
+
++1 power bonus to attack rolls.
+
+Cure Light Wounds Cure Light Wounds Cleric Utility 2
+You utter a simple prayer and gain the power to instantly heal 
+wounds, and your touch momentarily suffuses you or a wounded 
+creature with a dim silver light.
+Daily ? Divine, Healing
+Standard Action Melee touch
+Target: You or one creature
+Effect: The target regains hit points as if it had spent a heal-
+
+ing surge.
+
+Divine Aid Divine Aid Cleric Utility 2
+You beseech your deity to grant you or one of your allies the 
+strength to overcome a hindrance.
+Encounter ? Divine
+Standard Action Ranged 5
+Target: You or one ally
+Effect: The target makes a saving throw with a bonus equal 
+
+to your Charisma modifier.
+
+Sanctuary Sanctuary Cleric Utility 2
+You cast a protective ward upon a creature that makes enemies’ 
+attacks less effective.
+Encounter ? Divine
+Standard Action Ranged 10
+Target: You or one creature
+Effect: The target receives a +5 bonus to all defenses. The 
+
+effect lasts until the target attacks or until the end of your 
+next turn.
+
+Shield of Faith Shield of Faith Cleric Utility 2
+A gleaming shield of divine energy appears over you, granting 
+you and nearby allies protection against attacks.
+Daily ? Divine
+Standard Action Close burst 5
+Targets: You and each ally in burst
+Effect: The targets gain a +2 power bonus to AC until the 
+
+end of the encounter.
+
+4E_PHB_Ch04_c.indd   644E_PHB_Ch04_c.indd   64 3/11/08   10:26:42 AM3/11/08   10:26:42 AM
+
+
+
+65
+C H A P T E R  4  |  C h a r a c t e r  C l a s s e s
+
+Level 3 Encounter Prayers
+
+Blazing Beacon Blazing Beacon Cleric Attack 3
+You invoke your deity’s name, and holy light envelops your 
+weapon. When you strike your foe, a blazing beacon in the 
+form of a holy rune floats above its head to guide your allies’ 
+ranged attacks as well.
+Encounter ? Divine, Radiant, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 1[W] + Strength modifier radiant damage, and all 
+
+ranged attack rolls against the target gain a +4 power bo-
+nus until the end of your next turn.
+
+Command Command Cleric Attack 3
+You utter a single word to your foe, a word that demands obedi-
+ence. You can choose to drive the foe back, order it closer, or cause 
+the foe to throw itself to the ground.
+Encounter ? Charm, Divine, Implement
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. Will
+Hit: The target is dazed until the end of your next turn. In 
+
+addition, you can choose to knock the target prone or 
+slide the target a number of squares equal to 3 + your 
+Charisma modifier.
+
+Daunting Light Daunting Light Cleric Attack 3
+A burning column of light engulfs your foe. Its brilliance burns 
+and hinders your foe’s defense for a short time.
+Encounter ? Divine, Implement, Radiant
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. Reflex
+Hit: 2d10 + Wisdom modifier radiant damage.
+Effect: One ally you can see gains combat advantage against 
+
+the target until the end of your next turn.
+
+Split the Sky Split the Sky Cleric Attack 3
+You invoke ancient words of wrath as you attack with your weap-
+on. The thundering power of your melee strike causes your foe to 
+stumble backward and fall.
+Encounter ? Divine, Thunder, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. Fortitude
+Hit: 1[W] + Strength modifier thunder damage, and you 
+
+push the target 2 squares and knock it prone.
+
+Level 5 Daily Prayers
+
+Consecrated Ground Consecrated Ground Cleric Attack 5
+With a wave of your hand, jagged lines of radiant light spread 
+across the ground around you like a crackling web, moving at 
+your whim. Enemies that stand upon this ground suffer the 
+wrath of your deity.
+Daily ? Divine, Healing, Radiant, Zone
+Standard Action Close burst 1
+Effect: The burst creates a zone of sanctified ground that 
+
+lasts until the end of your next turn. You can move the ori-
+gin square of the zone 3 squares as a move action. Enemies 
+that start their turns within the zone take 1d6 + your Cha-
+risma modifier radiant damage. You and any allies who are 
+bloodied and start their turns within the zone regain hit 
+points equal to 1 + your Charisma modifier.
+
+Sustain Minor: The zone persists.
+
+Rune of Peace Rune of Peace Cleric Attack 5
+You smash your weapon into your foe, leaving behind a glowing 
+rune that prevents your foe from making attacks.
+Daily ? Charm, Divine, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. Will
+Hit: 1[W] + Strength modifier damage, and the target can-
+
+not attack (save ends).
+Miss: The target cannot attack you until the end of your next 
+
+turn.
+
+Spiritual Weapon Spiritual Weapon Cleric Attack 5
+You conjure a glowing weapon adorned with the symbol of your 
+deity. The weapon attacks one of your foes and guides your allies’ 
+attacks against the same target.
+Daily ? Conjuration, Divine, Implement
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. AC
+Hit: 1d10 + Wisdom modifier damage.
+Effect: You conjure a weapon that appears in the target’s 
+
+square and attacks. Your allies gain combat advantage 
+against the target. You can move the weapon up to 10 
+squares to another enemy’s square as a move action. The 
+weapon lasts until the end of your next turn.
+
+Sustain Minor: When you sustain the power, repeat the 
+attack. Your allies continue to gain combat advantage 
+against the weapon’s target.
+
+Weapon of the Gods Weapon of the Gods Cleric Attack 5
+Your weapon glows with divine radiance, enhancing your attacks.
+Daily ? Divine, Radiant, Weapon
+Minor Action Melee touch
+Target: One held weapon
+Effect: Until the end of the encounter, all attacks made with 
+
+the weapon deal an extra 1d6 radiant damage. When the 
+weapon hits an enemy, the enemy takes a –2 penalty to 
+AC until the end of the weapon wielder’s next turn.
+
+C
+L
+
+E
+R
+
+IC
+C
+
+L
+E
+
+R
+IC
+
+4E_PHB_Ch04_c.indd   654E_PHB_Ch04_c.indd   65 3/11/08   10:26:43 AM3/11/08   10:26:43 AM
+
+
+
+66
+C H A P T E R  4  |  C h a r a c t e r  C l a s s e s
+
+Level 6 Utility Prayers
+
+Bastion of Health Bastion of Health Cleric Utility 6
+You invoke a prayer that instantly fortifies one of your allies.
+Encounter ? Divine, Healing
+Minor Action Ranged 10
+Target: You or one ally
+Effect: The target can spend a healing surge. Add your Cha-
+
+risma modifier to the hit points regained.
+
+Cure Serious Wounds Cure Serious Wounds Cleric Utility 6
+You utter a simple prayer and gain the power to instantly heal 
+wounds, and your touch momentarily suffuses you or a wounded 
+creature with bright silver light.
+Daily ? Divine, Healing
+Standard Action Melee touch
+Target: You or one creature
+Effect: The target regains hit points as if it had spent two 
+
+healing surges.
+
+Divine Vigor Divine Vigor Cleric Utility 6
+You call upon your deity to invigorate you and your battle-weary 
+allies.
+Daily ? Divine, Healing
+Minor Action Close burst 5
+Targets: You and each ally in burst
+Effect: Each target regains the use of his or her second wind.
+
+Holy Lantern Holy Lantern Cleric Utility 6
+A conjured beacon of divine light shines like a lantern, piercing 
+shadows and deception.
+At-Will ? Conjuration, Divine
+Standard Action Ranged 3
+Effect: You conjure a lantern that appears in 1 square within 
+
+range and sheds light 5 squares in all directions. You and 
+allies in the light gain a +2 power bonus to Perception and 
+Insight checks. You can move the lantern up to your speed 
+as a minor action. The lantern lasts for 10 hours, but you 
+can have only a single holy lantern active at a time.
+
+Level 7 Encounter Prayers
+
+Awe Strike Awe Strike Cleric Attack 7
+The supernatural awe and dread that radiates from you as you 
+swing your weapon leaves your foe momentarily frozen in terror.
+Encounter ? Divine, Fear, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. Will
+Hit: 1[W] + Strength modifier damage, and the target is im-
+
+mobilized until the end of your next turn.
+
+Break the Spirit Break the Spirit Cleric Attack 7
+Calling down the power of your god, you bathe your foe in ago-
+nizing radiance, driving strength out of its impending attacks.
+Encounter ? Charm, Divine, Implement, Radiant
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. Will
+Hit: 2d8 + Wisdom modifier radiant damage, and the tar-
+
+get takes a penalty to attack rolls equal to your Charisma 
+modifier until the end of your next turn.
+
+Searing Light Searing Light Cleric Attack 7
+You invoke the power of your deity. From your holy symbol a sear-
+ing ray of light flashes forth, striking and blinding your enemy 
+for a short time.
+Encounter ? Divine, Implement, Radiant
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. Reflex
+Hit: 2d6 + Wisdom modifier radiant damage, and the target 
+
+is blinded until the end of your next turn.
+
+Strengthen the Faithful Strengthen the Faithful Cleric Attack 7
+You utter a solemn prayer as you bring your weapon down upon 
+your foe, invoking the power of your deity to physically bolster 
+you and nearby allies.
+Encounter ? Divine, Healing, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 2[W] + Strength modifier damage, and you and each 
+
+ally adjacent to the target can spend a healing surge. Add 
+your Charisma modifier to the hit points regained.
+
+Level 9 Daily Prayers
+
+Astral Defenders Astral Defenders Cleric Attack 9
+You conjure two ghostly soldiers, indistinct except for glowing 
+weapons. They lash out with divine radiance against enemies 
+that pass.
+Daily ? Conjuration, Divine, Implement, Radiant
+Standard Action Ranged 10
+Effect: You conjure two soldiers, each occupying 1 square 
+
+within range. The conjured soldiers don’t attack normally, 
+but whenever an opportunity attack would be provoked 
+from a conjured soldier, the soldier makes a Wisdom vs. 
+Reflex attack. On a hit, the attack deals 1d10 + Wisdom 
+modifier radiant damage.
+
+  You can move one soldier or both a total of 3 squares 
+as a move action. Creatures can move through the spaces 
+occupied by the soldiers. The soldiers last until the end of 
+the encounter.
+
+4E_PHB_Ch04_c.indd   664E_PHB_Ch04_c.indd   66 3/11/08   10:26:44 AM3/11/08   10:26:44 AM
+
+
+
+67
+C H A P T E R  4  |  C h a r a c t e r  C l a s s e s
+
+Blade Barrier Blade Barrier Cleric Attack 9
+A barrier of whirling blades appears, slashing at those who come 
+too close or try to pass through.
+Daily ? Conjuration, Divine, Implement
+Standard Action Area wall 5 within 10 squares
+Effect: You conjure a wall of contiguous squares filled with 
+
+spinning blades of astral energy that lasts until the end of 
+your next turn. The wall can be up to 5 squares long and 
+up to 2 squares high. The spaces occupied by the blade 
+barrier are difficult terrain.
+
+  If a creature enters the barrier’s space or starts its turn 
+there, it takes 3d6 + Wisdom modifier damage plus 
+ ongoing 5 damage (save ends).
+
+Sustain Minor: The barrier persists.
+
+Divine Power Divine Power Cleric Attack 9
+You swing your weapon in a wide arc around you, creating a halo 
+of divine energy that drives foes back while fortifying you and 
+your allies.
+Daily ? Divine, Healing, Radiant, Weapon
+Standard Action Close burst 2
+Target: Each enemy in burst you can see
+Attack: Strength vs. Fortitude
+Hit: 2[W] + Strength modifier radiant damage, and you push 
+
+the target 1 square.
+Effect: Until the end of the encounter, you gain regeneration 
+
+5, and you and each ally within the burst gain a +2 power 
+bonus to AC.
+
+Flame Strike Flame Strike Cleric Attack 9
+A column of flame roars downward to engulf your foes.
+Daily ? Divine, Fire, Implement
+Standard Action Area burst 2 within 10 squares
+Target: Each enemy in burst
+Attack: Wisdom vs. Reflex
+Hit: 2d10 + Wisdom modifier fire damage, and ongoing 5 + 
+
+Wisdom modifier fire damage (save ends).
+Miss: Half damage, and no ongoing fire damage.
+
+Level 10 Utility Prayers
+
+Astral Refuge Astral Refuge Cleric Utility 10
+With a touch, you send one of your allies to a sequestered loca-
+tion in the Astral Sea, where he can recuperate for a brief time 
+before rejoining the battle.
+Daily ? Divine, Healing, Teleportation
+Standard Action Melee touch
+Target: One willing ally
+Effect: The target is whisked away to a place of safety in the 
+
+Astral Sea for 3 rounds. While there, the target can spend 
+a healing surge each round but cannot take any other ac-
+tions. At the end of the effect, the target reappears in the 
+space he or she left or, if the space is not vacant, in the 
+nearest unoccupied space.
+
+Knights of Unyielding Valor Knights of Unyielding Valor Cleric Utility 10
+You conjure four ghostly knights that carry huge shields embla-
+zoned with the symbol of your deity.
+Daily ? Conjuration, Divine
+Standard Action Ranged 10
+Effect: You conjure four ghostly warriors, each occupying 
+
+1 square within range. As a move action, you can move 
+any of the knights 2 squares. They can’t attack or be at-
+tacked or damaged, and they last until the end of the 
+encounter.
+
+Enemies can’t enter a square occupied by a conjured 
+knight, but allies can move through the knights’ spaces as 
+if the knights were allies. The conjured knights grant cover 
+to allies but not enemies.
+
+Mass Cure Light Wounds Mass Cure Light Wounds Cleric Utility 10
+With a wave of your hand, healing motes of silver light engulf 
+you and all nearby allies.
+Daily ? Divine, Healing
+Standard Action Close burst 5
+Targets: You and each ally in burst
+Effect: The targets regain hit points as if they had spent 
+
+a healing surge. Add your Charisma modifier to the hit 
+points regained.
+
+Shielding Word Shielding Word Cleric Utility 10
+You invoke a prayer that instantly defends one of your allies.
+Encounter ? Divine
+Immediate Interrupt Ranged 5
+Trigger: An ally in range is hit by an attack
+Effect: The ally gains a +4 power bonus to AC until the end 
+
+of your next turn.
+
+Level 13 Encounter Prayers
+
+Arc of the Righteous Arc of the Righteous Cleric Attack 13
+You channel your god’s divine wrath into your weapon, unleash-
+ing an arc of lightning with a successful strike that then leaps to 
+another foe within range.
+Encounter ? Divine, Lightning, Weapon
+Standard Action Melee weapon
+Primary Target: One creature
+Attack: Strength vs. AC
+Hit: 2[W] + Strength modifier lightning damage. Make a 
+
+secondary attack.
+Secondary Target: One creature within 3 squares of you
+Secondary Attack: Strength vs. AC
+
+ Hit: 1[W] + Strength modifier lightning damage.
+
+Inspiring Strike Inspiring Strike Cleric Attack 13
+You recite a short verse as you strike your enemy with your 
+weapon. If you hit, the power of the quoted verse brings healing to 
+you or an ally close by.
+Encounter ? Divine, Healing, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 2[W] + Strength modifier damage, and you or an ally 
+
+within 5 squares regains hit points equal to 15 + your 
+Charisma modifier.
+
+C
+L
+
+E
+R
+
+IC
+C
+
+L
+E
+
+R
+IC
+
+4E_PHB_Ch04_c.indd   674E_PHB_Ch04_c.indd   67 3/11/08   10:26:45 AM3/11/08   10:26:45 AM
+
+
+
+6 8
+C H A P T E R  4  |  C h a r a c t e r  C l a s s e s
+
+Mantle of Glory Mantle of Glory Cleric Attack 13
+Whispering a prayer to your deity, you invoke a blast of white 
+radiance from your holy symbol. Foes burn in its glorious light, 
+but your allies are fortified by it.
+Encounter ? Divine, Healing, Implement, Radiant
+Standard Action Close blast 5
+Target: Each enemy in blast
+Attack: Wisdom vs. Will
+Hit: 2d10 + Wisdom modifier radiant damage.
+Effect: Allies in the blast can spend a healing surge.
+
+Plague of Doom Plague of Doom Cleric Attack 13
+You direct your attention at an enemy, whisper an ancient battle 
+prayer, and send jolts of wracking pain through his body.
+Encounter ? Divine, Implement
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. Fortitude
+Hit: 3d8 + Wisdom modifier damage, and the target takes 
+
+a penalty to all defenses equal to your Charisma modifier 
+until the end of your next turn.
+
+Level 15 Daily Prayers
+
+Holy Spark Holy Spark Cleric Attack 15
+Crackling with heavenly lightning, your weapon hits your foe and 
+engulfs him in glowing arcs. Lightning jumps to other foes that 
+approach the target.
+Daily ? Divine, Lightning, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. Will
+Hit: 2[W] + Strength modifier lightning damage, and ongo-
+
+ing 10 lightning damage (save ends). While this power’s 
+ongoing damage is in effect, any ally of the target that 
+starts its turn within 3 squares of the target takes 2d10 
+lightning damage.
+
+Miss: Half damage, and no ongoing lightning damage.
+
+Purifying Fire Purifying Fire Cleric Attack 15
+Divine fire engulfs your foes and leaves them burning. Like 
+beacons of holy flame, your burning foes heal your nearby allies 
+while the flames persist.
+Daily ? Divine, Fire, Healing, Implement
+Standard Action Area burst 2 within 10 squares
+Target: Each enemy in burst
+Attack: Wisdom vs. Reflex
+Hit: 3d10 + Wisdom modifier fire damage, and ongoing 10 
+
+fire damage (save ends). While this power’s ongoing dam-
+age is in effect, you and your allies regain hit points equal 
+to 5 + your Charisma modifier when starting a turn adja-
+cent to one or more targets taking the ongoing damage.
+
+Miss: Half damage, and no ongoing fire damage.
+
+Seal of Warding Seal of Warding Cleric Attack 15
+You create a circle of faintly glowing divine symbols around you 
+that hinders the movement of enemies caught within it and pro-
+tects you and your allies from ranged attacks.
+Daily ? Divine, Implement, Radiant, Zone
+Standard Action Close burst 3
+Target: Each enemy in burst
+Attack: Wisdom vs. Will
+Hit: 4d10 + Wisdom modifier radiant damage, and the tar-
+
+get is slowed until the end of your next turn.
+Miss: Half damage, and the target is not slowed.
+Effect: The burst creates a zone of difficult terrain that 
+
+grants cover to you and your allies against ranged attacks 
+until the end of your next turn.
+
+Sustain Minor: The zone persists.
+
+Level 16 Utility Prayers
+
+Astral Shield Astral Shield Cleric Utility 16
+You conjure a shimmering silver shield, which you can then move 
+around the battlefield to provide protection where it is needed 
+most.
+Encounter ? Conjuration, Divine
+Standard Action Ranged 5
+Effect: You conjure a shield that appears in 1 square within 
+
+range. You and any allies adjacent to the shield gain a +2 
+bonus to AC. Every round, you can move the shield up to 3 
+squares within range as a move action. It can’t be attacked 
+or damaged and lasts until the end of the encounter.
+
+Cloak of Peace Cloak of Peace Cleric Utility 16
+You utter a prayer as you point toward a nearby ally, surround-
+ing him in a mantle of faint silvery light that repels attacks for as 
+long as he does not attack.
+Daily ? Divine
+Standard Action Ranged 10
+Target: You or one ally
+Effect: The target gains a +5 power bonus to AC and a +10 
+
+power bonus to all other defenses until the end of the 
+encounter. This effect ends if the target makes an attack.
+
+Divine Armor Divine Armor Cleric Utility 16
+As you mutter a fervent prayer, the power of your god encases 
+you and healing motes of silver light surround you and all nearby 
+allies.
+Daily ? Divine, Healing
+Standard Action Close burst 3
+Targets: You and each ally in burst
+Effect: You gain a +2 power bonus to AC, and all targets 
+
+gain resist 5 to all damage until the end of the encounter.
+
+Hallowed Ground Hallowed Ground Cleric Utility 16
+You speak a prayer, and the ground around you becomes hal-
+lowed, granting you and your allies divine protection.
+Daily ? Divine, Zone
+Standard Action Close burst 5
+Effect: The burst creates a zone of hallowed ground. You 
+
+and any allies gain the following benefits while within the 
+zone: a +2 power bonus to saving throws, a +2 power bo-
+nus to all defenses, and a +2 power bonus to attack rolls. 
+The area remains hallowed until the end of the encounter.
+
+4E_PHB_Ch04_c.indd   684E_PHB_Ch04_c.indd   68 3/11/08   10:26:46 AM3/11/08   10:26:46 AM
+
+
+
+69
+C H A P T E R  4  |  C h a r a c t e r  C l a s s e s
+
+Level 17 Encounter Prayers
+
+Blinding Light Blinding Light Cleric Attack 17
+You utter a brief prayer, and a brilliant nimbus of golden light 
+surrounds your weapon, blinding your enemy on impact.
+Encounter ? Divine, Radiant, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. Fortitude
+Hit: 2[W] + Strength modifier radiant damage, and the tar-
+
+get is blinded until the end of your next turn.
+
+Enthrall Enthrall Cleric Attack 17
+You begin reciting a verse from some ancient holy text. The truths 
+you speak are enough to wound and hamper your enemies.
+Encounter ? Charm, Divine, Implement, Psychic
+Standard Action Area burst 3 within 10 squares
+Target: Each enemy in burst
+Attack: Wisdom vs. Will
+Hit: 2d10 + Wisdom modifier psychic damage, and the tar-
+
+get is immobilized and unable to make attacks against you 
+until the end of your next turn.
+
+Sentinel Strike Sentinel Strike Cleric Attack 17
+You shout a sacred invocation, and your weapon smolders with 
+silver wisps of divine power. In addition to delivering a stern 
+blow to your enemy, the divine energy clings to your target and 
+foils its attacks for a short time.
+Encounter ? Divine, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 3[W] + Strength modifier damage. Choose one ally 
+
+within 5 squares of you; if the target attacks that ally 
+before the end of your next turn, reduce the target’s 
+damage against that ally to 0.
+
+Thunderous Word Thunderous Word Cleric Attack 17
+You shout a word that forcefully thrusts your enemies back while 
+allowing your allies to position themselves more advantageously.
+Encounter ? Divine, Implement, Thunder
+Standard Action Close blast 5
+Target: Each enemy in blast
+Attack: Wisdom vs. Reflex
+Hit: 3d6 + Wisdom modifier thunder damage, and you push 
+
+the target a number of squares equal to 3 + your Charisma 
+modifier.
+
+Effect: Allies in the blast can shift 1 square.
+
+Level 19 Daily Prayers
+
+Fire Storm Fire Storm Cleric Attack 19
+A roiling cloud of fire scours your foes, lingering on the battlefield 
+until you allow it to burn itself out.
+Daily ? Divine, Fire, Implement, Zone
+Standard Action Area burst 5 within 10 squares
+Target: Each enemy in burst
+Attack: Wisdom vs. Reflex
+Hit: 5d10 + Wisdom modifier fire damage.
+Miss: Half damage.
+Effect: The burst creates a zone of fire that lasts until the 
+
+end of your next turn. Enemies that start their turn in this 
+zone take 1d10 + Wisdom modifier fire damage.
+
+Sustain Minor: The zone persists.
+
+Holy Wrath Holy Wrath Cleric Attack 19
+A burst of furious light washes over your foes and fortifies you 
+with the wrath of your god.
+Daily ? Divine, Healing, Implement, Radiant
+Standard Action Close burst 3
+Target: Each enemy in burst
+Attack: Strength vs. AC
+Hit: 2d10 + Strength modifier radiant damage.
+Effect: You gain regeneration 10 and a +2 power bonus to 
+
+attack rolls until the end of the encounter.
+
+Indomitable Spirit Indomitable Spirit Cleric Attack 19
+The divine power of your mighty attack fortifies your allies.
+Daily ? Divine, Healing, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 3[W] + Strength modifier damage.
+Miss: Half damage.
+Effect: You and each ally within 5 squares of you regain hit 
+
+points as if you had each spent a healing surge.
+
+Knight of Glory Knight of Glory Cleric Attack 19
+You conjure a ghostly warrior clad in the ceremonial armor of 
+your faith. With sword in hand, it attacks your enemies.
+Daily ? Conjuration, Divine, Implement
+Standard Action Ranged 10
+Target: One creature adjacent to the ghostly knight
+Attack: Wisdom vs. AC
+Hit: 3d10 + Wisdom modifier damage.
+Effect: You conjure a ghostly knight that occupies 1 square 
+
+within range, and the knight attacks an adjacent creature. 
+Once per round as a minor action, you can make the knight 
+attack an adjacent creature. Every round, you can move the 
+knight 5 squares as a move action. It lasts until the end of 
+the encounter. 
+
+C
+L
+
+E
+R
+
+IC
+C
+
+L
+E
+
+R
+IC
+
+4E_PHB_Ch04_c.indd   694E_PHB_Ch04_c.indd   69 3/11/08   10:26:47 AM3/11/08   10:26:47 AM
+
+
+
+70
+C H A P T E R  4  |  C h a r a c t e r  C l a s s e s
+
+Level 22 Utility Prayers
+
+Angel of the Eleven Winds Angel of the Eleven Winds Cleric Utility 22
+You conjure a luminous winged angel with indistinct features. 
+It hovers 1 foot above the ground and grants others the power of 
+flight.
+Daily ? Conjuration, Divine
+Standard Action Ranged 10
+Effect: You conjure the likeness of an angel that occupies 
+
+1 square within range. The angel grants any target you can 
+see a speed of fly 8 and a +4 power bonus to AC against 
+opportunity attacks. Changing the target is a minor action. 
+A creature that no longer benefits from the effect lands on 
+the ground safely. The angel can’t move or be attacked or 
+damaged, and it lasts until the end of the encounter.
+
+Clarion Call of the Astral Sea Clarion Call of the Astral Sea Cleric Utility 22
+You beseech your deity for aid. A heavenly trumpet sounds, and 
+you or a nearby ally is instantly whisked away to a fortress on 
+the Astral Sea, restored to full health, and returned safely to the 
+battlefield in short order.
+Daily ? Divine, Healing, Teleportation
+Standard Action Ranged 10
+Target: You or one willing ally
+Effect: The target teleports away to a safe location in the 
+
+Astral Sea and regains hit points up to its maximum. While 
+it is away, the target can perceive the surroundings of its 
+previous location, but it can’t take any actions. At the start 
+of its next turn, it returns to an unoccupied space chosen 
+by you within 5 squares of its previous location.
+
+Cloud Chariot Cloud Chariot Cleric Utility 22
+You conjure a white cloud that coalesces into a chariot pulled by a 
+winged horse, both made of solid cloudstuff.
+Daily ? Conjuration, Divine
+Standard Action Ranged 2
+Effect: You conjure a chariot of cloudstuff that occupies a 
+
+2-by-2 space within range, and a winged horse of cloud-
+stuff that occupies a 2-by-2 space adjacent to the chariot. 
+The horse and chariot have a speed of fly 8. The chariot 
+can carry up to four Small or Medium creatures, and the 
+horse can hold one Small or Medium rider. The chariot 
+grants cover to its occupants. The chariot and the horse 
+can’t attack or be separated, and they can’t be attacked 
+or damaged. They remain until you take an extended rest 
+unless you dismiss them (a free action).
+
+Purify Purify Cleric Utility 22
+You wave a hand, releasing golden motes of light that strike 
+nearby allies, ridding them of all lingering afflictions.
+Daily ? Divine
+Standard Action Close burst 5
+Targets: You and each ally in burst
+Effect: Every effect that a save can end is removed from the 
+
+targets.
+
+Spirit of Health Spirit of Health Cleric Utility 22
+You conjure an insubstantial spirit that hovers in the air nearby 
+and heals your wounded comrades.
+Daily ? Conjuration, Divine, Healing
+Standard Action Ranged 10
+Effect: You conjure a spirit that appears in 1 square within 
+
+range. You or any ally adjacent to or in the same square as 
+the spirit can spend a healing surge as a minor action. The 
+spirit can heal one target per round and regains its heal-
+ing ability at the start of each of your turns. Creatures can 
+move through the spirit’s space without impediment. The 
+spirit can’t move or be attacked or damaged, and it lasts 
+until the end of the encounter.
+
+E
+V
+
+A
+ W
+
+ID
+E
+
+R
+M
+
+A
+N
+
+N
+
+4E_PHB_Ch04_c.indd   704E_PHB_Ch04_c.indd   70 3/11/08   10:26:48 AM3/11/08   10:26:48 AM
+
+
+
+71
+C H A P T E R  4  |  C h a r a c t e r  C l a s s e s
+
+Level 23 Encounter Prayers
+
+Astral Blades of Death Astral Blades of Death Cleric Attack 23
+You invoke a holy phrase. Merciless blades of silvery light sud-
+denly appear around your enemy and begin hacking at it.
+Encounter ? Divine, Implement, Radiant
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. Reflex
+Hit: 6d6 + Wisdom modifier radiant damage.
+
+Divine Censure Divine Censure Cleric Attack 23
+With a hushed prayer, you imbue your weapon with the divine 
+might of your god, such that one hit with the weapon leaves your 
+enemy reeling.
+Encounter ? Divine, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 3[W] + Strength modifier damage, and the target takes 
+
+a –2 penalty to attack rolls until the end of your next turn.
+
+Haunting Strike Haunting Strike Cleric Attack 23
+You strike your enemy hard with your weapon and invoke an 
+ancient divine curse that makes him more vulnerable to a subse-
+quent attack.
+Encounter ? Divine, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength + 2 vs. AC
+Hit: 4[W] + Strength modifier damage. The next attack roll 
+
+you make against the target gains a +2 power bonus.
+
+Healing Torch Healing Torch Cleric Attack 23
+You whisper an ancient prayer, igniting your holy symbol with 
+divine light that quickly spreads to engulf your enemies and 
+allies. The light sears your foes and momentarily bathes your 
+allies in a protective, healing glow.
+Encounter ? Divine, Healing, Implement, Radiant
+Standard Action Area burst 5 within 10 squares
+Target: Each enemy in burst
+Attack: Wisdom vs. Will
+Hit: 3d8 + Wisdom modifier radiant damage.
+Effect: You and each ally in the burst gain a power bonus to 
+
+AC equal to your Charisma modifier until the end of your 
+next turn and can spend a healing surge. Add your Charisma 
+modifier to the hit points regained.
+
+Level 25 Daily Prayers
+
+Nimbus of Doom Nimbus of Doom Cleric Attack 25
+Your attack illuminates your foe with a radiant glow, guiding 
+attacks against it.
+Daily ? Divine, Radiant, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 6[W] + Strength modifier radiant damage.
+Effect: The target takes a –2 penalty to all defenses (save 
+
+ends).
+
+Sacred Word Sacred Word Cleric Attack 25
+A single word of divine power damages and stuns nearby foes.
+Daily ? Divine, Implement, Psychic
+Standard Action Close burst 5
+Target: Each enemy in burst
+Attack: Wisdom vs. Fortitude
+Hit: 4d10 + Wisdom modifier psychic damage, and the tar-
+
+get is stunned until the end of your next turn.
+Miss: Half damage, and the target is not stunned.
+
+Seal of Binding Seal of Binding Cleric Attack 25
+Faintly glowing symbols encircle your foe, trapping it.
+Daily ? Divine, Implement
+Standard Action Ranged 10
+Target: One creature
+Attack: Wisdom vs. Will
+Hit: 3d10 + Wisdom modifier damage, and the target is 
+
+stunned and can’t be affected by any attack other than 
+this one until the end of your next turn.
+
+Sustain Standard: Each time you sustain the power, you and 
+the target both take 2d10 + Wisdom modifier damage. 
+The target remains stunned and protected against all other 
+attacks. You can’t sustain this power if you are bloodied.
+
+Seal of Protection Seal of Protection Cleric Attack 25
+You create a circle of faintly glowing symbols that halts your en-
+emies and protects you and your allies from attack.
+Daily ? Divine, Implement, Radiant, Zone
+Standard Action Close burst 2
+Target: Each enemy in burst
+Attack: Strength vs. Reflex
+Hit: 3d10 + Strength modifier radiant damage.
+Effect: The burst creates a protected zone until the end of 
+
+your next turn. You and each ally within the zone gain a +2 
+bonus to AC. Enemies that enter the zone end their current 
+movement.
+
+Sustain Minor: The zone persists.
+
+Level 27 Encounter Prayers
+
+Punishing Strike Punishing Strike Cleric Attack 27
+With a simple prayer, you gain a sudden clarity of purpose and 
+empower your weapon with the indomitable might of your deity.
+Encounter ? Divine, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength + 2 vs. AC
+Hit: 4[W] + Strength modifier damage.
+
+Sacrificial Healing Sacrificial Healing Cleric Attack 27
+As you spill the blood of your enemy, you whisper a prayer to your 
+deity, who rewards your battle prowess with a timely blessing 
+upon you and all nearby allies.
+Encounter ? Divine, Healing, Weapon
+Standard Action Melee weapon
+Target: One creature
+Attack: Strength vs. AC
+Hit: 3[W] + Strength modifier damage, and you and each 
+
+ally within 10 squares of you can spend a healing surge. 
+Add your Charisma modifier to the hit points regained.
+
+C
+L
+
+E
+R
+
+IC
+C
+
+L
+E
+
+R
+IC
+
+4E_PHB_Ch04_c.indd   714E_PHB_Ch04_c.indd   71 3/11/08   10:26:52 AM3/11/08   10:26:52 AM
+
+
